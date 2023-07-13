@@ -23,7 +23,7 @@ import { useDispatch, useSelector } from 'react-redux';
 //Action
 import { Login as LoginAction } from '../../../reducers';
 //PropTypes check
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import renderField from './RenderField';
 //Authentiation Touch ID Face ID
 import * as LocalAuthentication from 'expo-local-authentication';
@@ -195,10 +195,10 @@ const Login = (props) => {
   );
 };
 
-Login.propTypes = {
-  handleSubmit: PropTypes.func.isRequired,
-  reset: PropTypes.func.isRequired,
-};
+// Login.propTypes = {
+//   handleSubmit: PropTypes.func.isRequired,
+//   reset: PropTypes.func.isRequired,
+// };
 const styles = StyleSheet.create({
   group: {
     flexDirection: 'row',

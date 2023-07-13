@@ -13,7 +13,7 @@ import HorizontalItem from './HorizontalItem';
 import CustomText from '../../../components/UI/CustomText';
 import { Header } from './Header';
 //PropTypes check
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 ITEM_HEIGHT = 100;
 
@@ -128,10 +128,10 @@ export const ProductBody = ({
   );
 };
 
-ProductBody.propTypes = {
-  navigation: PropTypes.object.isRequired,
-  productsFilter: PropTypes.array.isRequired,
-};
+// ProductBody.propTypes = {
+//   navigation: PropTypes.object.isRequired,
+//   productsFilter: PropTypes.array.isRequired,
+// };
 
 const styles = StyleSheet.create({
   container: {

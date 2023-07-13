@@ -16,7 +16,7 @@ import CustomText from "../../../components/UI/CustomText";
 //NumberFormat
 import NumberFormat from "../../../components/UI/NumberFormat";
 //PropTypes check
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 
 const HorizontalItem = ({ item, navigation }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -64,10 +64,10 @@ const HorizontalItem = ({ item, navigation }) => {
   );
 };
 
-HorizontalItem.propTypes = {
-  item: PropTypes.object.isRequired,
-  navigation: PropTypes.object.isRequired,
-};
+// HorizontalItem.propTypes = {
+//   item: PropTypes.object.isRequired,
+//   navigation: PropTypes.object.isRequired,
+// };
 
 const styles = StyleSheet.create({
   itemContainer: {

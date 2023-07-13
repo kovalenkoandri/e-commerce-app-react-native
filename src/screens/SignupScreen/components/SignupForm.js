@@ -21,7 +21,7 @@ import { useDispatch, useSelector } from "react-redux";
 //Action
 import { SignUp as SignUpAct } from "../../../reducers";
 //PropTypes check
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import renderField from "./RenderField";
 
 const { width, height } = Dimensions.get("window");
@@ -174,10 +174,10 @@ const Signup = (props) => {
   );
 };
 
-Signup.propTypes = {
-  handleSubmit: PropTypes.func.isRequired,
-  reset: PropTypes.func.isRequired,
-};
+// Signup.propTypes = {
+//   handleSubmit: PropTypes.func.isRequired,
+//   reset: PropTypes.func.isRequired,
+// };
 const styles = StyleSheet.create({
   header: {
     marginTop: height * 0.15,

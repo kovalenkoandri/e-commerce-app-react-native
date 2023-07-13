@@ -8,7 +8,7 @@ import PreOrderItem from "./PreOrderItem";
 import CustomText from "../../../components/UI/CustomText";
 import Colors from "../../../utils/Colors";
 //PropTypes check
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 
 export class SummaryOrder extends React.PureComponent {
   render() {
@@ -44,10 +44,10 @@ export class SummaryOrder extends React.PureComponent {
   }
 }
 
-SummaryOrder.propTypes = {
-  cartItems: PropTypes.array.isRequired,
-  total: PropTypes.number.isRequired,
-};
+// SummaryOrder.propTypes = {
+//   cartItems: PropTypes.array.isRequired,
+//   total: PropTypes.number.isRequired,
+// };
 
 const styles = StyleSheet.create({
   container: {

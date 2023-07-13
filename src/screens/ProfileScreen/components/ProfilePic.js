@@ -14,7 +14,7 @@ import { _pickImage } from "../../../utils/Tools";
 import CustomText from "../../../components/UI/CustomText";
 import { useActionSheet } from "@expo/react-native-action-sheet";
 //PropTypes check
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 
 export const ProfilePic = ({
   user,
@@ -89,14 +89,14 @@ export const ProfilePic = ({
   );
 };
 
-ProfilePic.propTypes = {
-  user: PropTypes.object.isRequired,
-  imageUri: PropTypes.string.isRequired,
-  setImageUri: PropTypes.func.isRequired,
-  setFilename: PropTypes.func.isRequired,
-  setType: PropTypes.func.isRequired,
-  setUploadButton: PropTypes.func.isRequired,
-};
+// ProfilePic.propTypes = {
+//   user: PropTypes.object.isRequired,
+//   imageUri: PropTypes.string.isRequired,
+//   setImageUri: PropTypes.func.isRequired,
+//   setFilename: PropTypes.func.isRequired,
+//   setType: PropTypes.func.isRequired,
+//   setUploadButton: PropTypes.func.isRequired,
+// };
 const styles = StyleSheet.create({
   profilePic: {
     resizeMode: Platform.OS === "android" ? "cover" : "contain",

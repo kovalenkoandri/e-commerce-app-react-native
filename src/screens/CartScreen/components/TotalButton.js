@@ -6,7 +6,7 @@ import CustomText from '../../../components/UI/CustomText';
 import Colors from '../../../utils/Colors';
 import NumberFormat from '../../../components/UI/NumberFormat';
 //PropTypes check
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 export class TotalButton extends React.PureComponent {
   render() {
@@ -46,12 +46,12 @@ export class TotalButton extends React.PureComponent {
     );
   }
 }
-TotalButton.propTypes = {
-  total: PropTypes.number.isRequired,
-  navigation: PropTypes.object.isRequired,
-  cartItems: PropTypes.array.isRequired,
-  cartId: PropTypes.string,
-};
+// TotalButton.propTypes = {
+//   total: PropTypes.number.isRequired,
+//   navigation: PropTypes.object.isRequired,
+//   cartItems: PropTypes.array.isRequired,
+//   cartId: PropTypes.string,
+// };
 
 const styles = StyleSheet.create({
   total: {

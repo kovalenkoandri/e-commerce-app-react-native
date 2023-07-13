@@ -6,7 +6,7 @@ import renderField from './RenderField';
 import Colors from '../../../utils/Colors';
 import CustomText from '../../../components/UI/CustomText';
 //PropTypes check
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 //Validation
 const validate = (values) => {
@@ -86,10 +86,10 @@ const User = ({ getReceiver, checkValidation }) => {
   );
 };
 
-User.propTypes = {
-  getReceiver: PropTypes.func.isRequired,
-  checkValidation: PropTypes.func.isRequired,
-};
+// User.propTypes = {
+//   getReceiver: PropTypes.func.isRequired,
+//   checkValidation: PropTypes.func.isRequired,
+// };
 
 const styles = StyleSheet.create({
   container: {},

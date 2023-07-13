@@ -9,7 +9,7 @@ import Provinces from "../../../utils/Proinces";
 //Colors
 import Colors from "../../../utils/Colors";
 //PropTypes check
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 
 const { width } = Dimensions.get("window");
 // TextInput.defaultProps.allowFontScaling = false;
@@ -90,9 +90,9 @@ const Address = ({ getInfo }) => {
   );
 };
 
-Address.propTypes = {
-  getInfo: PropTypes.func.isRequired,
-};
+// Address.propTypes = {
+//   getInfo: PropTypes.func.isRequired,
+// };
 
 const styles = StyleSheet.create({
   container: { flex: 1, paddingHorizontal: 10, backgroundColor: "#fff" },

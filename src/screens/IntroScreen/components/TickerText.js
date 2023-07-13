@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import slides from "../../../db/IntroSlides";
 //PropTypes check
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 
 const TICKER_HEIGHT = 50;
 const { height, width } = Dimensions.get("window");
@@ -35,9 +35,9 @@ export const Ticker = ({ scrollX }) => {
   );
 };
 
-Ticker.propTypes = {
-  scrollX: PropTypes.object.isRequired,
-};
+// Ticker.propTypes = {
+//   scrollX: PropTypes.object.isRequired,
+// };
 
 const styles = StyleSheet.create({
   tickerContainer: {

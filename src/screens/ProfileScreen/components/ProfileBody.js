@@ -4,7 +4,7 @@ import CustomText from "../../../components/UI/CustomText";
 import UploadButton from "./UploadButton";
 import Detail from "./Detail";
 //PropTypes check
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 
 export const ProfileBody = ({
   user,
@@ -38,13 +38,13 @@ export const ProfileBody = ({
   );
 };
 
-ProfileBody.propTypes = {
-  user: PropTypes.object.isRequired,
-  uploadButton: PropTypes.bool.isRequired,
-  setUploadButton: PropTypes.func.isRequired,
-  setImageUri: PropTypes.func.isRequired,
-  UploadProfile: PropTypes.func.isRequired,
-};
+// ProfileBody.propTypes = {
+//   user: PropTypes.object.isRequired,
+//   uploadButton: PropTypes.bool.isRequired,
+//   setUploadButton: PropTypes.func.isRequired,
+//   setImageUri: PropTypes.func.isRequired,
+//   UploadProfile: PropTypes.func.isRequired,
+// };
 
 const styles = StyleSheet.create({
   footer: {

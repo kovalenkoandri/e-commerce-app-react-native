@@ -21,7 +21,7 @@ import Messages from '../../../messages/user';
 import Colors from '../../../utils/Colors';
 
 //PropTypes check
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 export const ActionButton = ({
   user,
@@ -113,15 +113,15 @@ export const ActionButton = ({
   );
 };
 
-ActionButton.propTypes = {
-  item: PropTypes.object.isRequired,
-  user: PropTypes.object.isRequired,
-  color: PropTypes.string.isRequired,
-  setShowSnackbar: PropTypes.func.isRequired,
-  FavoriteProducts: PropTypes.bool.isRequired,
-  setModalVisible: PropTypes.func.isRequired,
-  setMessage: PropTypes.func.isRequired,
-};
+// ActionButton.propTypes = {
+//   item: PropTypes.object.isRequired,
+//   user: PropTypes.object.isRequired,
+//   color: PropTypes.string.isRequired,
+//   setShowSnackbar: PropTypes.func.isRequired,
+//   FavoriteProducts: PropTypes.bool.isRequired,
+//   setModalVisible: PropTypes.func.isRequired,
+//   setMessage: PropTypes.func.isRequired,
+// };
 
 const styles = StyleSheet.create({
   action: {

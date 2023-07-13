@@ -17,7 +17,7 @@ import NumberFormat from "../../../components/UI/NumberFormat";
 import CustomText from "../../../components/UI/CustomText";
 import { BlurView } from "expo-blur";
 //PropTypes check
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 
 export class ProductItem extends React.PureComponent {
   constructor(props) {
@@ -85,10 +85,10 @@ export class ProductItem extends React.PureComponent {
   }
 }
 
-ProductItem.propTypes = {
-  item: PropTypes.object.isRequired,
-  navigation: PropTypes.object.isRequired,
-};
+// ProductItem.propTypes = {
+//   item: PropTypes.object.isRequired,
+//   navigation: PropTypes.object.isRequired,
+// };
 
 const styles = StyleSheet.create({
   container: {

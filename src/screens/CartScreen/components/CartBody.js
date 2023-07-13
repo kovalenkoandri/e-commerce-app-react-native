@@ -17,7 +17,7 @@ import Colors from "../../../utils/Colors";
 import { CartItem } from "./CartItem";
 import Messages from "../../../messages/user";
 //PropTypes check
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 
 export const CartBody = ({
   navigation,
@@ -85,13 +85,13 @@ export const CartBody = ({
   );
 };
 
-CartBody.propTypes = {
-  user: PropTypes.object.isRequired,
-  carts: PropTypes.object.isRequired,
-  loadCarts: PropTypes.func.isRequired,
-  isRefreshing: PropTypes.bool.isRequired,
-  navigation: PropTypes.object.isRequired,
-};
+// CartBody.propTypes = {
+//   user: PropTypes.object.isRequired,
+//   carts: PropTypes.object.isRequired,
+//   loadCarts: PropTypes.func.isRequired,
+//   isRefreshing: PropTypes.bool.isRequired,
+//   navigation: PropTypes.object.isRequired,
+// };
 const styles = StyleSheet.create({
   footer: {
     flex: 1,

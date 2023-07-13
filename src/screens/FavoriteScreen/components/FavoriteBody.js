@@ -7,7 +7,7 @@ import CustomText from "../../../components/UI/CustomText";
 import { FavoriteItem } from "./FavoriteItem";
 import Messages from "../../../messages/user";
 //PropTypes check
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 
 export const FavoriteBody = ({
   navigation,
@@ -61,11 +61,11 @@ export const FavoriteBody = ({
   );
 };
 
-FavoriteBody.propTypes = {
-  user: PropTypes.object.isRequired,
-  navigation: PropTypes.object.isRequired,
-  FavoriteProducts: PropTypes.array.isRequired,
-};
+// FavoriteBody.propTypes = {
+//   user: PropTypes.object.isRequired,
+//   navigation: PropTypes.object.isRequired,
+//   FavoriteProducts: PropTypes.array.isRequired,
+// };
 const styles = StyleSheet.create({
   center: { flex: 1, alignItems: "center", justifyContent: "center" },
 });

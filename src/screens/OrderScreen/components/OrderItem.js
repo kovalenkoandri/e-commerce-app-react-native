@@ -10,7 +10,7 @@ import NumberFormat from "../../../components/UI/NumberFormat";
 import moment from "moment";
 import "moment/min/locales";
 //PropTypes check
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import CustomText from "../../../components/UI/CustomText";
 import Steps from "../../../components/UI/Steps";
 
@@ -110,9 +110,9 @@ export const OrderItem = ({ order }) => {
   );
 };
 
-OrderItem.propTypes = {
-  order: PropTypes.object.isRequired,
-};
+// OrderItem.propTypes = {
+//   order: PropTypes.object.isRequired,
+// };
 
 const styles = StyleSheet.create({
   container: {

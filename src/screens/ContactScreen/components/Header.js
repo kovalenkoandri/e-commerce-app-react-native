@@ -11,7 +11,7 @@ import Colors from "../../../utils/Colors";
 //Icon
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 //PropTypes check
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 
 const { height } = Dimensions.get("window");
 
@@ -35,9 +35,9 @@ export const Header = ({ navigation }) => {
   );
 };
 
-Header.propTypes = {
-  navigation: PropTypes.object.isRequired,
-};
+// Header.propTypes = {
+//   navigation: PropTypes.object.isRequired,
+// };
 
 const styles = StyleSheet.create({
   headerContainer: {

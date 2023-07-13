@@ -4,7 +4,7 @@ import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
 import Colors from "../../../utils/Colors";
 import CustomText from "../../../components/UI/CustomText";
 //PropTypes check
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 
 const Detail = ({ icon, content }) => {
   const Icon =
@@ -19,10 +19,10 @@ const Detail = ({ icon, content }) => {
   );
 };
 
-Detail.propTypes = {
-  icon: PropTypes.string.isRequired,
-  content: PropTypes.string.isRequired,
-};
+// Detail.propTypes = {
+//   icon: PropTypes.string.isRequired,
+//   content: PropTypes.string.isRequired,
+// };
 
 const styles = StyleSheet.create({
   infoContainer: {

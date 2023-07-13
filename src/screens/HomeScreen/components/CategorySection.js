@@ -11,7 +11,7 @@ import CustomText from "../../../components/UI/CustomText";
 import Colors from "../../../utils/Colors";
 import { BlurView } from "expo-blur";
 //PropTypes check
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 
 export class CategorySection extends React.PureComponent {
   render() {
@@ -64,10 +64,10 @@ export class CategorySection extends React.PureComponent {
   }
 }
 
-CategorySection.propTypes = {
-  data: PropTypes.array.isRequired,
-  navigation: PropTypes.object.isRequired,
-};
+// CategorySection.propTypes = {
+//   data: PropTypes.array.isRequired,
+//   navigation: PropTypes.object.isRequired,
+// };
 
 const styles = StyleSheet.create({
   category: {

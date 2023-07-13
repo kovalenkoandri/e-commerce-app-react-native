@@ -21,7 +21,7 @@ import NumberFormat from "react-number-format";
 //Text
 import CustomText from "../../../components/UI/CustomText";
 //PropTypes check
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 
 export const renderRightAction = (text, color, action, x, progress) => {
   const trans = progress.interpolate({
@@ -170,10 +170,10 @@ export const FavoriteItem = ({ navigation, item }) => {
   );
 };
 
-FavoriteItem.propTypes = {
-  item: PropTypes.object.isRequired,
-  navigation: PropTypes.object.isRequired,
-};
+// FavoriteItem.propTypes = {
+//   item: PropTypes.object.isRequired,
+//   navigation: PropTypes.object.isRequired,
+// };
 
 const styles = StyleSheet.create({
   itemContainer: {

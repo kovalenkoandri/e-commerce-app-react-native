@@ -9,7 +9,7 @@ import * as LocalAuthentication from "expo-local-authentication";
 import * as SecureStore from "expo-secure-store";
 import { secretKey } from "../../../utils/Config";
 //PropTypes check
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 
 export const AuthBody = () => {
   const [isEnabled, setIsEnabled] = useState(false);
@@ -87,7 +87,7 @@ export const AuthBody = () => {
   );
 };
 
-AuthBody.propTypes = {};
+// AuthBody.propTypes = {};
 
 const styles = StyleSheet.create({
   container: {

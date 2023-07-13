@@ -15,7 +15,7 @@ import NumberFormat from "../../../components/UI/NumberFormat";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import CustomText from "../../../components/UI/CustomText";
 //PropTypes check
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 
 export class CartItem extends React.PureComponent {
   render() {
@@ -88,12 +88,12 @@ export class CartItem extends React.PureComponent {
   }
 }
 
-CartItem.propTypes = {
-  item: PropTypes.object.isRequired,
-  onAdd: PropTypes.func.isRequired,
-  onRemove: PropTypes.func.isRequired,
-  onDes: PropTypes.func.isRequired,
-};
+// CartItem.propTypes = {
+//   item: PropTypes.object.isRequired,
+//   onAdd: PropTypes.func.isRequired,
+//   onRemove: PropTypes.func.isRequired,
+//   onDes: PropTypes.func.isRequired,
+// };
 
 const styles = StyleSheet.create({
   container: {

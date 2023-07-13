@@ -17,7 +17,7 @@ import CustomText from "../../../components/UI/CustomText";
 import { Ionicons } from "@expo/vector-icons";
 import { BlurView } from "expo-blur";
 //PropTypes check
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 
 const { interpolate, Extrapolate } = Animated;
 const { width } = Dimensions.get("window");
@@ -117,10 +117,10 @@ export const Header = ({ navigation, searchFilterFunction, scrollY }) => {
   );
 };
 
-Header.propTypes = {
-  navigation: PropTypes.object.isRequired,
-  searchFilterFunction: PropTypes.func.isRequired,
-};
+// Header.propTypes = {
+//   navigation: PropTypes.object.isRequired,
+//   searchFilterFunction: PropTypes.func.isRequired,
+// };
 
 const styles = StyleSheet.create({
   topBar: {

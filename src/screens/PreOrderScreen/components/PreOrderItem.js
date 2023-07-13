@@ -3,7 +3,7 @@ import { View, Image, StyleSheet } from "react-native";
 import Colors from "../../../utils/Colors";
 import NumberFormat from "react-number-format";
 //PropTypes check
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import CustomText from "../../../components/UI/CustomText";
 
 class PreOrderItem extends React.PureComponent {
@@ -47,9 +47,9 @@ class PreOrderItem extends React.PureComponent {
   }
 }
 
-PreOrderItem.propTypes = {
-  item: PropTypes.object.isRequired,
-};
+// PreOrderItem.propTypes = {
+//   item: PropTypes.object.isRequired,
+// };
 
 const styles = StyleSheet.create({
   container: {

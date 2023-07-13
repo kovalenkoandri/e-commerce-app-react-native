@@ -3,7 +3,7 @@ import { View, StyleSheet, TouchableOpacity } from "react-native";
 import Colors from "../../../utils/Colors";
 import { FontAwesome5 } from "@expo/vector-icons";
 //PropTypes check
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 
 export const EditButton = ({ navigation, user }) => {
   return (
@@ -17,10 +17,10 @@ export const EditButton = ({ navigation, user }) => {
   );
 };
 
-EditButton.propTypes = {
-  user: PropTypes.object.isRequired,
-  navigation: PropTypes.object.isRequired,
-};
+// EditButton.propTypes = {
+//   user: PropTypes.object.isRequired,
+//   navigation: PropTypes.object.isRequired,
+// };
 
 const styles = StyleSheet.create({
   editButton: {

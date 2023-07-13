@@ -11,7 +11,7 @@ import Colors from "../../../utils/Colors";
 //number format
 import NumberFormat from "../../../components/UI/NumberFormat";
 //PropTypes check
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 
 const { width, height } = Dimensions.get("window");
 
@@ -95,10 +95,10 @@ export const DetailBody = ({ item, color }) => {
   );
 };
 
-DetailBody.propTypes = {
-  item: PropTypes.object.isRequired,
-  color: PropTypes.string.isRequired,
-};
+// DetailBody.propTypes = {
+//   item: PropTypes.object.isRequired,
+//   color: PropTypes.string.isRequired,
+// };
 
 const styles = StyleSheet.create({
   footer: {
