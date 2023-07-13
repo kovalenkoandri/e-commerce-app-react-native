@@ -7,21 +7,21 @@ import { fetchProducts } from '../../reducers';
 //Colors
 import Colors from '../../utils/Colors';
 //Animation
-import Animated from 'react-native-reanimated';
+// import Animated from 'react-native-reanimated';
 //Components
 import { Carousel, Header, CategorySection, FloatButton, categories } from './components';
 import Skeleton from '../../components/Loaders/SkeletonLoading';
 import Snackbar from '../../components/Notification/Snackbar';
 //FloatButton
 import { Portal, Provider } from 'react-native-paper';
-const AnimatedFlatList = Animated.createAnimatedComponent(FlatList);
+// const AnimatedFlatList = Animated.createAnimatedComponent(FlatList);
 //height
 const { height } = Dimensions.get('window');
 
 export const HomeScreen = ({ navigation }) => {
   const dispatch = useDispatch();
   //Header Animation
-  let scrollY = new Animated.Value(0);
+  // let scrollY = new Animated.Value(0);
   const user = useSelector((state) => state.auth.user);
   const products = useSelector((state) => state.store.products);
   const isLoading = useSelector((state) => state.store.isLoading);
@@ -46,7 +46,7 @@ export const HomeScreen = ({ navigation }) => {
       ) : (
         <View style={styles.container}>
           <Header
-            scrollPoint={scrollY}
+            // scrollPoint={scrollY}
             navigation={navigation}
             products={products}
           ></Header>
@@ -62,14 +62,14 @@ export const HomeScreen = ({ navigation }) => {
               </View>
             )}
             scrollEventThrottle={1}
-            onScroll={Animated.event(
-              [
-                {
-                  nativeEvent: { contentOffset: { y: scrollY } },
-                },
-              ],
-              { useNativeDriver: true },
-            )}
+            // onScroll={Animated.event(
+            //   [
+            //     {
+            //       nativeEvent: { contentOffset: { y: scrollY } },
+            //     },
+            //   ],
+            //   { useNativeDriver: true },
+            // )}
             data={categories}
             keyExtractor={(item) => item.name}
             renderItem={({ item }) => (

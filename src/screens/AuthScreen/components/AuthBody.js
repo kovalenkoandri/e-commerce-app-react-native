@@ -12,7 +12,7 @@ import Colors from "../../../utils/Colors";
 //Icon
 import LottieView from "lottie-react-native";
 //PropTypes check
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 
 const { height, width } = Dimensions.get("window");
 
@@ -60,9 +60,9 @@ export const AuthBody = ({ navigation }) => {
   );
 };
 
-AuthBody.propTypes = {
-  navigation: PropTypes.object.isRequired,
-};
+// AuthBody.propTypes = {
+//   navigation: PropTypes.object.isRequired,
+// };
 
 const styles = StyleSheet.create({
   signinContainer: {

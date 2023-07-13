@@ -18,9 +18,9 @@ import { Ionicons } from '@expo/vector-icons';
 import Colors from '../../../utils/Colors';
 //Search Item component
 import SearchItem from './SearchItem';
-import Animated, { Easing } from 'react-native-reanimated';
+// import Animated, { Easing } from 'react-native-reanimated';
 import { TouchableOpacity, TextInput } from 'react-native-gesture-handler';
-const { Value, timing } = Animated;
+// const { Value, timing } = Animated;
 // Calculate window size
 const { width, height } = Dimensions.get('window');
 
@@ -34,10 +34,10 @@ export class Header extends React.Component {
       productsFilter: '',
     };
     // animation values
-    this._input_box_translate_x = new Value(width);
-    this._back_button_opacity = new Value(0);
-    this._content_translate_y = new Value(height);
-    this._content_opacity = new Value(0);
+    // this._input_box_translate_x = new Value(width);
+    // this._back_button_opacity = new Value(0);
+    // this._content_translate_y = new Value(height);
+    // this._content_opacity = new Value(0);
   }
   //Search
   searchFilterFunction = (searchText) => {
@@ -55,29 +55,29 @@ export class Header extends React.Component {
     const input_box_translate_x_config = {
       duration: 200,
       toValue: 0,
-      easing: Easing.inOut(Easing.ease),
+      // easing: Easing.inOut(Easing.ease),
     };
     const back_button_opacity_config = {
       duration: 200,
       toValue: 1,
-      easing: Easing.inOut(Easing.ease),
+      // easing: Easing.inOut(Easing.ease),
     };
     // content
     const content_translate_y_config = {
       duration: 0,
       toValue: 0,
-      easing: Easing.inOut(Easing.ease),
+      // easing: Easing.inOut(Easing.ease),
     };
     const content_opacity_config = {
       duration: 200,
       toValue: 1,
-      easing: Easing.inOut(Easing.ease),
+      // easing: Easing.inOut(Easing.ease),
     };
     // run animation
-    timing(this._input_box_translate_x, input_box_translate_x_config).start();
-    timing(this._back_button_opacity, back_button_opacity_config).start();
-    timing(this._content_translate_y, content_translate_y_config).start();
-    timing(this._content_opacity, content_opacity_config).start();
+    // timing(this._input_box_translate_x, input_box_translate_x_config).start();
+    // timing(this._back_button_opacity, back_button_opacity_config).start();
+    // timing(this._content_translate_y, content_translate_y_config).start();
+    // timing(this._content_opacity, content_opacity_config).start();
     // force focus
     this.refs.input.focus();
   };
@@ -89,30 +89,30 @@ export class Header extends React.Component {
     const input_box_translate_x_config = {
       duration: 50,
       toValue: width,
-      easing: Easing.inOut(Easing.ease),
+      // easing: Easing.inOut(Easing.ease),
     };
     const back_button_opacity_config = {
       duration: 50,
       toValue: 0,
-      easing: Easing.inOut(Easing.ease),
+      // easing: Easing.inOut(Easing.ease),
     };
 
     // content
     const content_translate_y_config = {
       duration: 0,
       toValue: height,
-      easing: Easing.inOut(Easing.ease),
+      // easing: Easing.inOut(Easing.ease),
     };
     const content_opacity_config = {
       duration: 200,
       toValue: 0,
-      easing: Easing.inOut(Easing.ease),
+      // easing: Easing.inOut(Easing.ease),
     };
     // run animation
-    timing(this._input_box_translate_x, input_box_translate_x_config).start();
-    timing(this._back_button_opacity, back_button_opacity_config).start();
-    timing(this._content_translate_y, content_translate_y_config).start();
-    timing(this._content_opacity, content_opacity_config).start();
+    // timing(this._input_box_translate_x, input_box_translate_x_config).start();
+    // timing(this._back_button_opacity, back_button_opacity_config).start();
+    // timing(this._content_translate_y, content_translate_y_config).start();
+    // timing(this._content_opacity, content_opacity_config).start();
     // force blur
     this.refs.input.blur();
   };
@@ -125,28 +125,28 @@ export class Header extends React.Component {
       outputRange: [0, 1],
       extrapolateLeft: 'clamp',
     });
-    const _diff_clamp_scroll_y = Animated.diffClamp(
-      clampedScrollY,
-      0,
-      headerPlatform,
-    );
-    const _header_translate_y = Animated.interpolate(_diff_clamp_scroll_y, {
-      inputRange: [0, headerPlatform],
-      outputRange: [0, -headerPlatform],
-      extrapolate: 'clamp',
-    });
-    const _header_opacity = Animated.interpolate(_diff_clamp_scroll_y, {
-      inputRange: [0, headerPlatform],
-      outputRange: [1, 0],
-      extrapolate: 'clamp',
-    });
+    // const _diff_clamp_scroll_y = Animated.diffClamp(
+    //   clampedScrollY,
+    //   0,
+    //   headerPlatform,
+    // );
+    // const _header_translate_y = Animated.interpolate(_diff_clamp_scroll_y, {
+    //   inputRange: [0, headerPlatform],
+    //   outputRange: [0, -headerPlatform],
+    //   extrapolate: 'clamp',
+    // });
+    // const _header_opacity = Animated.interpolate(_diff_clamp_scroll_y, {
+    //   inputRange: [0, headerPlatform],
+    //   outputRange: [1, 0],
+    //   extrapolate: 'clamp',
+    // });
     // const ViewPlatForm = Platform.OS === "android" ? SafeAreaView : View;
     return (
       <>
         <SafeAreaView
           style={{ ...styles.header_safe_area, ...this.props.style }}
         >
-          <Animated.View
+          <View
             style={[
               styles.header,
               {
@@ -186,13 +186,13 @@ export class Header extends React.Component {
               >
                 <Ionicons name='ios-search' size={20} color={Colors.white} />
               </TouchableOpacity>
-              <Animated.View
+              <View
                 style={[
                   styles.input_box,
                   { transform: [{ translateX: this._input_box_translate_x }] },
                 ]}
               >
-                <Animated.View style={{ opacity: this._back_button_opacity }}>
+                <View style={{ opacity: this._back_button_opacity }}>
                   <TouchableOpacity
                     activeOpacity={1}
                     underlayColor={'#ccd0d5'}
@@ -205,7 +205,7 @@ export class Header extends React.Component {
                       color={Colors.light_green}
                     />
                   </TouchableOpacity>
-                </Animated.View>
+                </View>
                 <TextInput
                   ref='input'
                   placeholder='Tìm kiếm sản phẩm'
@@ -214,11 +214,11 @@ export class Header extends React.Component {
                   onChangeText={(value) => this.searchFilterFunction(value)}
                   style={styles.input}
                 />
-              </Animated.View>
+              </View>
             </View>
-          </Animated.View>
+          </View>
         </SafeAreaView>
-        <Animated.View
+        <View
           style={[
             styles.content,
             {
@@ -268,7 +268,7 @@ export class Header extends React.Component {
               </View>
             )}
           </View>
-        </Animated.View>
+        </View>
       </>
     );
   }

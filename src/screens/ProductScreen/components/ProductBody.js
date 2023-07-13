@@ -6,7 +6,7 @@ import {
   Keyboard,
   SectionList,
 } from 'react-native';
-import Animated, { Value } from 'react-native-reanimated';
+// import Animated, { Value } from 'react-native-reanimated';
 //Color
 import Colors from '../../../utils/Colors';
 import HorizontalItem from './HorizontalItem';
@@ -17,7 +17,7 @@ import PropTypes from 'prop-types';
 
 ITEM_HEIGHT = 100;
 
-const AnimatedSectionList = Animated.createAnimatedComponent(SectionList);
+// const AnimatedSectionList = Animated.createAnimatedComponent(SectionList);
 
 export const ProductBody = ({
   navigation,
@@ -33,7 +33,7 @@ export const ProductBody = ({
   DATA.push({ title: 'Vòng Chuối Ngọc', data: bracelets });
   DATA.push({ title: 'Nhẫn Ruby', data: rings });
   DATA.push({ title: 'Đá Quý', data: stones });
-  const scrollY = new Value(0);
+  // const scrollY = new Value(0);
   const sectionListRef = useRef(null);
   // const scrollToSection = (index) => {
   //   sectionListRef.current.scrollToLocation({
@@ -62,7 +62,7 @@ export const ProductBody = ({
         <Header
           navigation={navigation}
           searchFilterFunction={searchFilterFunction}
-          scrollY={scrollY}
+          // scrollY={scrollY}
         />
       </TouchableWithoutFeedback>
       {productsFilter.length === 0 ? (
@@ -84,11 +84,11 @@ export const ProductBody = ({
           )}
           stickySectionHeadersEnabled={false}
           scrollEventThrottle={1}
-          onScroll={Animated.event(
-            [{ nativeEvent: { contentOffset: { y: scrollY } } }],
-            { useNativeDriver: true },
-            // { listener: HandleScrollY, useNativeDriver: false }
-          )}
+          // onScroll={Animated.event(
+          //   [{ nativeEvent: { contentOffset: { y: scrollY } } }],
+          //   { useNativeDriver: true },
+          //   // { listener: HandleScrollY, useNativeDriver: false }
+          // )}
           contentContainerStyle={{ marginTop: 90, paddingBottom: 100 }}
         />
       )}
