@@ -1,5 +1,5 @@
 import 'react-native-gesture-handler';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 //Redux
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
@@ -15,7 +15,8 @@ import {
 } from './src/reducers';
 //Navigator
 import { AppNavigator } from './src/navigation';
-import AppLoading from 'expo-app-loading';
+// import AppLoading from 'expo-app-loading';
+import * as SplashScreen from 'expo-splash-screen';
 import { Asset } from 'expo-asset';
 import * as Font from 'expo-font';
 
@@ -24,7 +25,8 @@ import { reducer as formReducer } from 'redux-form';
 import { StatusBar } from 'expo-status-bar';
 //Notification
 import LocalNotication from './src/components/Notification/LocalNotification';
-
+// Keep the splash screen visible while we fetch resources
+SplashScreen.preventAutoHideAsync();
 const rootReducer = combineReducers({
   store: productReducer,
   cart: cartReducer,
@@ -34,7 +36,10 @@ const rootReducer = combineReducers({
   form: formReducer,
 });
 
-const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(ReduxThunk)));
+const store = createStore(
+  rootReducer,
+  composeWithDevTools(applyMiddleware(ReduxThunk)),
+);
 const LoadAssets = async () => {
   const imageAssets = Asset.loadAsync([
     require('./src/assets/Images/banner1.jpg'),
@@ -72,20 +77,42 @@ const LoadAssets = async () => {
   return await Promise.all([imageAssets, fetchFonts]);
 };
 export default function App() {
-  const [assetLoaded, setAssetLoaded] = useState(false);
-  if (!assetLoaded) {
-    return (
-      <AppLoading
-        startAsync={LoadAssets}
-        onFinish={() => setAssetLoaded(true)}
-        onError={console.warn}
-      />
-    );
+  // const [assetLoaded, setAssetLoaded] = useState(false);
+  // if (!assetLoaded) {
+  //   return (
+  //     <AppLoading
+  //       startAsync={LoadAssets}
+  //       onFinish={() => setAssetLoaded(true)}
+  //       onError={console.warn}
+  //     />
+  //   );
+  // }
+  const [appIsReady, setAppIsReady] = useState(false);
+
+  useEffect(() => {
+    async function prepare() {
+      try {
+        // Pre-load fonts, make any API calls you need to do here
+        await LoadAssets();
+        await SplashScreen.hideAsync();
+      } catch (e) {
+        console.warn(e);
+      } finally {
+        // Tell the application to render
+        setAppIsReady(true);
+      }
+    }
+    if (!appIsReady) {
+      prepare();
+    }
+  }, [appIsReady]);
+  if (!appIsReady) {
+    return null;
   }
   return (
     <Provider store={store}>
       <StatusBar />
-      <LocalNotication />
+      {/* <LocalNotication /> */}
       <AppNavigator />
     </Provider>
   );

@@ -26,12 +26,12 @@ const validate = (values) => {
   const errors = {};
 
   if (!values.password) {
-    errors.password = "Mật khẩu không được bỏ trống";
+    errors.password = "Passwords can't be left blank";
   } else if (values.password.length < 6) {
-    errors.password = "Mật khẩu phải nhiều hơn hoặc bằng 6 ký tự";
+    errors.password = 'Password must be more than or equal to 6 characters';
   }
   if (values.confirmpassword !== values.password) {
-    errors.confirmpassword = "Mật khẩu xác nhận không trùng khớp";
+    errors.confirmpassword = 'The confirmation password does not match';
   }
 
   return errors;
@@ -69,7 +69,7 @@ const resetForm = (props) => {
         onPress={() => {
           props.navigation.goBack();
         }}
-        style={{ position: "absolute", top: 50, left: 20 }}
+        style={{ position: 'absolute', top: 50, left: 20 }}
       >
         <Feather
           name="arrow-left-circle"
@@ -82,10 +82,10 @@ const resetForm = (props) => {
         <Field
           name="password"
           keyboardType="default"
-          label="Mật Khẩu"
+          label="Password"
           component={renderField}
           secureTextEntry={!showPass ? true : false}
-          placeholder="Mật khẩu của bạn"
+          placeholder="Your password"
           icon="lock-outline"
           passIcon="pass"
           showPass={showPass}
@@ -94,10 +94,10 @@ const resetForm = (props) => {
         <Field
           name="confirmpassword"
           keyboardType="default"
-          label="Xác Nhận Mật Khẩu"
+          label="Confirm password"
           component={renderField}
           secureTextEntry={!showConfirmPass ? true : false}
-          placeholder="Xác nhận mật khẩu"
+          placeholder="Confirm password"
           passIcon="confirm"
           icon="lock-outline"
           showConfirmPass={showConfirmPass}
@@ -105,7 +105,7 @@ const resetForm = (props) => {
         />
         <TouchableOpacity
           onPress={handleSubmit(submit)}
-          style={{ marginVertical: 10, alignItems: "center" }}
+          style={{ marginVertical: 10, alignItems: 'center' }}
         >
           <View style={styles.signIn}>
             <CustomText style={styles.textSign}>Reset Your Password</CustomText>

@@ -79,7 +79,10 @@ export const AuthStackScreen = () => (
     <AuthStack.Screen name="AuthScreen" component={AuthScreen} />
     <AuthStack.Screen name="LoginScreen" component={LoginStackScreen} />
     <AuthStack.Screen name="SignupScreen" component={SignupScreen} />
-    <AuthStack.Screen name="FinishResetScreen" component={FinishResetPwScreen} />
+    <AuthStack.Screen
+      name="FinishResetScreen"
+      component={FinishResetPwScreen}
+    />
   </AuthStack.Navigator>
 );
 
@@ -107,7 +110,10 @@ export const PaymentStackScreen = () => (
     }}
   >
     <PaymentStack.Screen name="PaymentScreen" component={PaymentScreen} />
-    <PaymentStack.Screen name="AddCreditCardScreen" component={AddCreditCardScreen} />
+    <PaymentStack.Screen
+      name="AddCreditCardScreen"
+      component={AddCreditCardScreen}
+    />
   </PaymentStack.Navigator>
 );
 
@@ -118,7 +124,10 @@ export const CartStackScreen = () => (
 
     <CartStack.Screen name="PreOrderScreen" component={PreOrderScreen} />
     <CartStack.Screen name="Payment" component={PaymentStackScreen} />
-    <CartStack.Screen name="AddCreditCardScreen" component={AddCreditCardScreen} />
+    <CartStack.Screen
+      name="AddCreditCardScreen"
+      component={AddCreditCardScreen}
+    />
   </CartStack.Navigator>
 );
 
@@ -164,7 +173,7 @@ export const HomeStackScreen = () => (
     <HomeStack.Screen
       name="Home"
       component={HomeScreen}
-      //animationEnabled: false , nằm trong option
+      // animationEnabled: false , located in option
     />
     <HomeStack.Screen name="Detail" component={DetailScreen} />
     <HomeStack.Screen name="Cart" component={CartStackScreen} />
@@ -204,24 +213,24 @@ export const TabScreen = () => {
       inactiveColor={Colors.grey}
     >
       <Tab.Screen
-        name="HomeTab"
+        name="HomePage"
         component={HomeStackScreen}
         options={{
-          tabBarLabel: 'Trang chủ',
+          tabBarLabel: 'Home page',
         }}
       />
       <Tab.Screen
         name="Favorite"
         component={FavoriteStackScreen}
         options={() => ({
-          tabBarLabel: 'Yêu thích',
+          tabBarLabel: 'Favourite',
         })}
       />
       <Tab.Screen
         name="Cart"
         component={CartStackScreen}
         options={() => ({
-          tabBarLabel: 'Giỏ hàng',
+          tabBarLabel: 'Cart',
           tabBarBadge: carts.items.length === 0 ? null : carts.items.length,
         })}
       />
@@ -237,19 +246,19 @@ export const DrawerNavigator = () => {
     {
       name: 'HomeTab',
       screen: TabScreen,
-      label: 'Trang Chủ',
+      label: 'HomeTab',
       icon: 'home-outline',
     },
     {
       name: 'Order',
       screen: OrderScreen,
-      label: 'Đơn Hàng',
+      label: 'Order',
       icon: 'receipt',
     },
     {
       name: 'Contact',
       screen: ContactScreen,
-      label: 'Liên Hệ',
+      label: 'Contact',
       icon: 'contacts',
     },
   ];
@@ -257,7 +266,7 @@ export const DrawerNavigator = () => {
   return (
     <Drawer.Navigator
       drawerContent={(props) => <CustomDrawer {...props} />}
-      drawerContentOptions={{
+      screenOptions={{
         activeTintColor: Colors.grey,
         itemStyle: { marginVertical: 3 },
       }}
@@ -268,18 +277,20 @@ export const DrawerNavigator = () => {
           name={name}
           component={screen}
           options={() => ({
-            title: ({ focused }) => (
-              <CustomText
-                style={{
-                  fontSize: 14,
-                  fontWeight: '500',
-                  color: focused ? Colors.lighter_green : Colors.grey,
-                  fontFamily: 'Roboto-Medium',
-                }}
-              >
-                {label}
-              </CustomText>
-            ),
+            // A generic title that can be used as a fallback for headerTitle and drawerLabel.
+            // get rid of wqarning functions cant be component
+            // title: ({ focused }) => (
+            //   <CustomText
+            //     style={{
+            //       fontSize: 14,
+            //       fontWeight: '500',
+            //       color: focused ? Colors.lighter_green : Colors.grey,
+            //       fontFamily: 'Roboto-Medium',
+            //     }}
+            //   >
+            //     {label}
+            //   </CustomText>
+            // ),
             drawerIcon: ({ focused }) => (
               <MaterialCommunityIcons
                 name={icon}
@@ -296,18 +307,20 @@ export const DrawerNavigator = () => {
           name="SignUp"
           component={AuthStackScreen}
           options={() => ({
-            title: ({ focused }) => (
-              <CustomText
-                style={{
-                  fontSize: 14,
-                  fontWeight: '500',
-                  color: focused ? Colors.lighter_green : Colors.grey,
-                  fontFamily: 'Roboto-Medium',
-                }}
-              >
-                Đăng nhập
-              </CustomText>
-            ),
+            // A generic title that can be used as a fallback for headerTitle and drawerLabel.
+            // get rid of wqarning functions cant be component
+            // title: ({ focused }) => (
+            //   <CustomText
+            //     style={{
+            //       fontSize: 14,
+            //       fontWeight: '500',
+            //       color: focused ? Colors.lighter_green : Colors.grey,
+            //       fontFamily: 'Roboto-Medium',
+            //     }}
+            //   >
+            //     Sign Up
+            //   </CustomText>
+            // ),
             drawerIcon: ({ focused }) => (
               <MaterialCommunityIcons
                 name="login"
@@ -357,7 +370,7 @@ export const DrawerNavigator = () => {
                     fontFamily: 'Roboto-Medium',
                   }}
                 >
-                  Thông Tin Cá Nhân
+                  Personal information
                 </CustomText>
               ),
               drawerIcon: ({ focused }) => (

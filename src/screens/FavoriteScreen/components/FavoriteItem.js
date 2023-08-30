@@ -21,7 +21,7 @@ import NumberFormat from "react-number-format";
 //Text
 import CustomText from "../../../components/UI/CustomText";
 //PropTypes check
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 
 export const renderRightAction = (text, color, action, x, progress) => {
   const trans = progress.interpolate({
@@ -53,9 +53,9 @@ export const FavoriteItem = ({ navigation, item }) => {
     try {
       await dispatch(addToCart(item));
       if (!unmounted.current) {
-        Alert.alert("Thêm thành công", "Sản phẩm đã được thêm vào giỏ hàng", [
+        Alert.alert('More success', 'The product has been added to the cart', [
           {
-            text: "OK",
+            text: 'OK',
           },
         ]);
       }
@@ -65,37 +65,31 @@ export const FavoriteItem = ({ navigation, item }) => {
   };
   const removeFavoriteAct = () => {
     Alert.alert(
-      "Bỏ yêu thích",
-      "Bạn có muốn bỏ sản phẩm ra khỏi mục yêu thích?",
+      'Remove favorites',
+      'Do you want to take the product out of favorites?',
       [
         {
-          text: "Hủy",
-          style: "cancel",
+          text: 'Cancel',
+          style: 'cancel',
         },
         {
-          text: "Đồng ý",
+          text: 'Agree',
           onPress: () => dispatch(removeFavorite(item._id)),
         },
-      ]
+      ],
     );
   };
   const RightActions = (progress) => {
     return (
-      <View style={{ width: 170, flexDirection: "row" }}>
+      <View style={{ width: 170, flexDirection: 'row' }}>
         {renderRightAction(
-          "Thêm vào giỏ",
-          "#ffab00",
+          'Add to cart',
+          '#ffab00',
           addToCartAct,
           140,
-          progress
+          progress,
         )}
-        {renderRightAction(
-          "Bỏ thích",
-          Colors.red,
-          removeFavoriteAct,
-          30,
-          progress
-        )}
+        {renderRightAction('Quit', Colors.red, removeFavoriteAct, 30, progress)}
       </View>
     );
   };
@@ -170,10 +164,10 @@ export const FavoriteItem = ({ navigation, item }) => {
   );
 };
 
-// FavoriteItem.propTypes = {
-//   item: PropTypes.object.isRequired,
-//   navigation: PropTypes.object.isRequired,
-// };
+FavoriteItem.propTypes = {
+  item: PropTypes.object.isRequired,
+  navigation: PropTypes.object.isRequired,
+};
 
 const styles = StyleSheet.create({
   itemContainer: {

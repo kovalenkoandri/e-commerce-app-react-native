@@ -21,9 +21,9 @@ export class CategorySection extends React.PureComponent {
     const stones = data.filter((stone) => stone.type === "stone");
     function getItems() {
       const items =
-        name === "Vòng Thạch Anh"
+        name === 'Quartz ring'
           ? bracelets
-          : name === "Đá Ruby"
+          : name === 'Ruby Stone'
           ? stones
           : rings;
       return items;
@@ -52,11 +52,11 @@ export class CategorySection extends React.PureComponent {
           />
         </View>
         <TouchableOpacity
-          onPress={() => navigation.navigate("Product")}
+          onPress={() => navigation.navigate('Product')}
           style={{ marginHorizontal: 10 }}
         >
           <BlurView tint="light" intensity={100} style={styles.seeMore}>
-            <CustomText style={styles.seeMoreText}>Xem Thêm</CustomText>
+            <CustomText style={styles.seeMoreText}>See also</CustomText>
           </BlurView>
         </TouchableOpacity>
       </View>

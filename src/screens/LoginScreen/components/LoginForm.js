@@ -23,7 +23,7 @@ import { useDispatch, useSelector } from 'react-redux';
 //Action
 import { Login as LoginAction } from '../../../reducers';
 //PropTypes check
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import renderField from './RenderField';
 //Authentiation Touch ID Face ID
 import * as LocalAuthentication from 'expo-local-authentication';
@@ -36,14 +36,14 @@ const { height } = Dimensions.get('window');
 const validate = (values) => {
   const errors = {};
   if (!values.email) {
-    errors.email = 'Email không được bỏ trống';
+    errors.email = 'Email cannot be left blank';
   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-    errors.email = 'Email không hơp lệ';
+    errors.email = 'Invalid email';
   }
   if (!values.password) {
-    errors.password = 'Mật khẩu không được bỏ trống';
+    errors.password = 'Passwords can"t be left blank';
   } else if (values.password.length < 6) {
-    errors.password = 'Mật khẩu phải nhiều hơn hoặc bằng 6 ký tự';
+    errors.password = 'Password must be more than or equal to 6 characters';
   }
   return errors;
 };
@@ -99,7 +99,9 @@ const Login = (props) => {
     }
   };
   return (
-    <KeyboardAvoidingView behavior={Platform.OS == 'ios' ? 'position' : 'height'}>
+    <KeyboardAvoidingView
+      behavior={Platform.OS == 'ios' ? 'position' : 'height'}
+    >
       <TouchableOpacity
         onPress={() => {
           props.navigation.goBack();
@@ -167,7 +169,7 @@ const Login = (props) => {
                 {loading ? (
                   <ActivityIndicator size="small" color="#fff" />
                 ) : (
-                  <CustomText style={styles.textSign}>Đăng nhập</CustomText>
+                  <CustomText style={styles.textSign}>Log in</CustomText>
                 )}
               </View>
             </TouchableOpacity>
@@ -175,12 +177,14 @@ const Login = (props) => {
         </TouchableWithoutFeedback>
         <View style={styles.center}>
           <CustomText style={styles.loginOpt}>
-            Hoặc đăng nhập bằng khuôn mặt/vân tay
+            Or sign in with your face/fingerprint
           </CustomText>
           <View style={styles.circleImage}>
             <TouchableOpacity
               onPress={
-                Platform.OS === 'android' ? showAndroidAlert : scanFingerprintOrFaceId
+                Platform.OS === 'android'
+                  ? showAndroidAlert
+                  : scanFingerprintOrFaceId
               }
             >
               <Image
@@ -195,10 +199,10 @@ const Login = (props) => {
   );
 };
 
-// Login.propTypes = {
-//   handleSubmit: PropTypes.func.isRequired,
-//   reset: PropTypes.func.isRequired,
-// };
+Login.propTypes = {
+  handleSubmit: PropTypes.func.isRequired,
+  reset: PropTypes.func.isRequired,
+};
 const styles = StyleSheet.create({
   group: {
     flexDirection: 'row',

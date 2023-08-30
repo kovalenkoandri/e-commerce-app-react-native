@@ -1,10 +1,10 @@
 {
   "expo": {
-    "scheme": "cattuong",
-    "name": "Cat Tuong",
-    "slug": "e-commerce-app",
-    "platforms": ["ios", "android"],
-    "version": "1.0.1",
+    "jsEngine": "hermes",
+    "scheme": "ecommerce",
+    "name": "Ecommerce Front",
+    "slug": "e-commerce-front",
+    "platforms": ["android"],
     "orientation": "portrait",
     "icon": "./src/assets/icon.png",
     "splash": {
@@ -15,21 +15,10 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": ["./src/assets/**/*"],
-
-    "ios": {
-      "bundleIdentifier": "com.cattuong.ecommerce",
-      "buildNumber": "1.0.1",
-      "supportsTablet": true,
-      "infoPlist": {
-        "NSFaceIDUsageDescription": "We'll use Face ID or Touch ID to secure your login.",
-        "NSCameraUsageDescription": "This app uses the camera to upload user profile picture"
-      }
-    },
+    "assetBundlePatterns": ["**/*"],
     "android": {
-      "package": "com.cattuong.ecommerce",
-      "versionCode": 2,
-      "useNextNotificationsApi": true,
+      "package": "com.kovalenkoandrii.ecommerce",
+      "versionCode": 1,
       "permissions": [
         "CAMERA",
         "WRITE_EXTERNAL_STORAGE",
@@ -38,7 +27,15 @@
       ],
       "softwareKeyboardLayoutMode": "pan"
     },
-    "notification": { "icon": "./src/assets/icon.png" },
-    "description": "E-commerce app contains all necessary features"
+    "notification": {
+      "icon": "./src/assets/icon.png"
+    },
+    "description": "E-commerce app contains all necessary features",
+    "owner": "kovalenkoandrii",
+    "extra": {
+      "eas": {
+        "projectId": "7b35553c-a99e-43e1-bc33-8f6eded1a4c3"
+      }
+    }
   }
 }

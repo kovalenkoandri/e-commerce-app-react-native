@@ -11,20 +11,20 @@ const { height } = Dimensions.get("window");
 export const Header = ({ navigation }) => {
   return (
     <View style={styles.header}>
-      <View style={{ position: "absolute", bottom: 15, left: 15, zIndex: 10 }}>
+      <View style={{ position: 'absolute', bottom: 15, left: 15, zIndex: 10 }}>
         <TouchableOpacity
           onPress={() => {
             navigation.toggleDrawer();
           }}
         >
           <MaterialCommunityIcons
-            name='menu'
+            name="menu"
             size={25}
             color={Colors.light_green}
           />
         </TouchableOpacity>
       </View>
-      <CustomText style={styles.titleHeader}>Tra cứu đơn hàng</CustomText>
+      <CustomText style={styles.titleHeader}>Order lookup</CustomText>
       <View />
     </View>
   );

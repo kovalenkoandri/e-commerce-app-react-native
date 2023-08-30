@@ -164,7 +164,7 @@ export class Header extends React.Component {
                 onPress={() => this.props.navigation.toggleDrawer()}
               >
                 <Ionicons
-                  name='ios-menu'
+                  name="ios-menu"
                   size={30}
                   color={Colors.lighter_green}
                 />
@@ -184,7 +184,7 @@ export class Header extends React.Component {
                 onPress={this._onFocus}
                 style={styles.search_icon_box}
               >
-                <Ionicons name='ios-search' size={20} color={Colors.white} />
+                <Ionicons name="ios-search" size={20} color={Colors.white} />
               </TouchableOpacity>
               <View
                 style={[
@@ -200,16 +200,16 @@ export class Header extends React.Component {
                     style={styles.back_icon_box}
                   >
                     <Ionicons
-                      name='ios-arrow-back'
+                      name="ios-arrow-back"
                       size={25}
                       color={Colors.light_green}
                     />
                   </TouchableOpacity>
                 </View>
                 <TextInput
-                  ref='input'
-                  placeholder='Tìm kiếm sản phẩm'
-                  clearButtonMode='always'
+                  ref="input"
+                  placeholder="Search for products"
+                  clearButtonMode="always"
                   value={this.state.keyword}
                   onChangeText={(value) => this.searchFilterFunction(value)}
                   style={styles.input}
@@ -235,8 +235,8 @@ export class Header extends React.Component {
                   style={styles.image_placeholder}
                 />
                 <Text style={styles.image_placeholder_text}>
-                  Nhập vào từ khóa{'\n'}
-                  để tìm kiếm :D
+                  Enter keywords{'\n'}
+                  to search for :D
                 </Text>
               </View>
             ) : (
@@ -249,7 +249,7 @@ export class Header extends React.Component {
               >
                 {this.state.productsFilter.length === 0 ? (
                   <Text style={styles.image_placeholder_text}>
-                    Không tìm thấy sản phầm
+                    Product not found
                   </Text>
                 ) : (
                   <FlatList

@@ -39,45 +39,45 @@ export class ModalComp extends React.PureComponent {
         style={{
           flex: 1,
         }}
-        animationType='slide'
+        animationType="slide"
         transparent={true}
         visible={modalVisible}
       >
         <View style={styles.modalContainer}></View>
         <View style={styles.modal}>
           <TouchableOpacity
-            animation='zoomIn'
+            animation="zoomIn"
             style={styles.close}
             onPress={() => setModalVisible(false)}
           >
             <MaterialCommunityIcons
-              name='window-close'
+              name="window-close"
               size={24}
               color={color}
             />
           </TouchableOpacity>
 
           <View
-            style={{ width: "90%", flexDirection: "row", alignItems: "center" }}
+            style={{ width: '90%', flexDirection: 'row', alignItems: 'center' }}
           >
             <MaterialCommunityIcons
-              name='check-circle-outline'
+              name="check-circle-outline"
               color={color}
               size={20}
             />
             <CustomText style={{ ...styles.success, color }}>
-              Sản phẩm đã được thêm vào giỏ hàng
+              The product has been added to the cart
             </CustomText>
           </View>
           <View style={styles.modelInfo}>
             <View
-              style={{ borderRadius: 20, width: "45%", overflow: "hidden" }}
+              style={{ borderRadius: 20, width: '45%', overflow: 'hidden' }}
             >
               <Image
                 source={{ uri: item.thumb }}
                 style={{
                   height: 100,
-                  resizeMode: "stretch",
+                  resizeMode: 'stretch',
                 }}
               />
             </View>
@@ -87,13 +87,13 @@ export class ModalComp extends React.PureComponent {
                   {item.filename}
                 </CustomText>
                 <CustomText style={{ fontSize: 12, color: Colors.grey }}>
-                  Cung cấp bởi Cát Tường
+                  Provided by Cat Tuong
                 </CustomText>
               </View>
               <CustomText
                 style={{ marginTop: 5, fontSize: 14, color: Colors.text }}
               >
-                Thành tiền:
+                Into money:
               </CustomText>
               <NumberFormat price={item.price} />
             </View>
@@ -101,7 +101,7 @@ export class ModalComp extends React.PureComponent {
           <View
             style={{
               height: 55,
-              justifyContent: "center",
+              justifyContent: 'center',
             }}
           >
             <TouchableOpacity
@@ -113,7 +113,7 @@ export class ModalComp extends React.PureComponent {
               ]}
               onPress={moveToCart}
             >
-              <CustomText style={styles.actionText}>Xem Giỏ Hàng</CustomText>
+              <CustomText style={styles.actionText}>View cart</CustomText>
             </TouchableOpacity>
           </View>
         </View>

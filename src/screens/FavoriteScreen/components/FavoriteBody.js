@@ -7,7 +7,7 @@ import CustomText from "../../../components/UI/CustomText";
 import { FavoriteItem } from "./FavoriteItem";
 import Messages from "../../../messages/user";
 //PropTypes check
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 
 export const FavoriteBody = ({
   navigation,
@@ -20,7 +20,7 @@ export const FavoriteBody = ({
     <>
       {Object.keys(user).length === 0 ? (
         <View style={styles.center}>
-          <CustomText>{Messages["user.login.require"]}</CustomText>
+          <CustomText>{Messages['user.login.require']}</CustomText>
           <View
             style={{
               borderWidth: 1,
@@ -32,18 +32,18 @@ export const FavoriteBody = ({
               marginTop: 10,
             }}
           >
-            <TouchableOpacity onPress={() => navigation.navigate("SignUp")}>
-              <CustomText style={{ color: "#fff" }}>Tiếp tục</CustomText>
+            <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
+              <CustomText style={{ color: '#fff' }}>Continue</CustomText>
             </TouchableOpacity>
           </View>
         </View>
       ) : FavoriteProducts.length === 0 ? (
         <View style={styles.center}>
           <CustomText style={{ fontSize: 16 }}>
-            Không có sản phẩm trong mục yêu thích
+            No products in favorites
           </CustomText>
           <CustomText style={{ fontSize: 16 }}>
-            Bắt đầu thêm sản phẩm nào !
+            Start adding any products!
           </CustomText>
         </View>
       ) : (
@@ -61,11 +61,11 @@ export const FavoriteBody = ({
   );
 };
 
-// FavoriteBody.propTypes = {
-//   user: PropTypes.object.isRequired,
-//   navigation: PropTypes.object.isRequired,
-//   FavoriteProducts: PropTypes.array.isRequired,
-// };
+FavoriteBody.propTypes = {
+  user: PropTypes.object.isRequired,
+  navigation: PropTypes.object.isRequired,
+  FavoriteProducts: PropTypes.array.isRequired,
+};
 const styles = StyleSheet.create({
   center: { flex: 1, alignItems: "center", justifyContent: "center" },
 });

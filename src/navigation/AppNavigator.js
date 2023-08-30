@@ -13,7 +13,7 @@ import { Host } from 'react-native-portalize';
 import { urlRedirect } from '../utils/Tools';
 import * as Linking from 'expo-linking';
 
-LogBox.ignoreLogs(['Setting a timer']);
+// LogBox.ignoreLogs(['Setting a timer']);
 
 export const AppNavigator = () => {
   const [value, setValue] = useState(null);
@@ -29,13 +29,13 @@ export const AppNavigator = () => {
       [urlRedirect],
     );
     Linking.getInitialURL().then(urlRedirect);
-    Linking.removeEventListener(
-      'url',
-      (event) => {
-        urlRedirect(event.url);
-      },
-      [urlRedirect],
-    );
+    // Linking.removeEventListener(
+    //   'url',
+    //   (event) => {
+    //     urlRedirect(event.url);
+    //   },
+    //   [urlRedirect],
+    // );
   }, [urlRedirect]);
 
   useEffect(() => {

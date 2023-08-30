@@ -6,18 +6,18 @@ import {
   Keyboard,
   SectionList,
 } from 'react-native';
-// import Animated, { Value } from 'react-native-reanimated';
+import Animated, { Value } from 'react-native-reanimated';
 //Color
 import Colors from '../../../utils/Colors';
 import HorizontalItem from './HorizontalItem';
 import CustomText from '../../../components/UI/CustomText';
 import { Header } from './Header';
 //PropTypes check
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 ITEM_HEIGHT = 100;
 
-// const AnimatedSectionList = Animated.createAnimatedComponent(SectionList);
+const AnimatedSectionList = Animated.createAnimatedComponent(SectionList);
 
 export const ProductBody = ({
   navigation,
@@ -30,9 +30,9 @@ export const ProductBody = ({
   );
   const rings = productsFilter.filter((ring) => ring.type === 'ring');
   const stones = productsFilter.filter((stone) => stone.type === 'stone');
-  DATA.push({ title: 'Vòng Chuối Ngọc', data: bracelets });
-  DATA.push({ title: 'Nhẫn Ruby', data: rings });
-  DATA.push({ title: 'Đá Quý', data: stones });
+  DATA.push({ title: 'Jade Banana Ring', data: bracelets });
+  DATA.push({ title: 'Ruby Ring', data: rings });
+  DATA.push({ title: 'Gemstone', data: stones });
   // const scrollY = new Value(0);
   const sectionListRef = useRef(null);
   // const scrollToSection = (index) => {
@@ -67,7 +67,7 @@ export const ProductBody = ({
       </TouchableWithoutFeedback>
       {productsFilter.length === 0 ? (
         <CustomText style={{ textAlign: 'center', marginTop: 110 }}>
-          Không tìm thấy sản phẩm
+          Product not found
         </CustomText>
       ) : (
         <AnimatedSectionList
@@ -128,10 +128,10 @@ export const ProductBody = ({
   );
 };
 
-// ProductBody.propTypes = {
-//   navigation: PropTypes.object.isRequired,
-//   productsFilter: PropTypes.array.isRequired,
-// };
+ProductBody.propTypes = {
+  navigation: PropTypes.object.isRequired,
+  productsFilter: PropTypes.array.isRequired,
+};
 
 const styles = StyleSheet.create({
   container: {

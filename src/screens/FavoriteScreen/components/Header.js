@@ -12,20 +12,20 @@ const { height } = Dimensions.get("window");
 export const Header = ({ navigation }) => {
   return (
     <View style={styles.header}>
-      <View style={{ position: "absolute", bottom: 10, left: 15, zIndex: 10 }}>
-        <TouchableOpacity onPress={() => navigation.navigate("HomeTab")}>
+      <View style={{ position: 'absolute', bottom: 10, left: 15, zIndex: 10 }}>
+        <TouchableOpacity onPress={() => navigation.navigate('HomeTab')}>
           <Ionicons
-            name='ios-arrow-back'
+            name="ios-arrow-back"
             size={28}
             color={Colors.lighter_green}
           />
         </TouchableOpacity>
       </View>
-      <CustomText style={styles.title}> Sản Phẩm Yêu Thích </CustomText>
-      <View style={{ position: "absolute", bottom: 5, right: 15, zIndex: 10 }}>
+      <CustomText style={styles.title}> Favorite Products </CustomText>
+      <View style={{ position: 'absolute', bottom: 5, right: 15, zIndex: 10 }}>
         <MaterialCommunityIcons
           style={{ marginBottom: 10 }}
-          name='heart-multiple'
+          name="heart-multiple"
           size={25}
           color={Colors.red}
         />

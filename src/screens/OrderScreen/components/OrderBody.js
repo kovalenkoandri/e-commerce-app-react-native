@@ -16,12 +16,12 @@ export class OrderBody extends React.PureComponent {
         {Object.keys(user).length === 0 ? (
           <View style={styles.center}>
             <CustomText style={{ fontSize: 16 }}>
-              {Messages["user.login.require"]}
+              {Messages['user.login.require']}
             </CustomText>
             <View style={styles.button}>
-              <TouchableOpacity onPress={() => navigation.navigate("SignUp")}>
-                <CustomText style={{ fontSize: 16, color: "#fff" }}>
-                  Tiếp tục
+              <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
+                <CustomText style={{ fontSize: 16, color: '#fff' }}>
+                  Continue
                 </CustomText>
               </TouchableOpacity>
             </View>
@@ -29,7 +29,7 @@ export class OrderBody extends React.PureComponent {
         ) : orders.length === 0 ? (
           <View style={styles.center}>
             <CustomText style={{ fontSize: 16 }}>
-              Bạn không có đơn hàng nào!
+              You have no orders!
             </CustomText>
           </View>
         ) : (

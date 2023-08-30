@@ -19,10 +19,10 @@ export const FinishResetPwScreen = (props) => {
     <SafeAreaView style={styles.container}>
       <View style={styles.info}>
         <LottieView
-          source={require("../../components/IconAnimation/mail-done.json")}
+          source={require('../../components/IconAnimation/mail-done.json')}
           autoPlay
           loop={false}
-          resizeMode='cover'
+          resizeMode="cover"
           style={{ height: 130 }}
         />
         <CustomText style={{ marginVertical: 20 }}>
@@ -30,7 +30,7 @@ export const FinishResetPwScreen = (props) => {
             style={{
               fontSize: 16,
               color: Colors.blue,
-              textDecorationLine: "underline",
+              textDecorationLine: 'underline',
             }}
             selectable={true}
           >
@@ -40,13 +40,13 @@ export const FinishResetPwScreen = (props) => {
       </View>
       <View style={styles.id}>
         <CustomText style={styles.title}>
-          Vui lòng kiểm tra hòm thư của bạn.{" "}
+          Please check your mailbox.
         </CustomText>
       </View>
 
-      <TouchableOpacity onPress={() => props.navigation.navigate("AuthScreen")}>
+      <TouchableOpacity onPress={() => props.navigation.navigate('AuthScreen')}>
         <View style={styles.button}>
-          <CustomText style={{ ...styles.title, color: "#fff" }}>
+          <CustomText style={{ ...styles.title, color: '#fff' }}>
             LOGIN
           </CustomText>
         </View>

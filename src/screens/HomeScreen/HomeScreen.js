@@ -9,7 +9,13 @@ import Colors from '../../utils/Colors';
 //Animation
 // import Animated from 'react-native-reanimated';
 //Components
-import { Carousel, Header, CategorySection, FloatButton, categories } from './components';
+import {
+  Carousel,
+  Header,
+  CategorySection,
+  FloatButton,
+  categories,
+} from './components';
 import Skeleton from '../../components/Loaders/SkeletonLoading';
 import Snackbar from '../../components/Notification/Snackbar';
 //FloatButton
@@ -45,15 +51,15 @@ export const HomeScreen = ({ navigation }) => {
         <Skeleton />
       ) : (
         <View style={styles.container}>
-          <Header
+          {/* <Header get rid of cant get value of undefined
             // scrollPoint={scrollY}
             navigation={navigation}
             products={products}
-          ></Header>
+          ></Header> */}
           <Portal>
             <FloatButton />
           </Portal>
-          <AnimatedFlatList
+          <FlatList
             contentContainerStyle={styles.list}
             showsVerticalScrollIndicator={false}
             ListHeaderComponent={() => (
