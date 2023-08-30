@@ -8,7 +8,7 @@ import PreOrderItem from "./PreOrderItem";
 import CustomText from "../../../components/UI/CustomText";
 import Colors from "../../../utils/Colors";
 //PropTypes check
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 
 export class SummaryOrder extends React.PureComponent {
   render() {
@@ -16,9 +16,9 @@ export class SummaryOrder extends React.PureComponent {
     return (
       <View style={styles.container}>
         <CustomText style={{ ...styles.title, marginVertical: 5 }}>
-          Tóm tắt đơn hàng
+          Order summary
         </CustomText>
-        <View style={{ backgroundColor: "#fff", paddingHorizontal: 10 }}>
+        <View style={{ backgroundColor: '#fff', paddingHorizontal: 10 }}>
           {cartItems.map((item) => {
             return (
               <View key={item.item.createdAt}>
@@ -32,10 +32,10 @@ export class SummaryOrder extends React.PureComponent {
             style={{
               fontSize: 15,
               color: Colors.text,
-              fontWeight: "500",
+              fontWeight: '500',
             }}
           >
-            Thành tiền
+            Into money
           </CustomText>
           <NumberFormat price={total.toString()} />
         </View>
@@ -44,10 +44,10 @@ export class SummaryOrder extends React.PureComponent {
   }
 }
 
-// SummaryOrder.propTypes = {
-//   cartItems: PropTypes.array.isRequired,
-//   total: PropTypes.number.isRequired,
-// };
+SummaryOrder.propTypes = {
+  cartItems: PropTypes.array.isRequired,
+  total: PropTypes.number.isRequired,
+};
 
 const styles = StyleSheet.create({
   container: {

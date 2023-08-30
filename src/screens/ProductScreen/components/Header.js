@@ -82,7 +82,7 @@ export const Header = ({ navigation, searchFilterFunction, scrollY }) => {
             style={[{ width: '100%', borderRadius: 5 }]}
           >
             <TextInput
-              placeholder="Tìm kiếm sản phẩm"
+              placeholder="Search for products"
               placeholderTextColor={Colors.white}
               clearButtonMode="always"
               onChangeText={(text) => searchFilterFunction(text)}
@@ -110,7 +110,7 @@ export const Header = ({ navigation, searchFilterFunction, scrollY }) => {
             height: 50,
           }}
         >
-          <CustomText style={styles.title}>Tất cả sản phẩm</CustomText>
+          <CustomText style={styles.title}>All Products</CustomText>
         </Animated.View>
       </Animated.View>
     </>

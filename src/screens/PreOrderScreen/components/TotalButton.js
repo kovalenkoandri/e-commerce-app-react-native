@@ -4,7 +4,7 @@ import Colors from '../../../utils/Colors';
 //Text
 import CustomText from '../../../components/UI/CustomText';
 //PropTypes check
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 export const TotalButton = ({ toPayment }) => {
   return (
@@ -12,7 +12,7 @@ export const TotalButton = ({ toPayment }) => {
       <TouchableOpacity onPress={toPayment}>
         <View style={styles.buttom}>
           <CustomText style={{ color: '#fff', fontSize: 16 }}>
-            Tiếp Tục
+            Continue
           </CustomText>
         </View>
       </TouchableOpacity>
@@ -20,9 +20,9 @@ export const TotalButton = ({ toPayment }) => {
   );
 };
 
-// TotalButton.propTypes = {
-//   toPayment: PropTypes.func.isRequired,
-// };
+TotalButton.propTypes = {
+  toPayment: PropTypes.func.isRequired,
+};
 
 const styles = StyleSheet.create({
   total: {

@@ -27,17 +27,17 @@ export class CartItem extends React.PureComponent {
     const checkDesQuantity = async () => {
       if (item.quantity == 1) {
         Alert.alert(
-          "Xóa giỏ hàng",
-          "Bạn có chắc muốn xóa sản phẩm khỏi giỏ hàng?",
+          'Delete a cart',
+          'Are you sure you want to remove a product from your cart?',
           [
             {
-              text: "Hủy",
+              text: 'Cancel',
             },
             {
-              text: "Đồng ý",
+              text: 'Agree',
               onPress: onRemove,
             },
-          ]
+          ],
         );
       } else {
         await onDes();
@@ -48,9 +48,9 @@ export class CartItem extends React.PureComponent {
         <View style={styles.left}>
           <Image
             style={{
-              width: "100%",
+              width: '100%',
               height: 90,
-              resizeMode: "stretch",
+              resizeMode: 'stretch',
               borderRadius: 5,
             }}
             source={{ uri: item.item.thumb }}
@@ -58,28 +58,28 @@ export class CartItem extends React.PureComponent {
         </View>
         <View style={styles.right}>
           <View
-            style={{ flexDirection: "row", justifyContent: "space-between" }}
+            style={{ flexDirection: 'row', justifyContent: 'space-between' }}
           >
             <CustomText style={styles.title}>{item.item.filename}</CustomText>
             <View>
               <TouchableOpacity onPress={onRemove}>
-                <MaterialCommunityIcons name='close' size={20} color='#000' />
+                <MaterialCommunityIcons name="close" size={20} color="#000" />
               </TouchableOpacity>
             </View>
           </View>
           <CustomText style={{ color: Colors.grey, fontSize: 12 }}>
-            Cung cấp bởi Cát Tường
+            Provided by Cat Tuong
           </CustomText>
           <NumberFormat price={sum.toString()} />
           <View style={styles.box}>
             <TouchableOpacity onPress={checkDesQuantity} style={styles.boxMin}>
-              <MaterialCommunityIcons name='minus' size={16} />
+              <MaterialCommunityIcons name="minus" size={16} />
             </TouchableOpacity>
             <View>
               <CustomText style={styles.boxText}>{item.quantity}</CustomText>
             </View>
             <TouchableOpacity onPress={AddItemHandler} style={styles.boxMin}>
-              <MaterialCommunityIcons name='plus' size={16} />
+              <MaterialCommunityIcons name="plus" size={16} />
             </TouchableOpacity>
           </View>
         </View>

@@ -4,7 +4,7 @@ import Colors from "../../../utils/Colors";
 import CustomText from "../../../components/UI/CustomText";
 import { Ionicons } from "@expo/vector-icons";
 //PropTypes check
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 
 export const Header = ({ navigation }) => {
   return (
@@ -20,9 +20,9 @@ export const Header = ({ navigation }) => {
   );
 };
 
-// Header.propTypes = {
-//   navigation: PropTypes.object.isRequired,
-// };
+Header.propTypes = {
+  navigation: PropTypes.object.isRequired,
+};
 
 const styles = StyleSheet.create({
   container: {

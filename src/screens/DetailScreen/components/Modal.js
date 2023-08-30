@@ -16,7 +16,7 @@ import Colors from "../../../utils/Colors";
 //number format
 import NumberFormat from "../../../components/UI/NumberFormat";
 //PropTypes check
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 
 const { width, height } = Dimensions.get("window");
 
@@ -122,13 +122,13 @@ export class ModalComp extends React.PureComponent {
   }
 }
 
-// ModalComp.propTypes = {
-//   item: PropTypes.object.isRequired,
-//   navigation: PropTypes.object.isRequired,
-//   modalVisible: PropTypes.bool.isRequired,
-//   setModalVisible: PropTypes.func.isRequired,
-//   color: PropTypes.string.isRequired,
-// };
+ModalComp.propTypes = {
+  item: PropTypes.object.isRequired,
+  navigation: PropTypes.object.isRequired,
+  modalVisible: PropTypes.bool.isRequired,
+  setModalVisible: PropTypes.func.isRequired,
+  color: PropTypes.string.isRequired,
+};
 
 const styles = StyleSheet.create({
   actionText: {

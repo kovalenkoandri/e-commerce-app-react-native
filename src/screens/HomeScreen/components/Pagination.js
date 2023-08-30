@@ -2,7 +2,7 @@ import React from "react";
 import { View, Animated, StyleSheet, Dimensions } from "react-native";
 import Colors from "../../../utils/Colors";
 //PropTypes check
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 
 const { height, width } = Dimensions.get("window");
 
@@ -45,10 +45,10 @@ const Pagination = ({ scrollX, slides }) => {
   );
 };
 
-// Pagination.propTypes = {
-//   scrollX: PropTypes.object.isRequired,
-//   slides: PropTypes.array.isRequired,
-// };
+Pagination.propTypes = {
+  scrollX: PropTypes.object.isRequired,
+  slides: PropTypes.array.isRequired,
+};
 
 const styles = StyleSheet.create({
   pagination: {

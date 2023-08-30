@@ -21,7 +21,7 @@ import { useDispatch, useSelector } from "react-redux";
 //Action
 import { SignUp as SignUpAct } from "../../../reducers";
 //PropTypes check
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 import renderField from "./RenderField";
 
 const { width, height } = Dimensions.get("window");
@@ -30,26 +30,26 @@ const { width, height } = Dimensions.get("window");
 const validate = (values) => {
   const errors = {};
   if (!values.email) {
-    errors.email = "Email không được bỏ trống";
+    errors.email = "Email can not be blank";
   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-    errors.email = "Email không hơp lệ";
+    errors.email = 'Invalid email';
   }
   if (!values.password) {
-    errors.password = "Mật khẩu không được bỏ trống";
+    errors.password = "Passwords can not be left blank";
   } else if (values.password.length < 6) {
-    errors.password = "Mật khẩu phải nhiều hơn hoặc bằng 6 ký tự";
+    errors.password = 'Password must be more than or equal to 6 characters';
   }
   if (!values.confirmpassword) {
-    errors.confirmpassword = "Mật khẩu không được bỏ trống";
+    errors.confirmpassword = "Passwords can not be left blank";
   } else if (values.confirmpassword !== values.password) {
-    errors.confirmpassword = "Mật khẩu xác nhận không trùng khớp";
+    errors.confirmpassword = 'The confirmation password does not match';
   }
   if (!values.username) {
-    errors.username = "Tên không được bỏ trống";
+    errors.username = 'Name must not be blank';
   } else if (values.username.length > 20) {
-    errors.username = "Tên không vượt quá 20 ký tự";
+    errors.username = 'Name does not exceed 20 characters';
   } else if (values.username.length < 6) {
-    errors.username = "Tên phải nhiều hơn 6 ký tự";
+    errors.username = 'Name must be more than 6 characters';
   }
 
   return errors;
@@ -88,7 +88,7 @@ const Signup = (props) => {
   };
   return (
     <KeyboardAvoidingView
-      behavior={Platform.OS == "ios" ? "position" : "height"}
+      behavior={Platform.OS == 'ios' ? 'position' : 'height'}
       // keyboardVerticalOffset={40} // adjust the value here if you need more padding
       // style={{ flex: 1 }}
     >
@@ -96,7 +96,7 @@ const Signup = (props) => {
         onPress={() => {
           props.navigation.goBack();
         }}
-        style={{ position: "absolute", top: 50, left: 20, zIndex: 10 }}
+        style={{ position: 'absolute', top: 50, left: 20, zIndex: 10 }}
       >
         <Ionicons name="ios-arrow-back" size={35} color={Colors.light_green} />
       </TouchableOpacity>
@@ -106,7 +106,7 @@ const Signup = (props) => {
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
           <View
             style={{
-              flexDirection: "column",
+              flexDirection: 'column',
               marginHorizontal: 10,
               zIndex: 0,
             }}
@@ -156,13 +156,13 @@ const Signup = (props) => {
 
             <TouchableOpacity
               onPress={handleSubmit(submit)}
-              style={{ marginVertical: 10, alignItems: "center" }}
+              style={{ marginVertical: 10, alignItems: 'center' }}
             >
               <View style={styles.signIn}>
                 {loading ? (
                   <ActivityIndicator size="small" color="#fff" />
                 ) : (
-                  <CustomText style={styles.textSign}>Đăng ký</CustomText>
+                  <CustomText style={styles.textSign}>Register</CustomText>
                 )}
               </View>
             </TouchableOpacity>
@@ -174,10 +174,10 @@ const Signup = (props) => {
   );
 };
 
-// Signup.propTypes = {
-//   handleSubmit: PropTypes.func.isRequired,
-//   reset: PropTypes.func.isRequired,
-// };
+Signup.propTypes = {
+  handleSubmit: PropTypes.func.isRequired,
+  reset: PropTypes.func.isRequired,
+};
 const styles = StyleSheet.create({
   header: {
     marginTop: height * 0.15,

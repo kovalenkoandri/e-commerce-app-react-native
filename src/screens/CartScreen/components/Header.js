@@ -7,7 +7,7 @@ import { Ionicons } from "@expo/vector-icons";
 //Colors
 import Colors from "../../../utils/Colors";
 //PropTypes check
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 
 const { height } = Dimensions.get("window");
 
@@ -38,11 +38,11 @@ export const Header = ({ navigation, user, carts }) => {
   );
 };
 
-// Header.propTypes = {
-//   user: PropTypes.object.isRequired,
-//   navigation: PropTypes.object.isRequired,
-//   carts: PropTypes.object.isRequired,
-// };
+Header.propTypes = {
+  user: PropTypes.object.isRequired,
+  navigation: PropTypes.object.isRequired,
+  carts: PropTypes.object.isRequired,
+};
 
 const styles = StyleSheet.create({
   header: {

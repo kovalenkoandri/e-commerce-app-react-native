@@ -9,7 +9,7 @@ import * as LocalAuthentication from "expo-local-authentication";
 import * as SecureStore from "expo-secure-store";
 import { secretKey } from "../../../utils/Config";
 //PropTypes check
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 
 export const AuthBody = () => {
   const [isEnabled, setIsEnabled] = useState(false);
@@ -59,24 +59,24 @@ export const AuthBody = () => {
     <View style={styles.container}>
       {!isSupport ? (
         <CustomText style={styles.error}>
-          {userMessages["user.touchid.fail"]}!
+          {userMessages['user.touchid.fail']}!
         </CustomText>
       ) : (
         <></>
       )}
       <View style={styles.circleImage}>
         <Image
-          source={require("../../../assets/Images/faceid.png")}
+          source={require('../../../assets/Images/faceid.png')}
           style={styles.faceid}
         />
       </View>
       <View style={styles.contentContainer}>
         <CustomText style={styles.text}>
-          Mở khóa bằng vân tay hoặc khuôn mặt
+          Unlock with fingerprint or face
         </CustomText>
         <Switch
-          trackColor={{ false: "#767577", true: "#60c46b" }}
-          thumbColor={isEnabled ? Colors.white : "#f4f3f4"}
+          trackColor={{ false: '#767577', true: '#60c46b' }}
+          thumbColor={isEnabled ? Colors.white : '#f4f3f4'}
           ios_backgroundColor="#3e3e3e"
           onValueChange={switchHandler}
           value={isEnabled}

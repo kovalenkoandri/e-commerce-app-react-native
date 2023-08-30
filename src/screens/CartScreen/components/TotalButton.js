@@ -6,7 +6,7 @@ import CustomText from '../../../components/UI/CustomText';
 import Colors from '../../../utils/Colors';
 import NumberFormat from '../../../components/UI/NumberFormat';
 //PropTypes check
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 export class TotalButton extends React.PureComponent {
   render() {
@@ -22,7 +22,7 @@ export class TotalButton extends React.PureComponent {
           <CustomText
             style={{ fontSize: 14, fontWeight: '500', color: Colors.text }}
           >
-            Thành tiền
+            Into money
           </CustomText>
           <NumberFormat price={total.toString()} style={{ fontSize: 14 }} />
         </View>
@@ -38,7 +38,7 @@ export class TotalButton extends React.PureComponent {
         >
           <View style={styles.btn}>
             <CustomText style={{ color: '#fff', fontSize: 16 }}>
-              Tiến hành đặt hàng
+              Proceed to order
             </CustomText>
           </View>
         </TouchableOpacity>
@@ -46,12 +46,12 @@ export class TotalButton extends React.PureComponent {
     );
   }
 }
-// TotalButton.propTypes = {
-//   total: PropTypes.number.isRequired,
-//   navigation: PropTypes.object.isRequired,
-//   cartItems: PropTypes.array.isRequired,
-//   cartId: PropTypes.string,
-// };
+TotalButton.propTypes = {
+  total: PropTypes.number.isRequired,
+  navigation: PropTypes.object.isRequired,
+  cartItems: PropTypes.array.isRequired,
+  cartId: PropTypes.string,
+};
 
 const styles = StyleSheet.create({
   total: {

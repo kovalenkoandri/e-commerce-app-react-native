@@ -6,29 +6,29 @@ import renderField from './RenderField';
 import Colors from '../../../utils/Colors';
 import CustomText from '../../../components/UI/CustomText';
 //PropTypes check
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 //Validation
 const validate = (values) => {
   const errors = {};
   if (!values.name) {
-    errors.name = 'Họ tên không được bỏ trống';
+    errors.name = 'Full name must not be blank';
   } else if (values.name.length < 6) {
-    errors.name = 'Họ tên phải nhiều hơn hoặc bằng 6 ký tự';
+    errors.name = 'Full name must be more than or equal to 6 characters';
   } else {
     errors.name = '';
   }
   if (!values.phone) {
-    errors.phone = 'Số điện thoại không được bỏ trống';
+    errors.phone = 'Phone numbers can not be blank';
   } else if (values.phone.length !== 10) {
-    errors.phone = 'Số điện thoại phải 10 ký tự';
+    errors.phone = 'Phone number must be 10 characters';
   } else {
     errors.phone = '';
   }
   if (!values.address) {
-    errors.address = 'Địa chỉ không được bỏ trống';
+    errors.address = 'Address must not be blank';
   } else if (values.address.length < 6) {
-    errors.address = 'Địa chỉ phải nhiều hơn hoặc bằng 6 ký tự';
+    errors.address = 'The address must be more than or equal to 6 characters';
   } else {
     errors.address = '';
   }
@@ -47,37 +47,37 @@ const User = ({ getReceiver, checkValidation }) => {
 
   return (
     <View style={styles.container}>
-      <CustomText style={styles.title}>Thông Tin Giao Hàng</CustomText>
+      <CustomText style={styles.title}>Delivery Information</CustomText>
       <View style={styles.inputContainer}>
         <View style={styles.inputBox}>
           <Field
-            name='name'
+            name="name"
             maxLength={35}
-            label='Họ Tên'
-            keyboardType='default'
+            label="Name"
+            keyboardType="default"
             component={renderField}
             onChangeText={(value) => setReceiverName(value)}
             checkValidation={checkValidation}
           />
 
           <Field
-            name='phone'
+            name="phone"
             maxLength={10}
-            label='Số Điện Thoại'
+            label="Phone number"
             component={renderField}
             onChangeText={(value) => setPhone(value)}
-            keyboardType='numeric'
-            returnKeyType='done'
+            keyboardType="numeric"
+            returnKeyType="done"
             checkValidation={checkValidation}
           />
 
           <Field
-            name='address'
+            name="address"
             maxLength={35}
-            label='Địa Chỉ'
+            label="Address"
             component={renderField}
             onChangeText={(value) => setAddress(value)}
-            keyboardType='default'
+            keyboardType="default"
             checkValidation={checkValidation}
           />
         </View>
@@ -86,10 +86,10 @@ const User = ({ getReceiver, checkValidation }) => {
   );
 };
 
-// User.propTypes = {
-//   getReceiver: PropTypes.func.isRequired,
-//   checkValidation: PropTypes.func.isRequired,
-// };
+User.propTypes = {
+  getReceiver: PropTypes.func.isRequired,
+  checkValidation: PropTypes.func.isRequired,
+};
 
 const styles = StyleSheet.create({
   container: {},

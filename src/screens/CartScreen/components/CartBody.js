@@ -17,7 +17,7 @@ import Colors from "../../../utils/Colors";
 import { CartItem } from "./CartItem";
 import Messages from "../../../messages/user";
 //PropTypes check
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 
 export const CartBody = ({
   navigation,
@@ -28,33 +28,37 @@ export const CartBody = ({
 }) => {
   const dispatch = useDispatch();
   const onRemove = (itemId) => {
-    Alert.alert("Bỏ giỏ hàng", "Bạn có chắc bỏ sản phẩm khỏi giỏ hàng?", [
-      {
-        text: "Hủy",
-      },
-      {
-        text: "Đồng ý",
-        onPress: () => {
-          dispatch(removeFromCart(carts._id, itemId));
+    Alert.alert(
+      'Cart abandonment',
+      'Are you sure to remove the product from the cart?',
+      [
+        {
+          text: 'Cancel',
         },
-      },
-    ]);
+        {
+          text: 'Agree',
+          onPress: () => {
+            dispatch(removeFromCart(carts._id, itemId));
+          },
+        },
+      ],
+    );
   };
   return (
     <View style={styles.footer}>
       {Object.keys(user).length === 0 ? (
         <View style={styles.center}>
-          <CustomText>{Messages["user.login.require"]}</CustomText>
+          <CustomText>{Messages['user.login.require']}</CustomText>
           <View style={styles.nextButton}>
-            <TouchableOpacity onPress={() => navigation.navigate("SignUp")}>
-              <CustomText style={{ color: "#fff" }}>Tiếp tục</CustomText>
+            <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
+              <CustomText style={{ color: '#fff' }}>Continue</CustomText>
             </TouchableOpacity>
           </View>
         </View>
       ) : carts.items.length === 0 ? (
         <View style={styles.center}>
           <CustomText style={{ fontSize: 16 }}>
-            Chưa có sản phẩm nào trong giỏ hàng
+            No products in cart yet
           </CustomText>
         </View>
       ) : (
@@ -85,13 +89,13 @@ export const CartBody = ({
   );
 };
 
-// CartBody.propTypes = {
-//   user: PropTypes.object.isRequired,
-//   carts: PropTypes.object.isRequired,
-//   loadCarts: PropTypes.func.isRequired,
-//   isRefreshing: PropTypes.bool.isRequired,
-//   navigation: PropTypes.object.isRequired,
-// };
+CartBody.propTypes = {
+  user: PropTypes.object.isRequired,
+  carts: PropTypes.object.isRequired,
+  loadCarts: PropTypes.func.isRequired,
+  isRefreshing: PropTypes.bool.isRequired,
+  navigation: PropTypes.object.isRequired,
+};
 const styles = StyleSheet.create({
   footer: {
     flex: 1,

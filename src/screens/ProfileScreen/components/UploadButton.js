@@ -3,7 +3,7 @@ import { View, StyleSheet } from "react-native";
 import Colors from "../../../utils/Colors";
 import { Button } from "react-native-paper";
 //PropTypes check
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 
 const UploadButton = ({
   uploadButton,
@@ -49,12 +49,12 @@ const UploadButton = ({
   );
 };
 
-// UploadButton.propTypes = {
-//   uploadButton: PropTypes.bool.isRequired,
-//   setUploadButton: PropTypes.func.isRequired,
-//   setImageUri: PropTypes.func.isRequired,
-//   UploadProfile: PropTypes.func.isRequired,
-// };
+UploadButton.propTypes = {
+  uploadButton: PropTypes.bool.isRequired,
+  setUploadButton: PropTypes.func.isRequired,
+  setImageUri: PropTypes.func.isRequired,
+  UploadProfile: PropTypes.func.isRequired,
+};
 
 const styles = StyleSheet.create({
   button: {

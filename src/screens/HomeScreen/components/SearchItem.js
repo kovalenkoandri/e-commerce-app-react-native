@@ -5,7 +5,7 @@ import { Ionicons } from "@expo/vector-icons";
 //Text
 import CustomText from "../../../components/UI/CustomText";
 //PropTypes check
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 
 export default SearchItem = ({ item, navigation }) => {
   return (
@@ -27,10 +27,10 @@ export default SearchItem = ({ item, navigation }) => {
   );
 };
 
-// SearchItem.propTypes = {
-//   item: PropTypes.object.isRequired,
-//   navigation: PropTypes.object.isRequired,
-// };
+SearchItem.propTypes = {
+  item: PropTypes.object.isRequired,
+  navigation: PropTypes.object.isRequired,
+};
 
 const styles = StyleSheet.create({
   container: {

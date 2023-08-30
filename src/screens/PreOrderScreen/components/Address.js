@@ -9,7 +9,7 @@ import Provinces from "../../../utils/Proinces";
 //Colors
 import Colors from "../../../utils/Colors";
 //PropTypes check
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 
 const { width } = Dimensions.get("window");
 // TextInput.defaultProps.allowFontScaling = false;
@@ -17,7 +17,7 @@ const { width } = Dimensions.get("window");
 const Address = ({ getInfo }) => {
   const [selectedProvince, setselectedProvince] = useState("");
   const [selectedTown, setselectedTown] = useState("");
-  const initialTown = [{ label: "Chọn Quận/Huyện", value: "1" }];
+  const initialTown = [{ label: 'Select District', value: '1' }];
   const [getTowns, setGetTowns] = useState(initialTown);
   //Filter Towns
   const townsFilter = useCallback(
@@ -65,7 +65,7 @@ const Address = ({ getInfo }) => {
         <View>
           <RNPickerSelect
             onValueChange={(value) => townsFilter(value)}
-            placeholder={{ label: "Tỉnh/Thành phố", value: "1" }}
+            placeholder={{ label: 'Province/City', value: '1' }}
             items={Provinces}
             style={pickerSelectStyles}
             allowFontScaling={false}
@@ -77,7 +77,7 @@ const Address = ({ getInfo }) => {
         <View>
           <RNPickerSelect
             onValueChange={(value) => setselectedTown(value)}
-            placeholder={{ label: "Quận/Huyện", value: "" }}
+            placeholder={{ label: 'Districts', value: '' }}
             items={getTowns}
             value={selectedTown}
             style={pickerSelectStyles}
@@ -90,9 +90,9 @@ const Address = ({ getInfo }) => {
   );
 };
 
-// Address.propTypes = {
-//   getInfo: PropTypes.func.isRequired,
-// };
+Address.propTypes = {
+  getInfo: PropTypes.func.isRequired,
+};
 
 const styles = StyleSheet.create({
   container: { flex: 1, paddingHorizontal: 10, backgroundColor: "#fff" },

@@ -21,7 +21,7 @@ import Messages from '../../../messages/user';
 import Colors from '../../../utils/Colors';
 
 //PropTypes check
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 export const ActionButton = ({
   user,
@@ -60,15 +60,15 @@ export const ActionButton = ({
       setShowSnackbar(true);
     } else if (FavoriteProducts) {
       Alert.alert(
-        'Bỏ yêu thích',
-        'Bạn có muốn bỏ sản phẩm ra khỏi mục yêu thích?',
+        'Remove favorites',
+        'Do you want to take the product out of favorites?',
         [
           {
-            text: 'Hủy',
+            text: 'Cancel',
             style: 'cancel',
           },
           {
-            text: 'Đồng ý',
+            text: 'Agree',
             onPress: () => dispatch(removeFavorite(item._id)),
           },
         ],
@@ -80,7 +80,7 @@ export const ActionButton = ({
   return (
     <Animatable.View
       delay={1500}
-      animation='fadeInUp'
+      animation="fadeInUp"
       style={styles.actionContainer}
     >
       <View style={styles.action}>
@@ -95,7 +95,7 @@ export const ActionButton = ({
               loop={false}
             />
           ) : (
-            <Ionicons name='ios-heart-empty' size={27} color={color} />
+            <Ionicons name="ios-heart-empty" size={27} color={color} />
           )}
         </TouchableOpacity>
         <TouchableOpacity
@@ -103,9 +103,9 @@ export const ActionButton = ({
           onPress={addToCartAct}
         >
           {cartLoading ? (
-            <ActivityIndicator size='small' color='#fff' />
+            <ActivityIndicator size="small" color="#fff" />
           ) : (
-            <CustomText style={styles.actionText}>Thêm vào giỏ hàng</CustomText>
+            <CustomText style={styles.actionText}>Add to cart</CustomText>
           )}
         </TouchableOpacity>
       </View>
@@ -113,15 +113,15 @@ export const ActionButton = ({
   );
 };
 
-// ActionButton.propTypes = {
-//   item: PropTypes.object.isRequired,
-//   user: PropTypes.object.isRequired,
-//   color: PropTypes.string.isRequired,
-//   setShowSnackbar: PropTypes.func.isRequired,
-//   FavoriteProducts: PropTypes.bool.isRequired,
-//   setModalVisible: PropTypes.func.isRequired,
-//   setMessage: PropTypes.func.isRequired,
-// };
+ActionButton.propTypes = {
+  item: PropTypes.object.isRequired,
+  user: PropTypes.object.isRequired,
+  color: PropTypes.string.isRequired,
+  setShowSnackbar: PropTypes.func.isRequired,
+  FavoriteProducts: PropTypes.bool.isRequired,
+  setModalVisible: PropTypes.func.isRequired,
+  setMessage: PropTypes.func.isRequired,
+};
 
 const styles = StyleSheet.create({
   action: {

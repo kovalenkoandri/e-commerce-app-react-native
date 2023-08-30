@@ -14,7 +14,7 @@ import OrderSteps from "../../../components/UI/OrderSteps";
 //Colors
 import Colors from "../../../utils/Colors";
 //PropTypes check
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 
 const { width, height } = Dimensions.get("window");
 
@@ -23,11 +23,11 @@ export const Header = ({ navigation }) => {
     <View style={styles.header}>
       <View style={styles.innerHeader}>
         <View
-          style={{ position: "absolute", bottom: 20, left: 15, zIndex: 10 }}
+          style={{ position: 'absolute', bottom: 20, left: 15, zIndex: 10 }}
         >
           <TouchableOpacity onPress={() => navigation.goBack()}>
             <Ionicons
-              name='ios-arrow-back'
+              name="ios-arrow-back"
               size={30}
               color={Colors.lighter_green}
             />
@@ -35,7 +35,7 @@ export const Header = ({ navigation }) => {
         </View>
 
         <View style={styles.orderStepsContainer}>
-          <CustomText style={styles.title}> Địa chỉ giao hàng </CustomText>
+          <CustomText style={styles.title}> Delivery address </CustomText>
           <View style={styles.orderSteps}>
             <OrderSteps position={1} />
           </View>
@@ -47,9 +47,9 @@ export const Header = ({ navigation }) => {
   );
 };
 
-// Header.propTypes = {
-//   navigation: PropTypes.object.isRequired,
-// };
+Header.propTypes = {
+  navigation: PropTypes.object.isRequired,
+};
 
 const styles = StyleSheet.create({
   header: {

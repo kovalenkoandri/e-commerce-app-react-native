@@ -11,7 +11,7 @@ import Colors from "../../../utils/Colors";
 //number format
 import NumberFormat from "../../../components/UI/NumberFormat";
 //PropTypes check
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 
 const { width, height } = Dimensions.get("window");
 
@@ -27,12 +27,12 @@ export const DetailBody = ({ item, color }) => {
           {item.filename}
         </CustomText>
         <NumberFormat
-          style={{ color: "#fff", fontSize: 13 }}
+          style={{ color: '#fff', fontSize: 13 }}
           price={item.price}
           color={color}
         />
       </Animatable.View>
-      <View style={{ flexDirection: "row", marginTop: 10 }}>
+      <View style={{ flexDirection: 'row', marginTop: 10 }}>
         <Animatable.View animation="bounceIn" delay={1600}>
           <AntDesign name="star" size={15} color={color} />
         </Animatable.View>
@@ -57,35 +57,35 @@ export const DetailBody = ({ item, color }) => {
         <CustomText
           style={{
             ...styles.title,
-            fontWeight: "500",
+            fontWeight: '500',
             marginTop: 20,
             marginBottom: 10,
-            textDecorationLine: "underline",
+            textDecorationLine: 'underline',
           }}
         >
-          Chi tiết
+          Detail
         </CustomText>
         <View style={styles.infoContainer}>
-          <CustomText>Màu sắc: </CustomText>
+          <CustomText>Colour: </CustomText>
           <CustomText style={{ color: color }}>{item.color}</CustomText>
         </View>
         <View style={styles.infoContainer}>
-          <CustomText>Tình trạng: </CustomText>
+          <CustomText>Condition: </CustomText>
           <CustomText>{item.standard}</CustomText>
         </View>
         <View style={styles.infoContainer}>
-          <CustomText>Xuất xứ: </CustomText>
+          <CustomText>Origin: </CustomText>
           <CustomText>{item.origin}</CustomText>
         </View>
         <CustomText
           style={{
             ...styles.title,
-            textDecorationLine: "underline",
-            fontWeight: "500",
+            textDecorationLine: 'underline',
+            fontWeight: '500',
             marginBottom: 10,
           }}
         >
-          Miêu tả
+          Depict
         </CustomText>
         <CustomText selectable={true} style={styles.detail}>
           {item.description}
@@ -95,10 +95,10 @@ export const DetailBody = ({ item, color }) => {
   );
 };
 
-// DetailBody.propTypes = {
-//   item: PropTypes.object.isRequired,
-//   color: PropTypes.string.isRequired,
-// };
+DetailBody.propTypes = {
+  item: PropTypes.object.isRequired,
+  color: PropTypes.string.isRequired,
+};
 
 const styles = StyleSheet.create({
   footer: {

@@ -10,7 +10,7 @@ import NumberFormat from "../../../components/UI/NumberFormat";
 import moment from "moment";
 import "moment/min/locales";
 //PropTypes check
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 import CustomText from "../../../components/UI/CustomText";
 import Steps from "../../../components/UI/Steps";
 
@@ -34,44 +34,42 @@ export const OrderItem = ({ order }) => {
     <View style={styles.container}>
       <View style={styles.summary}>
         <View style={styles.textContainer}>
-          <CustomText style={styles.text}>Mã đơn: </CustomText>
+          <CustomText style={styles.text}>Single code: </CustomText>
           <CustomText style={styles.detail}>
             CT-{order._id.substr(order._id.length - 10)}
           </CustomText>
         </View>
 
         <View style={styles.textContainer}>
-          <CustomText style={styles.text}>Ngày đặt: </CustomText>
+          <CustomText style={styles.text}>Booking date: </CustomText>
           <CustomText style={styles.detail}>
-            {moment(order.date).format("Do MMMM  YYYY, hh:mm a ")}
+            {moment(order.date).format('Do MMMM  YYYY, hh:mm a ')}
           </CustomText>
         </View>
         <View style={styles.detailButtom}>
           <TouchableOpacity onPress={() => setShowDetails((prev) => !prev)}>
-            <CustomText style={{ fontSize: 15, color: "#fff" }}>
-              {showDetails ? "Ẩn đơn hàng" : "Chi tiết đơn hàng"}
+            <CustomText style={{ fontSize: 15, color: '#fff' }}>
+              {showDetails ? 'Hide orders' : 'Order Details'}
             </CustomText>
           </TouchableOpacity>
         </View>
         {showDetails ? (
           <View>
             <View style={styles.textContainer}>
-              <CustomText style={styles.text}>Tên người nhận: </CustomText>
+              <CustomText style={styles.text}>Recipient's name: </CustomText>
               <CustomText style={styles.detail}>{order.name}</CustomText>
             </View>
 
             <View style={styles.textContainer}>
-              <CustomText style={styles.text}>Địa chỉ: </CustomText>
+              <CustomText style={styles.text}>Address: </CustomText>
               <CustomText style={styles.detail}>{order.address}</CustomText>
             </View>
             <View style={styles.textContainer}>
-              <CustomText style={styles.text}>Số điện thoại: </CustomText>
+              <CustomText style={styles.text}>Phone number: </CustomText>
               <CustomText style={styles.detail}>{order.phone}</CustomText>
             </View>
             <View style={styles.textContainer}>
-              <CustomText style={styles.text}>
-                Phương thức thanh toán:{" "}
-              </CustomText>
+              <CustomText style={styles.text}>Payment methods: </CustomText>
               <CustomText style={styles.detail}>
                 {order.paymentMethod}
               </CustomText>
@@ -80,7 +78,7 @@ export const OrderItem = ({ order }) => {
               <Steps position={status()} />
             </View>
 
-            <CustomText style={styles.text}>Sản phẩm đã đặt:</CustomText>
+            <CustomText style={styles.text}>Ordered Products:</CustomText>
             <FlatList
               data={order.items}
               keyExtractor={(item) => item.item._id}
@@ -92,10 +90,10 @@ export const OrderItem = ({ order }) => {
               style={{
                 ...styles.textContainer,
                 marginTop: 10,
-                justifyContent: "space-between",
+                justifyContent: 'space-between',
               }}
             >
-              <CustomText style={styles.text}>Tổng tiền:</CustomText>
+              <CustomText style={styles.text}>Total amount:</CustomText>
               <NumberFormat
                 price={order.totalAmount.toString()}
                 style={{ fontSize: 15 }}
@@ -110,9 +108,9 @@ export const OrderItem = ({ order }) => {
   );
 };
 
-// OrderItem.propTypes = {
-//   order: PropTypes.object.isRequired,
-// };
+OrderItem.propTypes = {
+  order: PropTypes.object.isRequired,
+};
 
 const styles = StyleSheet.create({
   container: {

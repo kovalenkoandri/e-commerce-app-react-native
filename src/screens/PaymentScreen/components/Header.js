@@ -13,7 +13,7 @@ import CustomText from "../../../components/UI/CustomText";
 import OrderSteps from "../../../components/UI/OrderSteps";
 import { Ionicons } from "@expo/vector-icons";
 //PropTypes check
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 
 const { width, height } = Dimensions.get("window");
 
@@ -22,18 +22,18 @@ export const Header = ({ navigation }) => {
     <View style={styles.header}>
       <View style={styles.innerHeader}>
         <View
-          style={{ position: "absolute", bottom: 20, left: 15, zIndex: 10 }}
+          style={{ position: 'absolute', bottom: 20, left: 15, zIndex: 10 }}
         >
           <TouchableOpacity onPress={() => navigation.goBack()}>
             <Ionicons
-              name='ios-arrow-back'
+              name="ios-arrow-back"
               size={28}
               color={Colors.lighter_green}
             />
           </TouchableOpacity>
         </View>
         <View style={styles.orderStepsContainer}>
-          <CustomText style={styles.title}> Phương Thức Thanh Toán </CustomText>
+          <CustomText style={styles.title}> Payment methods </CustomText>
           <View style={styles.orderSteps}>
             <OrderSteps position={2} />
           </View>
@@ -44,9 +44,9 @@ export const Header = ({ navigation }) => {
   );
 };
 
-// Header.propTypes = {
-//   navigation: PropTypes.object.isRequired,
-// };
+Header.propTypes = {
+  navigation: PropTypes.object.isRequired,
+};
 
 const styles = StyleSheet.create({
   header: {

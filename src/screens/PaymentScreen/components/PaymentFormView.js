@@ -4,7 +4,7 @@ import { CreditCardInput } from "react-native-input-credit-card";
 import { FontAwesome } from "@expo/vector-icons";
 import Colors from "../../../utils/Colors";
 //PropTypes check
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 
 export default class PaymentFormView extends React.Component {
   constructor(props) {
@@ -57,11 +57,11 @@ export default class PaymentFormView extends React.Component {
   }
 }
 
-// PaymentFormView.propTypes = {
-//   onSubmit: PropTypes.func,
-//   submitted: PropTypes.bool,
-//   error: PropTypes.string,
-// };
+PaymentFormView.propTypes = {
+  onSubmit: PropTypes.func,
+  submitted: PropTypes.bool,
+  error: PropTypes.string,
+};
 
 const styles = StyleSheet.create({
   container: {

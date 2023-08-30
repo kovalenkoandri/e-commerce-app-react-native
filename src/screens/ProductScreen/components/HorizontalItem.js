@@ -16,7 +16,7 @@ import CustomText from "../../../components/UI/CustomText";
 //NumberFormat
 import NumberFormat from "../../../components/UI/NumberFormat";
 //PropTypes check
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 
 const HorizontalItem = ({ item, navigation }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -24,14 +24,14 @@ const HorizontalItem = ({ item, navigation }) => {
     <View style={{ backgroundColor: Colors.white }}>
       <BlurView tint="dark" intensity={10} style={styles.itemContainer}>
         <TouchableOpacity
-          onPress={() => navigation.navigate("Detail", { item: item })}
-          style={{ marginLeft: 5, width: "40%", marginRight: 10 }}
+          onPress={() => navigation.navigate('Detail', { item: item })}
+          style={{ marginLeft: 5, width: '40%', marginRight: 10 }}
         >
           <Image
             style={{
               height: 90,
-              width: "100%",
-              resizeMode: "stretch",
+              width: '100%',
+              resizeMode: 'stretch',
               borderRadius: 15,
             }}
             source={{ uri: item.thumb }}
@@ -44,13 +44,13 @@ const HorizontalItem = ({ item, navigation }) => {
             <ActivityIndicator
               size="small"
               color={Colors.grey}
-              style={{ position: "absolute", left: 0, right: 0, top: 40 }}
+              style={{ position: 'absolute', left: 0, right: 0, top: 40 }}
             />
           )}
         </TouchableOpacity>
         <View style={styles.info}>
           <CustomText style={styles.title}>{item.filename}</CustomText>
-          <CustomText style={styles.subText}>Xuất xứ {item.origin}</CustomText>
+          <CustomText style={styles.subText}>Origin {item.origin}</CustomText>
           <View style={styles.rateContainer}>
             <View style={styles.rate}>
               <AntDesign name="star" color="#fed922" size={15} />
@@ -64,10 +64,10 @@ const HorizontalItem = ({ item, navigation }) => {
   );
 };
 
-// HorizontalItem.propTypes = {
-//   item: PropTypes.object.isRequired,
-//   navigation: PropTypes.object.isRequired,
-// };
+HorizontalItem.propTypes = {
+  item: PropTypes.object.isRequired,
+  navigation: PropTypes.object.isRequired,
+};
 
 const styles = StyleSheet.create({
   itemContainer: {
