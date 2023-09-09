@@ -61,14 +61,15 @@ const LoginStack = createStackNavigator();
 export const LoginStackScreen = () => (
   <LoginStack.Navigator
     screenOptions={{
+      presentation: "modal",
       headerShown: false,
       gestureEnabled: true,
       cardOverlayEnabled: true,
       ...TransitionPresets.ModalPresentationIOS,
     }}
-    mode="modal"
+    // mode="modal"
   >
-    <LoginStack.Screen name="LoginScreen" component={LoginScreen} />
+    <LoginStack.Screen name="LoginScreenNested" component={LoginScreen} />
     <LoginStack.Screen name="ForgetPwScreen" component={ForgetPwScreen} />
   </LoginStack.Navigator>
 );
@@ -150,12 +151,13 @@ const ProfileStack = createStackNavigator();
 export const ProfileStackScreen = () => (
   <ProfileStack.Navigator
     screenOptions={{
+      presentation: 'modal',
       headerShown: false,
       gestureEnabled: true,
       cardOverlayEnabled: true,
       ...TransitionPresets.ModalPresentationIOS,
     }}
-    mode="modal"
+    // mode="modal"
   >
     <ProfileStack.Screen name="Profile" component={ProfileScreen} />
     <ProfileStack.Screen name="ProfileEdit" component={EditProfileScreen} />
