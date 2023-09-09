@@ -159,7 +159,7 @@ export const ProfileStackScreen = () => (
     }}
     // mode="modal"
   >
-    <ProfileStack.Screen name="Profile" component={ProfileScreen} />
+    <ProfileStack.Screen name="ProfileNested" component={ProfileScreen} />
     <ProfileStack.Screen name="ProfileEdit" component={EditProfileScreen} />
   </ProfileStack.Navigator>
 );
@@ -377,7 +377,7 @@ export const DrawerNavigator = () => {
               ),
               drawerIcon: ({ focused }) => (
                 <MaterialCommunityIcons
-                  name="face-profile"
+                  name="face-man"
                   size={25}
                   color={focused ? Colors.lighter_green : Colors.grey}
                 />

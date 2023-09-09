@@ -26,6 +26,7 @@ import { StatusBar } from 'expo-status-bar';
 //Notification
 import LocalNotication from './src/components/Notification/LocalNotification';
 // Keep the splash screen visible while we fetch resources
+import { API_URL } from './src/utils/Config';
 SplashScreen.preventAutoHideAsync();
 const rootReducer = combineReducers({
   store: productReducer,
@@ -92,6 +93,37 @@ export default function App() {
   useEffect(() => {
     async function prepare() {
       try {
+        // const fetchURL = async () => {
+        //   const logged = await fetch(
+        //     // `https://e-commerce-app-backend-g3jh.onrender.com/api/v1/user/login`,
+        //     // `http://192.168.43.102:8080/api/v1/user/login`,
+        //     `${API_URL}/user/login`,
+        //     {
+        //       headers: {
+        //         Accept: 'application/json',
+        //         'Content-Type': 'application/json',
+        //       },
+        //       method: 'POST',
+        //       body: JSON.stringify({
+        //         email: 'user10@gmail.com',
+        //         password: '000000',
+        //       }),
+        //       //   JSON.stringify({
+        //       //   email,
+        //       //   password,
+        //       //   // pushTokens: [pushToken],
+        //       // }),
+        //     },
+        //   ).catch((error) => {
+        //     console.log(error);
+        //   });
+        //     // .then((logged) => logged.json())
+        //     // .then((posts) => console.log(posts));
+        //   return logged;
+        // };
+        // const fetched = await fetchURL();
+        // const fetchedJSON = await fetched.json();
+        // console.log(fetchedJSON);
         // Pre-load fonts, make any API calls you need to do here
         await LoadAssets();
         await SplashScreen.hideAsync();

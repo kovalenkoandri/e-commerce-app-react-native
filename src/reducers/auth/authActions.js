@@ -68,22 +68,35 @@ export const Login = (email, password) => {
     dispatch({
       type: AUTH_LOADING,
     });
-    const pushToken = await AskingExpoToken();
+    // const pushToken = await AskingExpoToken();
     try {
-      const response = await timeoutPromise(
-        fetch(`${API_URL}/user/login`, {
+      const fetchURL = async () => {
+        const logged = await fetch(`${API_URL}/user/login`, {
           headers: {
             Accept: 'application/json',
             'Content-Type': 'application/json',
           },
           method: 'POST',
+          // body: JSON.stringify({
+          //   email: 'user10@gmail.com',
+          //   password: '000000',
+          // }),
           body: JSON.stringify({
             email,
             password,
-            pushTokens: [pushToken],
+            // pushTokens: [pushToken],
           }),
-        }),
-      );
+        }).catch((error) => {
+          console.log('error from /user/login ', error);
+        });
+        // .then((resp) => resp.json())
+        // .then((respJSON) => console.log(respJSON));
+        // console.log('logged ', logged.json());
+        return logged;
+      };
+      const response = await fetchURL();
+      // console.log(response);
+      // const response = await timeoutPromise(fetched);
       if (!response.ok) {
         const errorResData = await response.json();
         dispatch({
@@ -227,16 +240,19 @@ export const ResetPassword = (password, url) => {
     });
     try {
       const response = await timeoutPromise(
-        fetch(`${API_URL}/user/receive_new_password/${url.userid}/${url.token}`, {
-          headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
+        fetch(
+          `${API_URL}/user/receive_new_password/${url.userid}/${url.token}`,
+          {
+            headers: {
+              Accept: 'application/json',
+              'Content-Type': 'application/json',
+            },
+            method: 'POST',
+            body: JSON.stringify({
+              password,
+            }),
           },
-          method: 'POST',
-          body: JSON.stringify({
-            password,
-          }),
-        }),
+        ),
       );
       if (!response.ok) {
         const errorResData = await response.json();

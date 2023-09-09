@@ -46,12 +46,12 @@ export const ProfilePic = ({
           const data = await _pickImage("library");
           result = data;
         }
-        if (!result.cancelled) {
-          let localUri = result.uri;
+        if (!result.canceled) {
+          let localUri = result.assets[0].uri;
           let filename = localUri.split("/").pop();
           setImageUri(localUri);
           setFilename(filename);
-          setType(result.type);
+          setType(result.assets[0].type);
           setUploadButton(false);
         }
       }
