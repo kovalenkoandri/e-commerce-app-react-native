@@ -34,11 +34,15 @@ export const EditProfileScreen = (props) => {
         alert(err);
       }
     } else {
-      return Alert.alert("Error", "Thông tin không hợp lệ. Vui lòng nhập lại", [
-        {
-          text: "OK",
-        },
-      ]);
+      return Alert.alert(
+        'Error',
+        'Invalid information. Please re-enter phone length = 10 symbols, address length >= 6 symbols',
+        [
+          {
+            text: 'OK',
+          },
+        ],
+      );
     }
   };
 

@@ -13,7 +13,7 @@ export const Header = ({ navigation }) => {
   return (
     <View style={styles.header}>
       <View style={{ position: 'absolute', bottom: 10, left: 15, zIndex: 10 }}>
-        <TouchableOpacity onPress={() => navigation.navigate('HomeTab')}>
+        <TouchableOpacity onPress={() => navigation.goBack()}>
           <Ionicons
             name="ios-arrow-back"
             size={28}
