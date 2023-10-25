@@ -12,7 +12,8 @@ export const Header = ({ navigation }) => {
   return (
     <View style={styles.header}>
       <View style={{ position: 'absolute', bottom: 15, left: 15, zIndex: 10 }}>
-        <TouchableOpacity
+        {/* remove duplicate header with burger menu. Commited by Kovalenko. */}
+        {/* <TouchableOpacity
           onPress={() => {
             navigation.toggleDrawer();
           }}
@@ -22,7 +23,7 @@ export const Header = ({ navigation }) => {
             size={25}
             color={Colors.light_green}
           />
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </View>
       <CustomText style={styles.titleHeader}>Order lookup</CustomText>
       <View />

@@ -18,7 +18,8 @@ const { height } = Dimensions.get("window");
 export const Header = ({ navigation }) => {
   return (
     <View style={styles.header}>
-      <View style={styles.headerContainer}>
+      {/* remove duplicate burger menu button. Commited by Kovalenko */}
+      {/* <View style={styles.headerContainer}>
         <TouchableOpacity
           onPress={() => {
             navigation.toggleDrawer();
@@ -26,7 +27,7 @@ export const Header = ({ navigation }) => {
         >
           <MaterialCommunityIcons name='menu' size={25} color='#fff' />
         </TouchableOpacity>
-      </View>
+      </View> */}
       <Image
         style={styles.image}
         source={require("../../../assets/Images/logoTextWhite.png")}
