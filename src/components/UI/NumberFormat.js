@@ -7,13 +7,13 @@ import NumberFormat from "react-number-format";
 //Text
 import CustomText from "./CustomText";
 
-const Number = ({ price, color }, props) => {
+const NumberFormatCustom = ({ price, color }, props) => {
   return (
     <NumberFormat
       value={price}
-      displayType={"text"}
+      displayType={'text'}
       thousandSeparator={true}
-      suffix={" đ"}
+      suffix={' đ'}
       renderText={(formattedValue) => (
         <View
           style={
@@ -23,7 +23,7 @@ const Number = ({ price, color }, props) => {
           }
         >
           <CustomText
-            style={{ ...props.style, color: color ? "#fff" : Colors.red }}
+            style={{ ...props.style, color: color ? '#fff' : Colors.red }}
           >
             {formattedValue}
           </CustomText>
@@ -49,4 +49,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Number;
+export default NumberFormatCustom;
