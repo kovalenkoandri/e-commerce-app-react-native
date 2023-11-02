@@ -24,15 +24,15 @@ export const DetailBody = ({ item, color }) => {
         style={styles.footer_header}
       >
         <CustomText selectable={true} style={{ ...styles.title, color }}>
-          {item.filename}
+          {item["Каталожный номер производителя"]}
         </CustomText>
-        <NumberFormat
+        {/* <NumberFormat
           style={{ color: '#fff', fontSize: 13 }}
           price={item.price}
           color={color}
-        />
+        /> */}
       </Animatable.View>
-      <View style={{ flexDirection: 'row', marginTop: 10 }}>
+      <View style={{ flexDirection: "row", marginTop: 10 }}>
         <Animatable.View animation="bounceIn" delay={1600}>
           <AntDesign name="star" size={15} color={color} />
         </Animatable.View>
@@ -57,31 +57,43 @@ export const DetailBody = ({ item, color }) => {
         <CustomText
           style={{
             ...styles.title,
-            fontWeight: '500',
+            fontWeight: "500",
             marginTop: 20,
             marginBottom: 10,
-            textDecorationLine: 'underline',
+            textDecorationLine: "underline",
           }}
         >
-          Detail
+          Информация о товаре
         </CustomText>
         <View style={styles.infoContainer}>
-          <CustomText>Colour: </CustomText>
-          <CustomText style={{ color: color }}>{item.color}</CustomText>
+          <CustomText selectable={true}>
+            Оригинальный номер - Идентификатор:{" "}
+            {item["Оригинальный номер Идентификатор"]}
+          </CustomText>
         </View>
         <View style={styles.infoContainer}>
-          <CustomText>Condition: </CustomText>
-          <CustomText>{item.standard}</CustomText>
+          <CustomText selectable={true}>
+            Каталожный номер производителя:{" "}
+            {item["Каталожный номер производителя"]}
+          </CustomText>
         </View>
         <View style={styles.infoContainer}>
-          <CustomText>Origin: </CustomText>
-          <CustomText>{item.origin}</CustomText>
+          <CustomText selectable={true}>Производитель: {item["Производитель"]}</CustomText>
         </View>
-        <CustomText
+        <View style={styles.infoContainer}>
+          <CustomText selectable={true}>Наименование: {item["Наименование"]}</CustomText>
+        </View>
+        <View style={styles.infoContainer}>
+          <CustomText selectable={true}>Наличие шт: {item["Наличие шт"]}</CustomText>
+        </View>
+        <View style={styles.infoContainer}>
+          <CustomText selectable={true}>Цена грн: {item["Цена"]}</CustomText>
+        </View>
+        {/* <CustomText
           style={{
             ...styles.title,
-            textDecorationLine: 'underline',
-            fontWeight: '500',
+            textDecorationLine: "underline",
+            fontWeight: "500",
             marginBottom: 10,
           }}
         >
@@ -89,7 +101,7 @@ export const DetailBody = ({ item, color }) => {
         </CustomText>
         <CustomText selectable={true} style={styles.detail}>
           {item.description}
-        </CustomText>
+        </CustomText> */}
       </Animatable.View>
     </View>
   );
