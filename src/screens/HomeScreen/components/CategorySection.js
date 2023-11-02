@@ -16,30 +16,32 @@ import PropTypes from "prop-types";
 export class CategorySection extends React.PureComponent {
   render() {
     const { data, name, bg, navigation } = this.props;
-    const rings = data.filter((ring) => ring.type === "ring");
-    const bracelets = data.filter((bracelet) => bracelet.type === "bracelet");
-    const stones = data.filter((stone) => stone.type === "stone");
-    function getItems() {
-      const items =
-        name === 'Quartz ring'
-          ? bracelets
-          : name === 'Ruby Stone'
-          ? stones
-          : rings;
-      return items;
-    }
+    // const rings = data.filter((ring) => ring.type === "ring");
+    // const bracelets = data.filter((bracelet) => bracelet.type === "bracelet");
+    // const stones = data.filter((stone) => stone.type === "stone");
+    // function getItems() {
+    //   const items =
+    //     name === 'Quartz ring'
+    //       ? bracelets
+    //       : name === 'Ruby Stone'
+    //       ? stones
+    //       : rings;
+    //   return items;
+    // }
     return (
       <View style={[styles.category]}>
-        <Image style={styles.background} source={bg} blurRadius={10} />
+        <Image style={styles.background} source={bg} blurRadius={1} />
         <View style={styles.titleHeader}>
           <CustomText style={styles.title}>{name}</CustomText>
         </View>
         <View style={styles.productList}>
           <FlatList
-            data={getItems()}
+            // data={getItems()}
+            data={data}
             keyExtractor={(item) => item._id}
-            numColumns={2}
-            columnWrapperStyle={styles.list}
+            // horizontal={true}
+            // numColumns={1}
+            // columnWrapperStyle={styles.list}
             renderItem={({ item }) => {
               return (
                 <ProductItem
@@ -71,7 +73,7 @@ CategorySection.propTypes = {
 
 const styles = StyleSheet.create({
   category: {
-    height: 518,
+    // height: 518,
     marginHorizontal: 5,
     marginVertical: 5,
     paddingVertical: 15,

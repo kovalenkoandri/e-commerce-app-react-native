@@ -1,6 +1,6 @@
 export const categories = [
   {
-    name: 'Quartz ring',
+    name: 'Автозапчасти',
     bg: require('../../../assets/Images/bg1.jpg'),
   },
   // {
