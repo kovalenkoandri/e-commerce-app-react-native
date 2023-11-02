@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
-import { View, StyleSheet, Dimensions, Platform, FlatList } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import React, { useEffect } from "react";
+import { View, StyleSheet, Dimensions, Platform, FlatList } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 //Redux
-import { useSelector, useDispatch } from 'react-redux';
-import { fetchProducts } from '../../reducers';
+import { useSelector, useDispatch } from "react-redux";
+import { fetchProducts } from "../../reducers";
 //Colors
-import Colors from '../../utils/Colors';
+import Colors from "../../utils/Colors";
 //Animation
 // import Animated from 'react-native-reanimated';
 //Components
@@ -15,14 +15,14 @@ import {
   CategorySection,
   FloatButton,
   categories,
-} from './components';
-import Skeleton from '../../components/Loaders/SkeletonLoading';
-import Snackbar from '../../components/Notification/Snackbar';
+} from "./components";
+import Skeleton from "../../components/Loaders/SkeletonLoading";
+import Snackbar from "../../components/Notification/Snackbar";
 //FloatButton
-import { Portal, Provider } from 'react-native-paper';
+import { Portal, Provider } from "react-native-paper";
 // const AnimatedFlatList = Animated.createAnimatedComponent(FlatList);
 //height
-const { height } = Dimensions.get('window');
+const { height } = Dimensions.get("window");
 
 export const HomeScreen = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -51,11 +51,11 @@ export const HomeScreen = ({ navigation }) => {
         <Skeleton />
       ) : (
         <View style={styles.container}>
-          {/* <Header get rid of cant get value of undefined
+          <Header
             // scrollPoint={scrollY}
             navigation={navigation}
             products={products}
-          ></Header> */}
+          ></Header>
           <Portal>
             <FloatButton />
           </Portal>
@@ -95,7 +95,7 @@ export const HomeScreen = ({ navigation }) => {
               message={
                 Object.keys(user).length === 0
                   ? notification
-                  : notification + ' ' + user.name
+                  : notification + " " + user.name
               }
             />
           )}
@@ -111,7 +111,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.white,
   },
   list: {
-    width: '100%',
+    width: "100%",
     marginTop: 50,
     paddingBottom: 20,
   },

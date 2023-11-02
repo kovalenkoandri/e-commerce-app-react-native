@@ -23,9 +23,11 @@ export const DetailBody = ({ item, color }) => {
         delay={1000}
         style={styles.footer_header}
       >
-        <CustomText selectable={true} style={{ ...styles.title, color }}>
-          {item["Каталожный номер производителя"]}
-        </CustomText>
+        {/* <CustomText selectable={true} style={{ ...styles.title, color }}>
+          Искомый код{" "}
+          {item["Каталожный номер производителя"] !== "#NULL!" ||
+            item["Оригинальный номер Идентификатор"]}
+        </CustomText> */}
         {/* <NumberFormat
           style={{ color: '#fff', fontSize: 13 }}
           price={item.price}
@@ -78,16 +80,24 @@ export const DetailBody = ({ item, color }) => {
           </CustomText>
         </View>
         <View style={styles.infoContainer}>
-          <CustomText selectable={true}>Производитель: {item["Производитель"]}</CustomText>
+          <CustomText selectable={true}>
+            Производитель: {item["Производитель"]}
+          </CustomText>
         </View>
         <View style={styles.infoContainer}>
-          <CustomText selectable={true}>Наименование: {item["Наименование"]}</CustomText>
+          <CustomText selectable={true}>
+            Наименование: {item["Наименование"]}
+          </CustomText>
         </View>
         <View style={styles.infoContainer}>
-          <CustomText selectable={true}>Наличие шт: {item["Наличие шт"]}</CustomText>
+          <CustomText selectable={true}>
+            Наличие шт: {item["Наличие шт"]}
+          </CustomText>
         </View>
         <View style={styles.infoContainer}>
-          <CustomText selectable={true}>Цена грн: {item["Цена"]}</CustomText>
+          <CustomText selectable={true}>
+            Цена грн: {item["Цена Розница"]}
+          </CustomText>
         </View>
         {/* <CustomText
           style={{
