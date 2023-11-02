@@ -95,7 +95,7 @@ export const ActionButton = ({
               loop={false}
             />
           ) : (
-            <Ionicons name="ios-heart-empty" size={27} color={color} />
+            <Ionicons name="ios-heart" size={27} color={color} />
           )}
         </TouchableOpacity>
         <TouchableOpacity
