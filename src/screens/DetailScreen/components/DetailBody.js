@@ -68,34 +68,34 @@ export const DetailBody = ({ item, color }) => {
           Информация о товаре
         </CustomText>
         <View style={styles.infoContainer}>
-          <CustomText selectable={true}>
+          <CustomText selectable={true} style={styles.infoText}>
             Оригинальный номер - Идентификатор:{" "}
             {item["Оригинальный номер Идентификатор"]}
           </CustomText>
         </View>
         <View style={styles.infoContainer}>
-          <CustomText selectable={true}>
+          <CustomText selectable={true} style={styles.infoText}>
             Каталожный номер производителя:{" "}
             {item["Каталожный номер производителя"]}
           </CustomText>
         </View>
         <View style={styles.infoContainer}>
-          <CustomText selectable={true}>
+          <CustomText selectable={true} style={styles.infoText}>
             Производитель: {item["Производитель"]}
           </CustomText>
         </View>
         <View style={styles.infoContainer}>
-          <CustomText selectable={true}>
+          <CustomText selectable={true} style={styles.infoText}>
             Наименование: {item["Наименование"]}
           </CustomText>
         </View>
         <View style={styles.infoContainer}>
-          <CustomText selectable={true}>
+          <CustomText selectable={true} style={styles.infoText}>
             Наличие шт: {item["Наличие шт"]}
           </CustomText>
         </View>
         <View style={styles.infoContainer}>
-          <CustomText selectable={true}>
+          <CustomText selectable={true} style={styles.infoText}>
             Цена грн: {item["Цена Розница"]}
           </CustomText>
         </View>
@@ -152,7 +152,11 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   infoContainer: {
-    marginBottom: 10,
+    marginBottom: 20,
     flexDirection: "row",
+  },
+  infoText: {
+    fontSize: 25,
+    lineHeight: 25,
   },
 });
