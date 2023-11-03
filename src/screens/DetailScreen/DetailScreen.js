@@ -44,7 +44,7 @@ export const DetailScreen = (props) => {
       ) : (
         <View />
       )}
-      <Header navigation={props.navigation} scrollY={scrollY} item={item} />
+      {/* <Header navigation={props.navigation} scrollY={scrollY} item={item} /> */}
 
       <Animated.ScrollView
         scrollEventThrottle={1}

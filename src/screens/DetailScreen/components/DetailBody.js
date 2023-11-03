@@ -129,7 +129,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: 20,
     marginBottom: 10,
-    marginTop: 200,
+    // marginTop: 200, // header disappears/appears
     borderRadius: 30,
   },
   footer_header: {
