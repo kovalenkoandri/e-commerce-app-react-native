@@ -84,7 +84,7 @@ export const ActionButton = ({
       style={styles.actionContainer}
     >
       <View style={styles.action}>
-        <TouchableOpacity
+        {/* <TouchableOpacity
           onPress={toggleFavorite}
           style={[styles.favorite, { borderColor: color }]}
         >
@@ -97,7 +97,7 @@ export const ActionButton = ({
           ) : (
             <Ionicons name="ios-heart" size={27} color={color} />
           )}
-        </TouchableOpacity>
+        </TouchableOpacity> */}
         <TouchableOpacity
           style={[styles.addCart, { backgroundColor: color }]}
           onPress={addToCartAct}

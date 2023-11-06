@@ -221,13 +221,13 @@ export const TabScreen = () => {
           tabBarLabel: 'Home page',
         }}
       />
-      <Tab.Screen
+      {/* <Tab.Screen
         name="Favorite"
         component={FavoriteStackScreen}
         options={() => ({
           tabBarLabel: 'Favourite',
         })}
-      />
+      /> */}
       <Tab.Screen
         name="Cart"
         component={CartStackScreen}
