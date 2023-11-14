@@ -54,7 +54,7 @@ export const DetailScreen = (props) => {
         )}
       >
         <DetailBody item={item} color={color} />
-        <Comments />
+        {/* <Comments /> */}
       </Animated.ScrollView>
       <ActionButton
         item={item}
@@ -65,13 +65,13 @@ export const DetailScreen = (props) => {
         user={user}
         color={color}
       />
-      <ModalComp
+      {/* <ModalComp
         item={item}
         color={color}
         modalVisible={modalVisible}
         setModalVisible={setModalVisible}
         navigation={props.navigation}
-      />
+      /> */}
     </View>
   );
 };
