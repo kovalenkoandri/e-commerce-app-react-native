@@ -24,7 +24,7 @@ export class TotalButton extends React.PureComponent {
           >
             Into money
           </CustomText>
-          <NumberFormat price={total.toString()} style={{ fontSize: 14 }} />
+          {/* <NumberFormat price={total.toString()} style={{ fontSize: 14 }} /> */}
         </View>
 
         <TouchableOpacity

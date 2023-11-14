@@ -70,7 +70,7 @@ export class CartItem extends React.PureComponent {
           <CustomText style={{ color: Colors.grey, fontSize: 12 }}>
             Provided by Cat Tuong
           </CustomText>
-          <NumberFormat price={sum.toString()} />
+          {/* <NumberFormat price={sum.toString()} /> */}
           <View style={styles.box}>
             <TouchableOpacity onPress={checkDesQuantity} style={styles.boxMin}>
               <MaterialCommunityIcons name="minus" size={16} />
