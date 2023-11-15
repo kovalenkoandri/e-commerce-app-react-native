@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet, Dimensions } from "react-native";
+import { View, StyleSheet, Dimensions, Button } from "react-native";
 //Animatable
 import * as Animatable from "react-native-animatable";
 //icon
@@ -12,10 +12,33 @@ import Colors from "../../../utils/Colors";
 import NumberFormat from "../../../components/UI/NumberFormat";
 //PropTypes check
 import PropTypes from "prop-types";
-
+import { Formik } from "formik";
+import { addOrderAvtoNova } from "../../../reducers";
+import { useDispatch } from "react-redux";
+import { TextInput } from "react-native-paper";
 const { width, height } = Dimensions.get("window");
 
 export const DetailBody = ({ item, color }) => {
+  const dispatch = useDispatch();
+  //action Add Order
+  const addOrderAct = async ({ phone }) => {
+    try {
+      await dispatch(
+        addOrderAvtoNova(
+          // token,
+          // orderItems,
+          // name,
+          // total,
+          // paymentMethod,
+          // fullAddress,
+          phone,
+          item,
+        ),
+      );
+    } catch (err) {
+      alert(err);
+    }
+  };
   return (
     <View style={[styles.footer]}>
       <Animatable.View
@@ -26,7 +49,7 @@ export const DetailBody = ({ item, color }) => {
         {/* <CustomText selectable={true} style={{ ...styles.title, color }}>
           Искомый код{" "}
           {item["Каталожный номер производителя"] !== "#NULL!" ||
-            item["Оригинальный номер Идентификатор"]}
+          item["Оригинальный номер Идентификатор"]}
         </CustomText> */}
         {/* <NumberFormat
           style={{ color: '#fff', fontSize: 13 }}
@@ -106,13 +129,35 @@ export const DetailBody = ({ item, color }) => {
             fontWeight: "500",
             marginBottom: 10,
           }}
-        >
+          >
           Depict
         </CustomText>
         <CustomText selectable={true} style={styles.detail}>
-          {item.description}
+        {item.description}
         </CustomText> */}
       </Animatable.View>
+      <Formik
+        initialValues={{ phone: "" }}
+        onSubmit={(values) => addOrderAct(values)}
+      >
+        {({ handleChange, handleBlur, handleSubmit, values }) => (
+          <View>
+            <View style={styles.telView}>
+              <CustomText selectable={true} style={styles.telLabel}>
+                Телефон
+              </CustomText>
+              <TextInput
+                onChangeText={handleChange("phone")}
+                onBlur={handleBlur("phone")}
+                value={values.phone}
+                style={styles.telInput}
+                keyboardType="phone-pad"
+              />
+            </View>
+            <Button onPress={handleSubmit} title="Submit" />
+          </View>
+        )}
+      </Formik>
     </View>
   );
 };
@@ -156,7 +201,23 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   infoText: {
+    fontSize: 20,
+    lineHeight: 20,
+  },
+  telView: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    borderColor: "#000",
+    borderWidth: 1,
+  },
+  telLabel: {
     fontSize: 25,
     lineHeight: 25,
+  },
+  telInput: {
+    flex: 1,
+    margin: 10,
+    borderWidth: 1,
   },
 });
