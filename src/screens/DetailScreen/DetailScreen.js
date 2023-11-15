@@ -56,7 +56,7 @@ export const DetailScreen = (props) => {
         <DetailBody item={item} color={color} />
         {/* <Comments /> */}
       </Animated.ScrollView>
-      <ActionButton
+      {/* <ActionButton
         item={item}
         FavoriteProducts={FavoriteProducts}
         setShowSnackbar={setShowSnackbar}
@@ -64,7 +64,7 @@ export const DetailScreen = (props) => {
         setMessage={setMessage}
         user={user}
         color={color}
-      />
+      /> */}
       {/* <ModalComp
         item={item}
         color={color}
