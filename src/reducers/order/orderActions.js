@@ -101,3 +101,55 @@ export const addOrder = (
     }
   };
 };
+export const addOrderAvtoNova = (
+  // orderItems,
+  // name,
+  // totalAmount,
+  // fullAddress,
+  phone, item
+) => {
+  return async (dispatch, getState) => {
+    dispatch({
+      type: ORDER_LOADING,
+    });
+    const user = getState().auth.user;
+    try {
+      const response = await timeoutPromise(
+        fetch(`${API_URL}/order/post`, {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            "auth-token": user.token,
+          },
+          method: "POST",
+          body: JSON.stringify({
+            orderInfo: {
+              // userId: user.userid,
+              // items: orderItems,
+              // name,
+              // totalAmount,
+              // paymentMethod,
+              // address: fullAddress,
+              phone,
+              item
+            },
+          }),
+        })
+      );
+      if (!response.ok) {
+        dispatch({
+          type: ORDER_FAILURE,
+        });
+        throw new Error("Something went wrong!");
+      }
+      const resData = await response.json();
+      console.log(resData);
+      dispatch({
+        type: ADD_ORDER,
+        orderItem: resData.content,
+      });
+    } catch (err) {
+      throw err;
+    }
+  };
+};
