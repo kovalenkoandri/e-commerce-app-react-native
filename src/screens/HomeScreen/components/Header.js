@@ -174,7 +174,7 @@ export class Header extends React.Component {
             ]}
           >
             <View style={styles.header_inner}>
-              <TouchableOpacity
+              {/* <TouchableOpacity
                 onPress={() => this.props.navigation.toggleDrawer()}
               >
                 <Ionicons
@@ -199,7 +199,7 @@ export class Header extends React.Component {
                 style={styles.search_icon_box}
               >
                 <Ionicons name="ios-search" size={20} color={Colors.white} />
-              </TouchableOpacity>
+              </TouchableOpacity> */}
               <View
                 style={[
                   styles.input_box,
@@ -222,7 +222,7 @@ export class Header extends React.Component {
                     <Ionicons
                       name="ios-arrow-back"
                       size={25}
-                      color={Colors.light_green}
+                      color={Colors.dark}
                     />
                   </TouchableOpacity>
                 </View>
@@ -297,7 +297,7 @@ export class Header extends React.Component {
 const styles = StyleSheet.create({
   header_safe_area: {
     zIndex: 1000,
-    backgroundColor: Colors.white,
+    backgroundColor: Colors.bluegreen,
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
   },
   header: {
@@ -339,7 +339,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 0,
     left: 0,
-    backgroundColor: Colors.white,
+    backgroundColor: Colors.bluegreen,
     width: width,
   },
   back_icon_box: {
@@ -370,7 +370,7 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: Platform.OS === "android" ? 80 : 40,
     paddingBottom: 80,
-    backgroundColor: Colors.white,
+    backgroundColor: Colors.bluegreen, // hide content_safe_area
   },
   content_inner: {
     backgroundColor: Colors.white,
