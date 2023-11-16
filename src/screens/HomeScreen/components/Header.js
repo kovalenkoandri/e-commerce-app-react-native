@@ -206,7 +206,7 @@ export class Header extends React.Component {
                   // { transform: [{ translateX: this._input_box_translate_x }] },
                 ]}
               >
-                <View
+                {/* <View
                   style={
                     {
                       // opacity: this._back_button_opacity
@@ -225,7 +225,7 @@ export class Header extends React.Component {
                       color={Colors.dark}
                     />
                   </TouchableOpacity>
-                </View>
+                </View> */}
                 <TextInput
                   ref="input"
                   placeholder="Search for products"
