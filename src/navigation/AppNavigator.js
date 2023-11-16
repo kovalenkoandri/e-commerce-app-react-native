@@ -1,12 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { LogBox } from "react-native";
+// import { LogBox } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useSelector } from "react-redux";
-import {
-  NavigationContainer,
-  DarkTheme as NavigationDarkTheme,
-  DefaultTheme as NavigationDefaultTheme,
-} from "@react-navigation/native";
+import { NavigationContainer } from "@react-navigation/native";
 import { navigationRef } from "./RootNavigation";
 import { DrawerNavigator, IntroStackScreen } from "./StoneNavigator";
 import { useDispatch } from "react-redux";
@@ -16,54 +12,14 @@ import { Host } from "react-native-portalize";
 //Deep Link
 import { urlRedirect } from "../utils/Tools";
 import * as Linking from "expo-linking";
-import {
-  PaperProvider,
-  MD3LightTheme,
-  MD3DarkTheme,
-  adaptNavigationTheme, Appbar, Switch
-} from "react-native-paper";
-import { PreferencesContext } from "./PreferencesContext";
-
-const { LightTheme, DarkTheme } = adaptNavigationTheme({
-  reactNavigationLight: NavigationDefaultTheme,
-  reactNavigationDark: NavigationDarkTheme,
-});
-
-const CombinedDefaultTheme = {
-  ...MD3LightTheme,
-  ...LightTheme,
-  colors: {
-    ...MD3LightTheme.colors,
-    ...LightTheme.colors,
-  },
-};
-const CombinedDarkTheme = {
-  ...MD3DarkTheme,
-  ...DarkTheme,
-  colors: {
-    ...MD3DarkTheme.colors,
-    ...DarkTheme.colors,
-  },
-};
+import { PaperProvider, Appbar, Switch } from "react-native-paper";
+import { PreferencesContext, useThemePreferences } from "./PreferencesContext";
 
 // LogBox.ignoreLogs(['Setting a timer']);
 
 export const AppNavigator = () => {
-  const [isThemeDark, setIsThemeDark] = React.useState(false);
-
-  let theme = isThemeDark ? CombinedDarkTheme : CombinedDefaultTheme;
-
-  const toggleTheme = React.useCallback(() => {
-    return setIsThemeDark(!isThemeDark);
-  }, [isThemeDark]);
-
-  const preferences = React.useMemo(
-    () => ({
-      toggleTheme,
-      isThemeDark,
-    }),
-    [toggleTheme, isThemeDark],
-  );
+  const { toggleTheme, isThemeDark, theme } = useThemePreferences();
+  const preferences = useThemePreferences();
 
   const [value, setValue] = useState(null);
   const dispatch = useDispatch();
@@ -122,20 +78,20 @@ export const AppNavigator = () => {
     <PreferencesContext.Provider value={preferences}>
       <PaperProvider theme={theme}>
         <NavigationContainer ref={navigationRef} theme={theme}>
-              <Appbar.Header
-                theme={{
-                  colors: {
-                    primary: theme?.colors.surface,
-                  },
-                }}
-              >
-                <Appbar.Content title={"Light or Dark mode"} />
-                <Switch
-                  color={"red"}
-                  value={isThemeDark}
-                  onValueChange={toggleTheme}
-                />
-              </Appbar.Header>
+          <Appbar.Header
+            theme={{
+              colors: {
+                primary: theme?.colors.surface,
+              },
+            }}
+          >
+            <Appbar.Content title={"Light or Dark mode"} />
+            <Switch
+              color={"grey"}
+              value={isThemeDark}
+              onValueChange={toggleTheme}
+            />
+          </Appbar.Header>
           <Host>
             {(isFirstOpen || value !== null) && <DrawerNavigator />}
             {!isFirstOpen && value === null && <IntroStackScreen />}
