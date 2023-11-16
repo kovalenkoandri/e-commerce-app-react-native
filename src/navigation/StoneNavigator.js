@@ -196,7 +196,7 @@ export const TabScreen = () => {
         tabBarIcon: ({ focused }) => {
           let iconName;
           const color = focused ? Colors.lighter_green : Colors.grey;
-          if (route.name === 'HomeTab') {
+          if (route.name === 'HomePage') {
             iconName = 'home';
           } else if (route.name === 'Favorite') {
             iconName = 'hearto';
