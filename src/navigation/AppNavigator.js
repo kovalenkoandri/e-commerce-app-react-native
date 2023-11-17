@@ -4,7 +4,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useSelector } from "react-redux";
 import { NavigationContainer } from "@react-navigation/native";
 import { navigationRef } from "./RootNavigation";
-import { DrawerNavigator, IntroStackScreen } from "./StoneNavigator";
+import { DrawerNavigator, IntroStackScreen, TabScreen } from "./StoneNavigator";
 import { useDispatch } from "react-redux";
 import { Logout } from "../reducers";
 //Modalize
@@ -14,7 +14,7 @@ import { urlRedirect } from "../utils/Tools";
 import * as Linking from "expo-linking";
 import { PaperProvider, Appbar, Switch } from "react-native-paper";
 import { PreferencesContext, useThemePreferences } from "./PreferencesContext";
-
+import { TouchableWithoutFeedback, Keyboard } from "react-native";
 // LogBox.ignoreLogs(['Setting a timer']);
 
 export const AppNavigator = () => {
@@ -75,7 +75,10 @@ export const AppNavigator = () => {
     autoLogout();
   }, []);
   return (
-    <PreferencesContext.Provider value={preferences}>
+    <PreferencesContext.Provider
+      value={preferences}
+      onPress={() => Keyboard.dismiss()}
+    >
       <PaperProvider theme={theme}>
         <NavigationContainer ref={navigationRef} theme={theme}>
           <Appbar.Header
@@ -92,10 +95,11 @@ export const AppNavigator = () => {
               onValueChange={toggleTheme}
             />
           </Appbar.Header>
-          <Host>
-            {(isFirstOpen || value !== null) && <DrawerNavigator />}
-            {!isFirstOpen && value === null && <IntroStackScreen />}
-          </Host>
+          <TabScreen />
+          {/* <Host> */}
+          {/* {(isFirstOpen || value !== null) && <DrawerNavigator />}
+              {!isFirstOpen && value === null && <IntroStackScreen />} */}
+          {/* </Host> */}
         </NavigationContainer>
       </PaperProvider>
     </PreferencesContext.Provider>
