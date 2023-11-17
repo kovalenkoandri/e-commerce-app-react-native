@@ -9,9 +9,10 @@ import {
   Keyboard,
   TextInput,
   TouchableWithoutFeedback,
+  StatusBar,
 } from "react-native";
 import Colors from "../../../utils/Colors";
-import SearchItem from "./SearchItem";
+import SearchItem from "./SearchItemSimple";
 import { Text } from "react-native-paper";
 const { height } = Dimensions.get("window");
 
@@ -61,21 +62,21 @@ export class Header extends React.Component {
         </View>
         <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
           {this.state.keyword === "" ? (
-            <View style={styles.image_placeholder_container}>
+            <View style={styles.searchResultContainer}>
               <Text
                 variant="headlineMedium"
-                style={styles.image_placeholder_text}
+                style={styles.searchResultExampleText}
               >
                 Приклад: 713656100
               </Text>
               <Image
                 source={require("../../../assets/Images/logo1.png")}
-                style={styles.image_placeholder}
+                style={styles.searchResultImageBrand}
               />
 
               <Text
                 variant="headlineMedium"
-                style={styles.image_placeholder_text}
+                style={styles.searchResultExampleText}
               >
                 Пошук здійснюється по:{"\n"} 1. Каталожному номеру виробника.
                 {"\n"} 2. Оригільному номеру ідентифікатору
@@ -91,8 +92,8 @@ export class Header extends React.Component {
             >
               {this.state.productsFilter.length === 0 ? (
                 <Text
-                  variant="titleLarge"
-                  style={styles.image_placeholder_text}
+                  variant="headlineMedium"
+                  style={styles.searchResultNotFound}
                 >
                   За даним кодом товар не знайдено
                 </Text>
@@ -137,21 +138,28 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     fontSize: 32,
     marginHorizontal: 20,
-    marginTop: 72,
+    marginTop: StatusBar.currentHeight + 16,
   },
-  image_placeholder_container: {
+  searchResultContainer: {
     flexDirection: "column",
     marginTop: 40,
     height: height,
   },
-  image_placeholder: {
+  searchResultImageBrand: {
     height: 80,
     resizeMode: "contain",
     alignSelf: "center",
   },
-  image_placeholder_text: {
+  searchResultExampleText: {
     textAlign: "center",
     color: Colors.dark,
     padding: 20,
+  },
+  searchResultNotFound: {
+    textAlign: "center",
+    marginTop: StatusBar.currentHeight + 16,
+    color: Colors.dark,
+    padding: 20,
+    height: height,
   },
 });
