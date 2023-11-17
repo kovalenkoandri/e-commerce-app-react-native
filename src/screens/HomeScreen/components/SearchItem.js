@@ -15,13 +15,13 @@ export default SearchItem = ({ item, navigation }) => {
       >
         <Ionicons name="ios-search" size={72} color={Colors.dark} />
         {/* <Image style={styles.image} source={{ uri: item.thumb }} /> */}
-      </TouchableOpacity>
       <Text
         variant="titleLarge"
         style={styles.name}
-      >
+        >
         {item["Наименование"]}
       </Text>
+        </TouchableOpacity>
     </View>
   );
 };
