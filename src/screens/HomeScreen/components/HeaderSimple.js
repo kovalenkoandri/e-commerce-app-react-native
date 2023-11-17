@@ -3,7 +3,7 @@ import {
   Dimensions,
   StyleSheet,
   View,
-  Text,
+  // Text,
   Image,
   FlatList,
   Platform,
@@ -12,7 +12,7 @@ import {
 } from "react-native";
 import Colors from "../../../utils/Colors";
 import SearchItem from "./SearchItem";
-// import { TextInput } from 'react-native-paper';
+import { Text } from "react-native-paper";
 import {
   TextInput,
   TouchableWithoutFeedback,
@@ -56,7 +56,7 @@ export class Header extends React.Component {
             maxLength={9}
             keyboardType="numeric"
             ref="input"
-            placeholder="Search for products"
+            placeholder="Введіть 9 цифр коду"
             clearButtonMode="always"
             value={this.state.keyword}
             onChangeText={(value) => this.searchFilterFunction(value)}
@@ -70,9 +70,10 @@ export class Header extends React.Component {
                 source={require("../../../assets/Images/logo1.png")}
                 style={styles.image_placeholder}
               />
-              <Text style={styles.image_placeholder_text}>
-                Enter keywords{"\n"}
-                to search for :D
+              <Text variant="titleLarge" style={styles.image_placeholder_text}>
+                Пошук здійснюється по:{"\n"} 1. Каталожному номеру виробника.
+                {"\n"} 2. Оригільному номеру ідентифікатору{"\n"}
+                Наприклад: 713656100
               </Text>
             </View>
           ) : (
@@ -84,8 +85,11 @@ export class Header extends React.Component {
               }}
             >
               {this.state.productsFilter.length === 0 ? (
-                <Text style={styles.image_placeholder_text}>
-                  Product not found
+                <Text
+                  variant="titleLarge"
+                  style={styles.image_placeholder_text}
+                >
+                  За даним кодом товар не знайдено
                 </Text>
               ) : (
                 <FlatList
@@ -131,7 +135,7 @@ const styles = StyleSheet.create({
   },
   image_placeholder_container: {
     flexDirection: "column",
-    marginTop: 100,
+    marginTop: 64,
     height: height,
   },
   image_placeholder: {
@@ -141,8 +145,9 @@ const styles = StyleSheet.create({
   },
   image_placeholder_text: {
     textAlign: "center",
-    color: "gray",
+    color: Colors.dark,
     marginTop: 5,
     height: height,
+    padding: 20,
   },
 });
