@@ -227,6 +227,7 @@ export class Header extends React.Component {
                   </TouchableOpacity>
                 </View> */}
                 <TextInput
+                  keyboardType="numeric"
                   ref="input"
                   placeholder="Search for products"
                   clearButtonMode="always"
