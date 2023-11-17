@@ -3,20 +3,16 @@ import {
   Dimensions,
   StyleSheet,
   View,
-  // Text,
   Image,
   FlatList,
   Platform,
   Keyboard,
-  // TextInput,
+  TextInput,
+  TouchableWithoutFeedback,
 } from "react-native";
 import Colors from "../../../utils/Colors";
 import SearchItem from "./SearchItem";
 import { Text } from "react-native-paper";
-import {
-  TextInput,
-  TouchableWithoutFeedback,
-} from "react-native-gesture-handler";
 const { height } = Dimensions.get("window");
 
 export class Header extends React.Component {
@@ -51,7 +47,7 @@ export class Header extends React.Component {
   render() {
     return (
       <>
-        <View style={[styles.input_box]}>
+        <View style={styles.input_box}>
           <TextInput
             maxLength={9}
             keyboardType="numeric"
@@ -66,14 +62,23 @@ export class Header extends React.Component {
         <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
           {this.state.keyword === "" ? (
             <View style={styles.image_placeholder_container}>
+              <Text
+                variant="headlineMedium"
+                style={styles.image_placeholder_text}
+              >
+                Приклад: 713656100
+              </Text>
               <Image
                 source={require("../../../assets/Images/logo1.png")}
                 style={styles.image_placeholder}
               />
-              <Text variant="titleLarge" style={styles.image_placeholder_text}>
+
+              <Text
+                variant="headlineMedium"
+                style={styles.image_placeholder_text}
+              >
                 Пошук здійснюється по:{"\n"} 1. Каталожному номеру виробника.
-                {"\n"} 2. Оригільному номеру ідентифікатору{"\n"}
-                Наприклад: 713656100
+                {"\n"} 2. Оригільному номеру ідентифікатору
               </Text>
             </View>
           ) : (
@@ -126,16 +131,17 @@ const styles = StyleSheet.create({
   },
   input: {
     flex: 1,
-    height: 40,
+    height: 64,
     backgroundColor: Colors.light_grey,
     borderRadius: 16,
     paddingHorizontal: 16,
-    fontSize: 15,
+    fontSize: 32,
     marginHorizontal: 20,
+    marginTop: 72,
   },
   image_placeholder_container: {
     flexDirection: "column",
-    marginTop: 64,
+    marginTop: 40,
     height: height,
   },
   image_placeholder: {
@@ -146,8 +152,6 @@ const styles = StyleSheet.create({
   image_placeholder_text: {
     textAlign: "center",
     color: Colors.dark,
-    marginTop: 5,
-    height: height,
     padding: 20,
   },
 });
