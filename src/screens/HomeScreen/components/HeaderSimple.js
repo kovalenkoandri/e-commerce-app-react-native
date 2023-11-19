@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Dimensions,
   StyleSheet,
@@ -10,115 +10,125 @@ import {
   TextInput,
   TouchableWithoutFeedback,
   StatusBar,
+  Button,
+  ScrollView,
 } from "react-native";
 import Colors from "../../../utils/Colors";
 import SearchItem from "./SearchItemSimple";
 import { Text } from "react-native-paper";
+import { fetchProductByFabricOrOriginalId } from "../../../reducers";
+import { useDispatch, useSelector } from "react-redux";
 const { height } = Dimensions.get("window");
 
-export class Header extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      keyword: "",
-      productsFilter: "",
-    };
-  }
-  searchFilterFunction = (searchText) => {
-    const dataCatalog = this.props.products.filter((product) =>
-      product["Каталожный номер производителя"]
-        .toLowerCase()
-        .includes(searchText.toLowerCase().trim()),
-    );
-    const dataOriginal = this.props.products.filter((product) =>
-      product["Оригинальный номер Идентификатор"]
-        .toLowerCase()
-        .includes(searchText.toLowerCase().trim()),
-    );
-    const resultData = () => {
-      if (dataCatalog.length === 0) return dataOriginal;
-      return dataCatalog;
-    };
-    this.setState({
-      keyword: searchText,
-      productsFilter: resultData(),
-    });
+export const Header = ({ navigation }) => {
+  const [keyword, setKeyword] = useState("");
+  const [notFound, setNotFound] = useState(false);
+  const dispatch = useDispatch();
+  const products = useSelector((state) => state.store.pruductsByFabricId);
+  const notFoundFromReduxStore = useSelector((state) => state.store.notFound);
+  useEffect(() => {
+    setNotFound(notFoundFromReduxStore);
+  }, [notFoundFromReduxStore]);
+
+  const onSubmit = () => {
+    try {
+      dispatch(fetchProductByFabricOrOriginalId(keyword));
+    } catch (err) {
+      alert(err);
+    }
   };
-
-  render() {
-    return (
-      <>
-        <View style={styles.input_box}>
-          <TextInput
-            maxLength={9}
-            keyboardType="numeric"
-            ref="input"
-            placeholder="Введіть 9 цифр коду"
-            clearButtonMode="always"
-            value={this.state.keyword}
-            onChangeText={(value) => this.searchFilterFunction(value)}
-            style={styles.input}
-          />
-        </View>
-        <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-          {this.state.keyword === "" ? (
-            <View style={styles.searchResultContainer}>
-              <Text
-                variant="headlineMedium"
-                style={styles.searchResultExampleText}
-              >
-                Приклад: 713656100
-              </Text>
-              <Image
-                source={require("../../../assets/Images/logo1.png")}
-                style={styles.searchResultImageBrand}
-              />
-
-              <Text
-                variant="headlineMedium"
-                style={styles.searchResultExampleText}
-              >
-                Пошук здійснюється по:{"\n"} 1. Каталожному номеру виробника.
-                {"\n"} 2. Оригільному номеру ідентифікатору
-              </Text>
-            </View>
-          ) : (
-            <View
-              style={{
-                marginHorizontal: 20,
-                marginTop:
-                  Platform.OS === "android" ? 0 : height < 668 ? 0 : 60,
-              }}
+  return (
+    <ScrollView>
+      <View style={styles.input_box}>
+        <TextInput
+          maxLength={9}
+          // ref="input"
+          placeholder="Введіть 9 цифр коду"
+          clearButtonMode="always"
+          value={keyword}
+          onChangeText={(value) => setKeyword(value)}
+          style={styles.input}
+        />
+      </View>
+      <Button
+        title="Знайти!"
+        disabled={keyword.length !== 9}
+        onPress={() => onSubmit()}
+      />
+      <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+        {products.length === 0 && !notFound ? (
+          <View style={styles.searchResultContainer}>
+            <Text
+              variant="headlineMedium"
+              selectable={true}
+              style={styles.searchResultExampleText}
             >
-              {this.state.productsFilter.length === 0 ? (
+              Приклад: 713656100
+            </Text>
+            <Image
+              source={require("../../../assets/Images/logo1.png")}
+              style={styles.searchResultImageBrand}
+            />
+
+            <Text
+              variant="headlineMedium"
+              style={styles.searchResultExampleText}
+            >
+              Пошук здійснюється по:{"\n"} 1. Каталожному номеру виробника.
+              {"\n"} 2. Оригільному номеру ідентифікатору
+            </Text>
+          </View>
+        ) : (
+          <View
+            style={{
+              marginHorizontal: 20,
+              marginTop: Platform.OS === "android" ? 0 : height < 668 ? 0 : 60,
+            }}
+          >
+            {notFound ? (
+              <>
                 <Text
                   variant="headlineMedium"
                   style={styles.searchResultNotFound}
                 >
                   За даним кодом товар не знайдено
                 </Text>
-              ) : (
-                <FlatList
-                  style={[styles.flatList]}
-                  data={this.state.productsFilter}
-                  keyExtractor={(item) => item._id}
-                  renderItem={({ item }) => {
-                    return (
-                      <SearchItem
-                        item={item}
-                        navigation={this.props.navigation}
-                      />
-                    );
-                  }}
+                <Text
+                  variant="headlineMedium"
+                  selectable={true}
+                  style={styles.searchResultExampleText}
+                >
+                  Приклад: 713656100
+                </Text>
+                <Image
+                  source={require("../../../assets/Images/logo1.png")}
+                  style={styles.searchResultImageBrand}
                 />
-              )}
-            </View>
-          )}
-        </TouchableWithoutFeedback>
-      </>
-    );
-  }
-}
+
+                <Text
+                  variant="headlineMedium"
+                  style={styles.searchResultExampleText}
+                >
+                  Пошук здійснюється по:{"\n"} 1. Каталожному номеру виробника.
+                  {"\n"} 2. Оригільному номеру ідентифікатору
+                </Text>
+              </>
+            ) : (
+              <FlatList
+                style={styles.flatList}
+                data={products}
+                keyExtractor={(item) => item._id}
+                renderItem={({ item }) => {
+                  return <SearchItem item={item} navigation={navigation} />;
+                }}
+              />
+            )}
+          </View>
+        )}
+      </TouchableWithoutFeedback>
+    </ScrollView>
+  );
+};
 
 const styles = StyleSheet.create({
   flatList: {
@@ -160,6 +170,5 @@ const styles = StyleSheet.create({
     marginTop: StatusBar.currentHeight + 16,
     color: Colors.dark,
     padding: 20,
-    height: height,
   },
 });

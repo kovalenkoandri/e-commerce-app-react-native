@@ -11,6 +11,7 @@ const initialState = {
   pruductsByFabricId: [],
   isFirstOpen: false,
   isLoading: false,
+  notFound: false,
 };
 export const productReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -35,6 +36,7 @@ export const productReducer = (state = initialState, action) => {
         ...state,
         pruductsByFabricId: [...action.pruductsByFabricId],
         isLoading: false,
+        notFound: action.pruductsByFabricId.length === 0 ? true : false,
       };
     case FIRST_OPEN: {
       return {

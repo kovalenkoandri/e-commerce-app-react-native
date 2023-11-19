@@ -14,7 +14,7 @@ export const fetchProducts = () => {
       const response = await timeoutPromise(
         fetch(`${API_URL}/product`, {
           method: "GET",
-        })
+        }),
       );
 
       if (!response.ok) {
@@ -51,10 +51,10 @@ export const fetchProductByFabricOrOriginalId = (fabricId) => {
         });
         throw new Error("Something went wrong!, can't get the products");
       }
-      const resData = await response.json();
+      const { data } = await response.json();
       dispatch({
         type: FETCH_PRODUCTS_BY_FABRIC_ID,
-        products: resData.content,
+        pruductsByFabricId: data,
       });
     } catch (err) {
       throw err;
