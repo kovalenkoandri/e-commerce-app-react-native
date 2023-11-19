@@ -93,7 +93,7 @@ export const DetailBody = ({ item, color }) => {
         <View style={styles.infoContainer}>
           <CustomText selectable={true} style={styles.infoText}>
             Оригинальный номер - Идентификатор:{" "}
-            {item["Оригинальный номер Идентификатор"]}
+            {item["Оригинальный номер - Идентификатор"]}
           </CustomText>
         </View>
         <View style={styles.infoContainer}>
