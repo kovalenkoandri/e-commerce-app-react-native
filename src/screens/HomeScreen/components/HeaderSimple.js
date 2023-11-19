@@ -32,7 +32,7 @@ export const Header = ({ navigation }) => {
 
   const onSubmit = () => {
     try {
-      dispatch(fetchProductByFabricOrOriginalId(keyword));
+      dispatch(fetchProductByFabricOrOriginalId(keyword.trim()));
     } catch (err) {
       alert(err);
     }
