@@ -13,13 +13,17 @@ export default SearchItem = ({ item, navigation }) => {
         style={styles.btn}
       >
         <Ionicons name="ios-search" size={72} color={Colors.dark} />
-      <Text
-        variant="titleLarge"
-        style={styles.name}
-        >
-        {item["Наименование"]}
-      </Text>
-        </TouchableOpacity>
+        <Text variant="titleLarge" style={styles.name}>
+          Каталожний номер виробника: {item["Каталожный номер производителя"]}
+        </Text>
+        <Text variant="titleLarge" style={styles.name}>
+          Оригінальный номер ідентифікатор:{" "}
+          {item["Оригинальный номер - Идентификатор"]}
+        </Text>
+        <Text variant="titleLarge" style={styles.name}>
+          Назва: {item["Наименование"]}
+        </Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -31,7 +35,7 @@ SearchItem.propTypes = {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: StatusBar.currentHeight + 16,
+    marginTop: StatusBar.currentHeight,
     borderBottomWidth: 1,
     borderBottomColor: Colors.light_grey,
     alignItems: "stretch",
@@ -39,7 +43,7 @@ const styles = StyleSheet.create({
   name: {
     color: Colors.dark,
     textAlign: "center",
-    marginBottom: 10
+    marginBottom: 10,
   },
   btn: {
     alignItems: "center",

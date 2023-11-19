@@ -88,38 +88,38 @@ export const DetailBody = ({ item, color }) => {
             textDecorationLine: "underline",
           }}
         >
-          Информация о товаре
+          Информація про товар
         </CustomText>
         <View style={styles.infoContainer}>
           <CustomText selectable={true} style={styles.infoText}>
-            Оригинальный номер - Идентификатор:{" "}
+            Оригінальний номер ідентифікатор:{" "}
             {item["Оригинальный номер - Идентификатор"]}
           </CustomText>
         </View>
         <View style={styles.infoContainer}>
           <CustomText selectable={true} style={styles.infoText}>
-            Каталожный номер производителя:{" "}
+            Каталожний номер виробника:{" "}
             {item["Каталожный номер производителя"]}
           </CustomText>
         </View>
         <View style={styles.infoContainer}>
           <CustomText selectable={true} style={styles.infoText}>
-            Производитель: {item["Производитель"]}
+            Виробник: {item["Производитель"]}
           </CustomText>
         </View>
         <View style={styles.infoContainer}>
           <CustomText selectable={true} style={styles.infoText}>
-            Наименование: {item["Наименование"]}
+            Назва: {item["Наименование"]}
           </CustomText>
         </View>
         <View style={styles.infoContainer}>
           <CustomText selectable={true} style={styles.infoText}>
-            Наличие шт: {item["Наличие шт"]}
+            Наявність шт: {item["Наличие шт"]}
           </CustomText>
         </View>
         <View style={styles.infoContainer}>
           <CustomText selectable={true} style={styles.infoText}>
-            Цена грн: {item["Цена Розница"]}
+            Ціна грн: {item["Цена Розница"]}
           </CustomText>
         </View>
         {/* <CustomText

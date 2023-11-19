@@ -38,7 +38,7 @@ export const Header = ({ navigation }) => {
     }
   };
   return (
-    <View>
+    <>
       <BackButton navigation={navigation} />
       <View style={styles.input_box}>
         <TextInput
@@ -79,6 +79,7 @@ export const Header = ({ navigation }) => {
               </HeaderTextExample>
             ) : (
               <FlatList
+                nestedScrollEnabled={true}
                 style={styles.flatList}
                 data={products}
                 keyExtractor={(item) => item._id}
@@ -90,19 +91,20 @@ export const Header = ({ navigation }) => {
           </View>
         )}
       </TouchableWithoutFeedback>
-    </View>
+    </>
   );
 };
 
 const styles = StyleSheet.create({
   flatList: {
-    height: height,
+    // height: height,
   },
   input_box: {
-    height: 50,
+    height: 100,
     flexDirection: "row",
     alignItems: "center",
     backgroundColor: Colors.bluegreen,
+    overflow: "hidden",
   },
   input: {
     flex: 1,
@@ -112,12 +114,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     fontSize: 32,
     marginHorizontal: 20,
-    marginTop: StatusBar.currentHeight + 16,
+    // marginTop: StatusBar.currentHeight + 16,
   },
   searchResultNotFound: {
     textAlign: "center",
-    marginTop: StatusBar.currentHeight + 16,
+    // marginTop: StatusBar.currentHeight + 16,
     color: Colors.dark,
-    padding: 20,
+    padding: 4,
   },
 });
