@@ -42,9 +42,9 @@ export const Header = ({ navigation }) => {
       <BackButton navigation={navigation} />
       <View style={styles.input_box}>
         <TextInput
-          maxLength={9}
+          maxLength={20}
           autoFocus
-          placeholder="Введіть 9 цифр коду"
+          placeholder="Введіть код"
           clearButtonMode="always"
           value={keyword}
           onChangeText={(value) => setKeyword(value)}
@@ -53,7 +53,7 @@ export const Header = ({ navigation }) => {
         />
         <Button
           title="Знайти!"
-          disabled={keyword.length !== 9}
+          disabled={keyword.length < 5}
           onPress={() => onSubmit()}
         />
       </View>
