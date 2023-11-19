@@ -1,13 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import {
   Dimensions,
   StyleSheet,
   View,
-  Image,
   FlatList,
   Platform,
   Keyboard,
-  TextInput,
   TouchableWithoutFeedback,
   StatusBar,
   Button,
@@ -15,9 +13,11 @@ import {
 } from "react-native";
 import Colors from "../../../utils/Colors";
 import SearchItem from "./SearchItemSimple";
-import { Text } from "react-native-paper";
+import { Text, TextInput } from "react-native-paper";
 import { fetchProductByFabricOrOriginalId } from "../../../reducers";
 import { useDispatch, useSelector } from "react-redux";
+import HeaderTextExample from "./HeaderTextExample";
+import BackButton from "./BackButton";
 const { height } = Dimensions.get("window");
 
 export const Header = ({ navigation }) => {
@@ -38,46 +38,29 @@ export const Header = ({ navigation }) => {
     }
   };
   return (
-    <ScrollView>
+    <View>
+      <BackButton navigation={navigation} />
       <View style={styles.input_box}>
         <TextInput
           maxLength={9}
-          // ref="input"
+          autoFocus
           placeholder="Введіть 9 цифр коду"
           clearButtonMode="always"
           value={keyword}
           onChangeText={(value) => setKeyword(value)}
           style={styles.input}
+          mode="outlined"
+        />
+        <Button
+          title="Знайти!"
+          disabled={keyword.length !== 9}
+          onPress={() => onSubmit()}
         />
       </View>
-      <Button
-        title="Знайти!"
-        disabled={keyword.length !== 9}
-        onPress={() => onSubmit()}
-      />
+
       <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
         {products.length === 0 && !notFound ? (
-          <View style={styles.searchResultContainer}>
-            <Text
-              variant="headlineMedium"
-              selectable={true}
-              style={styles.searchResultExampleText}
-            >
-              Приклад: 713656100
-            </Text>
-            <Image
-              source={require("../../../assets/Images/logo1.png")}
-              style={styles.searchResultImageBrand}
-            />
-
-            <Text
-              variant="headlineMedium"
-              style={styles.searchResultExampleText}
-            >
-              Пошук здійснюється по:{"\n"} 1. Каталожному номеру виробника.
-              {"\n"} 2. Оригільному номеру ідентифікатору
-            </Text>
-          </View>
+          <HeaderTextExample />
         ) : (
           <View
             style={{
@@ -86,33 +69,14 @@ export const Header = ({ navigation }) => {
             }}
           >
             {notFound ? (
-              <>
+              <HeaderTextExample>
                 <Text
                   variant="headlineMedium"
                   style={styles.searchResultNotFound}
                 >
                   За даним кодом товар не знайдено
                 </Text>
-                <Text
-                  variant="headlineMedium"
-                  selectable={true}
-                  style={styles.searchResultExampleText}
-                >
-                  Приклад: 713656100
-                </Text>
-                <Image
-                  source={require("../../../assets/Images/logo1.png")}
-                  style={styles.searchResultImageBrand}
-                />
-
-                <Text
-                  variant="headlineMedium"
-                  style={styles.searchResultExampleText}
-                >
-                  Пошук здійснюється по:{"\n"} 1. Каталожному номеру виробника.
-                  {"\n"} 2. Оригільному номеру ідентифікатору
-                </Text>
-              </>
+              </HeaderTextExample>
             ) : (
               <FlatList
                 style={styles.flatList}
@@ -126,7 +90,7 @@ export const Header = ({ navigation }) => {
           </View>
         )}
       </TouchableWithoutFeedback>
-    </ScrollView>
+    </View>
   );
 };
 
@@ -149,21 +113,6 @@ const styles = StyleSheet.create({
     fontSize: 32,
     marginHorizontal: 20,
     marginTop: StatusBar.currentHeight + 16,
-  },
-  searchResultContainer: {
-    flexDirection: "column",
-    marginTop: 40,
-    height: height,
-  },
-  searchResultImageBrand: {
-    height: 80,
-    resizeMode: "contain",
-    alignSelf: "center",
-  },
-  searchResultExampleText: {
-    textAlign: "center",
-    color: Colors.dark,
-    padding: 20,
   },
   searchResultNotFound: {
     textAlign: "center",
