@@ -106,8 +106,9 @@ export const addOrderAvtoNova = (
   // name,
   // totalAmount,
   // fullAddress,
-  phone, item
+  phone, quantity, item
 ) => {
+  const { _id, ...itemWithoutId } = item;
   return async (dispatch, getState) => {
     dispatch({
       type: ORDER_LOADING,
@@ -131,10 +132,11 @@ export const addOrderAvtoNova = (
               // paymentMethod,
               // address: fullAddress,
               phone,
-              item
+              quantity,
+              ...itemWithoutId,
             },
           }),
-        })
+        }),
       );
       if (!response.ok) {
         dispatch({

@@ -21,7 +21,7 @@ const { width, height } = Dimensions.get("window");
 export const DetailBody = ({ item, color }) => {
   const dispatch = useDispatch();
   //action Add Order
-  const addOrderAct = async ({ phone }) => {
+  const addOrderAct = async ({ phone, quantity }) => {
     try {
       await dispatch(
         addOrderAvtoNova(
@@ -32,6 +32,7 @@ export const DetailBody = ({ item, color }) => {
           // paymentMethod,
           // fullAddress,
           phone,
+          quantity,
           item,
         ),
       );
@@ -98,8 +99,7 @@ export const DetailBody = ({ item, color }) => {
         </View>
         <View style={styles.infoContainer}>
           <CustomText selectable={true} style={styles.infoText}>
-            Каталожний номер виробника:{" "}
-            {item["Каталожный номер производителя"]}
+            Каталожний номер виробника: {item["Каталожный номер производителя"]}
           </CustomText>
         </View>
         <View style={styles.infoContainer}>
@@ -137,7 +137,7 @@ export const DetailBody = ({ item, color }) => {
         </CustomText> */}
       </Animatable.View>
       <Formik
-        initialValues={{ phone: "" }}
+        initialValues={{ phone: "", quantity: "1" }}
         onSubmit={(values) => addOrderAct(values)}
       >
         {({ handleChange, handleBlur, handleSubmit, values }) => (
@@ -150,6 +150,16 @@ export const DetailBody = ({ item, color }) => {
                 onChangeText={handleChange("phone")}
                 onBlur={handleBlur("phone")}
                 value={values.phone}
+                style={styles.telInput}
+                keyboardType="phone-pad"
+              />
+              <CustomText selectable={true} style={styles.telLabel}>
+                Кількість
+              </CustomText>
+              <TextInput
+                onChangeText={handleChange("quantity")}
+                onBlur={handleBlur("quantity")}
+                value={values.quantity}
                 style={styles.telInput}
                 keyboardType="phone-pad"
               />
