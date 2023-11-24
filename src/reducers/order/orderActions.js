@@ -25,7 +25,7 @@ export const fetchOrder = () => {
             "auth-token": user.token,
           },
           method: "GET",
-        })
+        }),
       );
       if (!response.ok) {
         dispatch({
@@ -35,7 +35,7 @@ export const fetchOrder = () => {
       }
       const resData = await response.json();
       const filterUserOrder = resData.content.filter(
-        (userOrder) => userOrder.userId._id === user.userid
+        (userOrder) => userOrder.userId._id === user.userid,
       );
       dispatch({
         type: FETCH_ORDER,
@@ -55,7 +55,7 @@ export const addOrder = (
   totalAmount,
   paymentMethod,
   fullAddress,
-  phone
+  phone,
 ) => {
   return async (dispatch, getState) => {
     dispatch({
@@ -83,7 +83,7 @@ export const addOrder = (
               phone,
             },
           }),
-        })
+        }),
       );
       if (!response.ok) {
         dispatch({
@@ -97,7 +97,7 @@ export const addOrder = (
         orderItem: resData.content,
       });
     } catch (err) {
-      throw error;
+      throw err;
     }
   };
 };
@@ -106,9 +106,10 @@ export const addOrderAvtoNova = (
   // name,
   // totalAmount,
   // fullAddress,
-  phone, quantity, item
+  phone,
+  quantity,
+  item,
 ) => {
-  const { _id, ...itemWithoutId } = item;
   return async (dispatch, getState) => {
     dispatch({
       type: ORDER_LOADING,
@@ -133,7 +134,7 @@ export const addOrderAvtoNova = (
               // address: fullAddress,
               phone,
               quantity,
-              ...itemWithoutId,
+              product: item,
             },
           }),
         }),
