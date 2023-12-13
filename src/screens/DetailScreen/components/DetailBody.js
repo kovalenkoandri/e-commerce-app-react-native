@@ -119,7 +119,7 @@ export const DetailBody = ({ item, color }) => {
         </View>
         <View style={styles.infoContainer}>
           <CustomText selectable={true} style={styles.infoText}>
-            Ціна грн: {item["Цена Розница"]}
+            Ціна грн: {item["Цена спец"]}
           </CustomText>
         </View>
         {/* <CustomText
@@ -180,7 +180,7 @@ DetailBody.propTypes = {
 const styles = StyleSheet.create({
   footer: {
     width,
-    backgroundColor: "#fff",
+    backgroundColor: Colors.bluegreen,
     paddingHorizontal: 20,
     paddingVertical: 20,
     marginBottom: 10,
