@@ -22,7 +22,7 @@ export const CartScreen = (props) => {
   const dispatch = useDispatch();
   let total = 0;
   carts.items.map(
-    (item) => (total += +item.item["Цена Розница"] * +item.quantity),
+    (item) => (total += +item.item["Цена спец"] * +item.quantity),
   );
   const loadCarts = useCallback(async () => {
     setIsRefreshing(true);

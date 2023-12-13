@@ -82,7 +82,7 @@ export class ProductItem extends React.PureComponent {
             Наличие, шт {item["Наличие, шт"]}
           </CustomText>
           <CustomText style={styles.name}>
-            Цена Розница {item["Цена Розница"]}
+            Цена Розница {item["Цена спец"]}
           </CustomText>
         </View>
         {/* <View style={styles.info}>
