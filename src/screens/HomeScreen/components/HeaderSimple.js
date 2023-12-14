@@ -39,7 +39,7 @@ export const Header = ({ navigation }) => {
   };
   return (
     <>
-      <BackButton navigation={navigation} />
+      {/* <BackButton navigation={navigation} /> */}
       <View style={styles.input_box}>
         <TextInput
           maxLength={20}
