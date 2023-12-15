@@ -228,14 +228,14 @@ export const TabScreen = () => {
           tabBarLabel: 'Favourite',
         })}
       /> */}
-      <Tab.Screen
+      {/* <Tab.Screen
         name="Cart"
         component={CartStackScreen}
         options={() => ({
           tabBarLabel: 'Cart',
           tabBarBadge: carts.items.length === 0 ? null : carts.items.length,
         })}
-      />
+      /> */}
     </Tab.Navigator>
   );
 };
