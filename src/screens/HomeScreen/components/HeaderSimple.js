@@ -8,9 +8,11 @@ import {
   Keyboard,
   TouchableWithoutFeedback,
   StatusBar,
-  Button,
+  // Button,
   ScrollView,
+  // TextInput,
 } from "react-native";
+import { Button } from "react-native-paper";
 import Colors from "../../../utils/Colors";
 import SearchItem from "./SearchItemSimple";
 import { Text, TextInput } from "react-native-paper";
@@ -18,7 +20,7 @@ import { fetchProductByFabricOrOriginalId } from "../../../reducers";
 import { useDispatch, useSelector } from "react-redux";
 import HeaderTextExample from "./HeaderTextExample";
 import BackButton from "./BackButton";
-const { height } = Dimensions.get("window");
+const { height, width } = Dimensions.get("window");
 
 export const Header = ({ navigation }) => {
   const [keyword, setKeyword] = useState("");
@@ -26,6 +28,7 @@ export const Header = ({ navigation }) => {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.store.pruductsByFabricId);
   const notFoundFromReduxStore = useSelector((state) => state.store.notFound);
+  const loading = useSelector((state) => state.store.isLoading);
   useEffect(() => {
     setNotFound(notFoundFromReduxStore);
   }, [notFoundFromReduxStore]);
@@ -45,17 +48,23 @@ export const Header = ({ navigation }) => {
           maxLength={20}
           autoFocus
           placeholder="Введіть код"
-          clearButtonMode="always"
           value={keyword}
           onChangeText={(value) => setKeyword(value)}
           style={styles.input}
           mode="outlined"
+          contentStyle={{
+          }}
+          outlineStyle={{ borderRadius: 12, borderColor: Colors.blue }}
         />
         <Button
-          title="Знайти!"
           disabled={keyword.length < 5}
           onPress={() => onSubmit()}
-        />
+          style={styles.button}
+          mode="elevated"
+          loading={loading}
+        >
+          <Text style={styles.text}>Знайти!</Text>
+        </Button>
       </View>
 
       <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
@@ -100,26 +109,40 @@ const styles = StyleSheet.create({
     // height: height,
   },
   input_box: {
-    height: 100,
-    flexDirection: "row",
+    height: 180,
+    flexDirection: "column",
     alignItems: "center",
     backgroundColor: Colors.bluegreen,
     overflow: "hidden",
   },
   input: {
-    flex: 1,
-    height: 64,
-    backgroundColor: Colors.light_grey,
-    borderRadius: 16,
+    width: "90%",
+    height: 80,
     paddingHorizontal: 16,
     fontSize: 32,
-    marginHorizontal: 20,
-    // marginTop: StatusBar.currentHeight + 16,
+    lineHeight: 32,
+    marginTop: 8,
   },
   searchResultNotFound: {
     textAlign: "center",
-    // marginTop: StatusBar.currentHeight + 16,
     color: Colors.dark,
     padding: 4,
+  },
+  button: {
+    marginTop: 16,
+    alignItems: "center",
+    justifyContent: "center",
+    paddingVertical: 6,
+    paddingHorizontal: 32,
+    borderRadius: 4,
+    elevation: 3,
+    backgroundColor: Colors.blue,
+  },
+  text: {
+    fontSize: 32,
+    lineHeight: 32,
+    fontWeight: "bold",
+    letterSpacing: 3,
+    color: Colors.dark,
   },
 });
