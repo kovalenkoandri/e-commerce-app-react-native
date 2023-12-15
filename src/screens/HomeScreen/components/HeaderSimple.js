@@ -136,7 +136,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 32,
     borderRadius: 4,
     elevation: 3,
-    backgroundColor: Colors.blue,
+    backgroundColor: Colors.bg,
   },
   text: {
     fontSize: 32,

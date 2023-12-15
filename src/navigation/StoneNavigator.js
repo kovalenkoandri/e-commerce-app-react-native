@@ -42,7 +42,7 @@ import { FinishOrderScreen } from '../screens/FinishOrderScreen';
 import { ProfileScreen } from '../screens/ProfileScreen';
 import { EditProfileScreen } from '../screens/ProfileScreen';
 // redux
-import { useSelector } from 'react-redux';
+import { batch, useSelector } from 'react-redux';
 
 // create Navigator
 
@@ -207,11 +207,11 @@ export const TabScreen = () => {
         },
       })}
       barStyle={{
-        backgroundColor: Colors.light_grey,
+        backgroundColor: Colors.bg,
         height: 75,
         justifyContent: "center",
       }}
-      activeColor={Colors.lighter_green}
+      activeColor={Colors.dark}
       inactiveColor={Colors.grey}
     >
       <Tab.Screen
