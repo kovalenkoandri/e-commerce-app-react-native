@@ -164,7 +164,7 @@ export const DetailBody = ({ item, color }) => {
                 keyboardType="phone-pad"
               />
             </View>
-            <Button onPress={handleSubmit} title="Submit" />
+            <Button onPress={handleSubmit} title="Відправити на пошту" />
           </View>
         )}
       </Formik>

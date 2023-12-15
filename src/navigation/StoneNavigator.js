@@ -196,12 +196,12 @@ export const TabScreen = () => {
         tabBarIcon: ({ focused }) => {
           let iconName;
           const color = focused ? Colors.lighter_green : Colors.grey;
-          if (route.name === 'HomePage') {
-            iconName = 'home';
-          } else if (route.name === 'Favorite') {
-            iconName = 'hearto';
-          } else if (route.name === 'Cart') {
-            iconName = 'shoppingcart';
+          if (route.name === "HomePage") {
+            iconName = "home";
+          } else if (route.name === "Favorite") {
+            iconName = "hearto";
+          } else if (route.name === "Cart") {
+            iconName = "shoppingcart";
           }
           return <AntDesign name={iconName} size={23} color={color} />;
         },
@@ -209,7 +209,7 @@ export const TabScreen = () => {
       barStyle={{
         backgroundColor: Colors.light_grey,
         height: 75,
-        justifyContent: 'center',
+        justifyContent: "center",
       }}
       activeColor={Colors.lighter_green}
       inactiveColor={Colors.grey}
@@ -218,7 +218,7 @@ export const TabScreen = () => {
         name="HomePage"
         component={HomeStackScreen}
         options={{
-          tabBarLabel: 'Home page',
+          tabBarLabel: "Home page",
         }}
       />
       {/* <Tab.Screen
