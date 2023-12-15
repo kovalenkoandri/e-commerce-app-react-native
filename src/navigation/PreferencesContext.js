@@ -30,12 +30,13 @@ const CombinedDarkTheme = {
 };
 export const PreferencesContext = React.createContext({
   toggleTheme: () => {},
-  isThemeDark: false,
+  isThemeDark: true,
 });
 
 export const useThemePreferences = () => {
-  const [isThemeDark, setIsThemeDark] = React.useState(false);
+  const [isThemeDark, setIsThemeDark] = React.useState(true);
 
+  // let theme = CombinedDarkTheme;
   let theme = isThemeDark ? CombinedDarkTheme : CombinedDefaultTheme;
 
   const toggleTheme = React.useCallback(() => {

@@ -96,7 +96,7 @@ export const AppNavigator = () => {
                 <MaterialCommunityIcons
                   name={isThemeDark ? "weather-night" : "weather-sunny"}
                   size={24}
-                  color={isThemeDark ? Colors.white : Colors.black}
+                  color={isThemeDark ? Colors.green : Colors.dark}
                 />
               )}
             />
