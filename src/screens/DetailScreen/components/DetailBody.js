@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet, Dimensions, Button } from "react-native";
+import { View, StyleSheet, Dimensions, Text } from "react-native";
 //Animatable
 import * as Animatable from "react-native-animatable";
 //icon
@@ -15,7 +15,7 @@ import PropTypes from "prop-types";
 import { Formik } from "formik";
 import { addOrderAvtoNova } from "../../../reducers";
 import { useDispatch } from "react-redux";
-import { TextInput } from "react-native-paper";
+import { TextInput, Button } from "react-native-paper";
 const { width, height } = Dimensions.get("window");
 
 export const DetailBody = ({ item, color }) => {
@@ -23,7 +23,7 @@ export const DetailBody = ({ item, color }) => {
   //action Add Order
   const addOrderAct = async ({ phone, quantity }) => {
     try {
-      await dispatch(
+      dispatch(
         addOrderAvtoNova(
           // token,
           // orderItems,
@@ -42,22 +42,34 @@ export const DetailBody = ({ item, color }) => {
   };
   return (
     <View style={[styles.footer]}>
-      <Animatable.View
+      {/* <Animatable.View 
         animation="lightSpeedIn"
         delay={1000}
         style={styles.footer_header}
-      >
-        {/* <CustomText selectable={true} style={{ ...styles.title, color }}>
+      > 
+      */}
+      {/* <CustomText selectable={true} style={{ ...styles.title, color }}>
           Искомый код{" "}
           {item["Каталожный номер производителя"] !== "#NULL!" ||
           item["Оригинальный номер Идентификатор"]}
         </CustomText> */}
-        {/* <NumberFormat
+      {/* <NumberFormat
           style={{ color: '#fff', fontSize: 13 }}
           price={item.price}
           color={color}
         /> */}
-      </Animatable.View>
+      {/* </Animatable.View> */}
+      <CustomText
+        style={{
+          ...styles.title,
+          fontWeight: "500",
+          marginTop: 20,
+          marginBottom: 10,
+          textDecorationLine: "underline",
+        }}
+      >
+        Информація про товар
+      </CustomText>
       <View style={{ flexDirection: "row", marginTop: 10 }}>
         <Animatable.View animation="bounceIn" delay={1600}>
           <AntDesign name="star" size={15} color={color} />
@@ -80,17 +92,6 @@ export const DetailBody = ({ item, color }) => {
         delay={1000}
         style={styles.description}
       >
-        <CustomText
-          style={{
-            ...styles.title,
-            fontWeight: "500",
-            marginTop: 20,
-            marginBottom: 10,
-            textDecorationLine: "underline",
-          }}
-        >
-          Информація про товар
-        </CustomText>
         <View style={styles.infoContainer}>
           <CustomText selectable={true} style={styles.infoText}>
             Оригінальний номер ідентифікатор:{" "}
@@ -142,29 +143,35 @@ export const DetailBody = ({ item, color }) => {
       >
         {({ handleChange, handleBlur, handleSubmit, values }) => (
           <View>
-            <View style={styles.telView}>
-              <CustomText selectable={true} style={styles.telLabel}>
+            <View style={styles.contactsContainer}>
+              <CustomText selectable={true} style={styles.contactsLabel}>
                 Телефон
               </CustomText>
               <TextInput
                 onChangeText={handleChange("phone")}
                 onBlur={handleBlur("phone")}
                 value={values.phone}
-                style={styles.telInput}
+                style={styles.contactsInput}
                 keyboardType="phone-pad"
               />
-              <CustomText selectable={true} style={styles.telLabel}>
+              <CustomText selectable={true} style={styles.contactsLabel}>
                 Кількість
               </CustomText>
               <TextInput
                 onChangeText={handleChange("quantity")}
                 onBlur={handleBlur("quantity")}
                 value={values.quantity}
-                style={styles.telInput}
+                style={styles.contactsInput}
                 keyboardType="phone-pad"
               />
             </View>
-            <Button onPress={handleSubmit} title="Відправити на пошту" />
+            <Button
+              mode="elevated"
+              style={styles.button}
+              onPress={handleSubmit}
+            >
+              <Text style={styles.btnText}>Надіслати</Text>
+            </Button>
           </View>
         )}
       </Formik>
@@ -193,7 +200,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 17,
-    color: Colors.text,
+    color: Colors.dark,
   },
   detail: {
     fontSize: 15,
@@ -211,23 +218,51 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   infoText: {
-    fontSize: 20,
-    lineHeight: 20,
+    fontSize: 24,
+    lineHeight: 24,
+    color: Colors.dark,
   },
-  telView: {
+  contactsContainer: {
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    borderColor: "#000",
+    borderColor: Colors.dark,
     borderWidth: 1,
+    flexDirection: "column",
+    alignItems: "center",
+    backgroundColor: Colors.bluegreen,
+    overflow: "hidden",
+    padding: 12,
+    borderRadius: 20,
   },
-  telLabel: {
+  contactsLabel: {
     fontSize: 25,
     lineHeight: 25,
   },
-  telInput: {
-    flex: 1,
-    margin: 10,
+  contactsInput: {
     borderWidth: 1,
+    width: "90%",
+    height: 44,
+    paddingHorizontal: 16,
+    fontSize: 20,
+    lineHeight: 20,
+    margin: 8,
+  },
+  button: {
+    marginTop: 16,
+    alignItems: "center",
+    justifyContent: "center",
+    paddingVertical: 6,
+    paddingHorizontal: 32,
+    borderRadius: 20,
+    elevation: 3,
+    backgroundColor: Colors.bg,
+  },
+  btnText: {
+    fontSize: 32,
+    lineHeight: 32,
+    fontWeight: "bold",
+    letterSpacing: 3,
+    color: Colors.dark,
   },
 });
