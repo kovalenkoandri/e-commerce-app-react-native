@@ -15,6 +15,8 @@ import * as Linking from "expo-linking";
 import { PaperProvider, Appbar, Switch } from "react-native-paper";
 import { PreferencesContext, useThemePreferences } from "./PreferencesContext";
 import { TouchableWithoutFeedback, Keyboard } from "react-native";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import Colors from "../utils/Colors";
 // LogBox.ignoreLogs(['Setting a timer']);
 
 export const AppNavigator = () => {
@@ -88,7 +90,16 @@ export const AppNavigator = () => {
               },
             }}
           >
-            <Appbar.Content title={"Light or Dark mode"} />
+            <Appbar.Content title={""} />
+            <Appbar.Action
+              icon={() => (
+                <MaterialCommunityIcons
+                  name={isThemeDark ? "weather-night" : "weather-sunny"}
+                  size={24}
+                  color={isThemeDark ? Colors.white : Colors.black}
+                />
+              )}
+            />
             <Switch
               color={"grey"}
               value={isThemeDark}
