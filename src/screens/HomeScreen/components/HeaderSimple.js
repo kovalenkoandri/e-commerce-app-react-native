@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, useCallback } from "react";
 import {
   Dimensions,
   StyleSheet,
@@ -52,8 +52,7 @@ export const Header = ({ navigation }) => {
           onChangeText={(value) => setKeyword(value)}
           style={styles.input}
           mode="outlined"
-          contentStyle={{
-          }}
+          contentStyle={{}}
           outlineStyle={{ borderRadius: 12, borderColor: Colors.blue }}
         />
         <Button
@@ -109,19 +108,19 @@ const styles = StyleSheet.create({
     // height: height,
   },
   input_box: {
-    height: 180,
     flexDirection: "column",
     alignItems: "center",
     backgroundColor: Colors.bluegreen,
-    overflow: "hidden",
   },
   input: {
     width: "90%",
     height: 80,
-    paddingHorizontal: 16,
-    fontSize: 32,
-    lineHeight: 32,
-    marginTop: 8,
+    fontSize: 36,
+    margin: 8,
+    backgroundColor: Colors.dark,
+    color: Colors.white,
+    textAlign: "center",
+    padding: 4,
   },
   searchResultNotFound: {
     textAlign: "center",
@@ -134,7 +133,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     paddingVertical: 6,
     paddingHorizontal: 32,
-    borderRadius: 4,
+    borderRadius: 12,
     elevation: 3,
     backgroundColor: Colors.bg,
   },

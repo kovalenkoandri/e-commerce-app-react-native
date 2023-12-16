@@ -48,7 +48,7 @@ export const DetailBody = ({ item, color }) => {
       alert(err);
     }
   };
-  const [quantity, setQuantity] = useState(0);
+  const [quantity, setQuantity] = useState(1);
   const [phone, setPhone] = useState("");
 
   const incrementQuantity = (values) => {
@@ -60,7 +60,7 @@ export const DetailBody = ({ item, color }) => {
   };
 
   const decrementQuantity = (values) => {
-    if (quantity > 0) {
+    if (quantity > 1) {
       setQuantity((prevQuantity) => {
         const newQuantity = prevQuantity - 1;
         values.quantity = newQuantity;
@@ -211,13 +211,13 @@ export const DetailBody = ({ item, color }) => {
                 styles.button,
                 {
                   backgroundColor:
-                    quantity < 1 || phone.length !== 13
+                    phone.length !== 13
                       ? Colors.grey
                       : Colors.bg,
                 },
               ]}
               onPress={handleSubmit}
-              disabled={quantity < 1 || phone.length !== 13}
+              disabled={phone.length !== 13}
             >
               <Text style={styles.btnText}>Надіслати</Text>
             </Button>
