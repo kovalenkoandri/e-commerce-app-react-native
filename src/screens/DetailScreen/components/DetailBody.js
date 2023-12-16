@@ -5,6 +5,7 @@ import {
   Dimensions,
   Text,
   TouchableOpacity,
+  TextInput,
 } from "react-native";
 //Animatable
 import * as Animatable from "react-native-animatable";
@@ -21,9 +22,8 @@ import PropTypes from "prop-types";
 import { Formik } from "formik";
 import { addOrderAvtoNova } from "../../../reducers";
 import { useDispatch } from "react-redux";
-import { TextInput, Button } from "react-native-paper";
+import { Button } from "react-native-paper";
 import { MaskedTextInput } from "react-native-mask-text";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
 const { width, height } = Dimensions.get("window");
 
 export const DetailBody = ({ item, color }) => {
@@ -49,13 +49,12 @@ export const DetailBody = ({ item, color }) => {
     }
   };
   const [quantity, setQuantity] = useState(0);
-  const [phone, setPhone] = useState('');
+  const [phone, setPhone] = useState("");
 
   const incrementQuantity = (values) => {
     setQuantity((prevQuantity) => {
       const newQuantity = prevQuantity + 1;
       values.quantity = newQuantity;
-      console.log(values);
       return newQuantity; // Return the new state value
     });
   };
@@ -65,7 +64,6 @@ export const DetailBody = ({ item, color }) => {
       setQuantity((prevQuantity) => {
         const newQuantity = prevQuantity - 1;
         values.quantity = newQuantity;
-        console.log(values);
         return newQuantity; // Return the new state value
       });
     }
@@ -181,7 +179,6 @@ export const DetailBody = ({ item, color }) => {
                 mask="999-999-99-99"
                 onChangeText={(text, rawText) => {
                   values.phone = text;
-                  console.log("MaskedTextInput " + values.phone);
                   setPhone(text);
                 }}
                 keyboardType="numeric"
@@ -191,68 +188,23 @@ export const DetailBody = ({ item, color }) => {
                 Кількість
               </CustomText>
               <View style={{ flexDirection: "row", alignItems: "center" }}>
-                <MaterialCommunityIcons name="minus" size={44} />
                 <TouchableOpacity onPress={() => decrementQuantity(values)}>
-                  <Text style={{ fontSize: 44, color: "red", marginRight: 10 }}>
-                    —
-                  </Text>
+                  <Text style={styles.decBtn}>—</Text>
                 </TouchableOpacity>
                 <TextInput
-                  style={{
-                    borderWidth: 1,
-                    padding: 5,
-                    width: 150,
-                    textAlign: "center",
-                  }}
+                  style={styles.inputQuant}
                   value={quantity.toString()}
                   keyboardType="numeric"
                   onChangeText={(text) => {
                     setQuantity(parseInt(text, 10) || "");
                     values.quantity = text;
-                    console.log(values);
                   }}
                 />
                 <TouchableOpacity onPress={() => incrementQuantity(values)}>
-                  <Text
-                    style={{ fontSize: 44, color: "green", marginLeft: 10 }}
-                  >
-                    +
-                  </Text>
+                  <Text style={styles.incBtn}>+</Text>
                 </TouchableOpacity>
-                <MaterialCommunityIcons name="plus" size={44} color="green" />
               </View>
-              {/* <MaskedTextInput
-                mask="999"
-                onChangeText={(text, rawText) => {
-                  values.quantity = text;
-
-                  console.log("values.quantity " + values.quantity);
-                }}
-                // value={values.quantity}
-                style={styles.contactsInputQuant}
-                keyboardType="phone-pad"
-              />
-              <View style={styles.box}>
-                <TouchableOpacity
-                  onPress={() => handleChange("quantity") - 1}
-                  style={styles.boxMin}
-                >
-                  <MaterialCommunityIcons name="minus" size={16} />
-                </TouchableOpacity>
-                <View>
-                  <CustomText style={styles.boxText}>
-                    {item.quantity}
-                  </CustomText>
-                </View>
-                <TouchableOpacity
-                  onPress={() => console.log()}
-                  style={styles.boxMin}
-                >
-                  <MaterialCommunityIcons name="plus" size={16} />
-                </TouchableOpacity>
-              </View> */}
             </View>
-            {console.log(phone.length)}
             <Button
               mode="elevated"
               style={[
@@ -337,45 +289,27 @@ const styles = StyleSheet.create({
     lineHeight: 25,
   },
   contactsInput: {
-    borderWidth: 1,
     width: "90%",
-    height: 44,
-    paddingHorizontal: 16,
-    fontSize: 20,
-    lineHeight: 20,
+    fontSize: 36,
     margin: 8,
     backgroundColor: Colors.dark,
     color: Colors.white,
+    borderRadius: 8,
+    textAlign: "center",
+    padding: 4,
   },
-  contactsInputQuant: {
-    borderWidth: 1,
-    width: "20%",
-    height: 44,
-    paddingHorizontal: 16,
-    fontSize: 20,
-    lineHeight: 20,
-    margin: 8,
-    backgroundColor: Colors.dark,
+  inputQuant: {
     color: Colors.white,
+    backgroundColor: Colors.dark,
+    margin: 8,
+    borderRadius: 8,
+    fontSize: 36,
+    padding: 4,
+    width: 150,
+    textAlign: "center",
   },
-  box: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    height: Platform.OS === "ios" ? 30 : 25,
-    backgroundColor: Colors.light_grey,
-    width: 90,
-    borderRadius: 5,
-    paddingHorizontal: 10,
-    marginTop: 5,
-  },
-  boxMin: {
-    width: "30%",
-    alignItems: "center",
-  },
-  boxText: {
-    fontSize: 12,
-  },
+  decBtn: { fontSize: 44, color: Colors.dark, marginRight: 10 },
+  incBtn: { fontSize: 44, color: Colors.dark, marginLeft: 10 },
   button: {
     marginTop: 16,
     alignItems: "center",
