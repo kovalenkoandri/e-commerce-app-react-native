@@ -16,6 +16,7 @@ import { Formik } from "formik";
 import { addOrderAvtoNova } from "../../../reducers";
 import { useDispatch } from "react-redux";
 import { TextInput, Button } from "react-native-paper";
+import { MaskedTextInput } from "react-native-mask-text";
 const { width, height } = Dimensions.get("window");
 
 export const DetailBody = ({ item, color }) => {
@@ -141,25 +142,25 @@ export const DetailBody = ({ item, color }) => {
         initialValues={{ phone: "", quantity: "1" }}
         onSubmit={(values) => addOrderAct(values)}
       >
-        {({ handleChange, handleBlur, handleSubmit, values }) => (
+        {({ handleChange, handleSubmit, values }) => (
           <View>
             <View style={styles.contactsContainer}>
               <CustomText selectable={true} style={styles.contactsLabel}>
-                Телефон
+                Залишити телефон в форматі 067-000-00-00
               </CustomText>
-              <TextInput
-                onChangeText={handleChange("phone")}
-                onBlur={handleBlur("phone")}
-                value={values.phone}
+              <MaskedTextInput
+                mask="999-999-99-99"
+                onChangeText={(text, rawText) => {
+                  values.phone=text;
+                }}
+                keyboardType="numeric"
                 style={styles.contactsInput}
-                keyboardType="phone-pad"
               />
               <CustomText selectable={true} style={styles.contactsLabel}>
                 Кількість
               </CustomText>
               <TextInput
                 onChangeText={handleChange("quantity")}
-                onBlur={handleBlur("quantity")}
                 value={values.quantity}
                 style={styles.contactsInput}
                 keyboardType="phone-pad"
@@ -247,6 +248,8 @@ const styles = StyleSheet.create({
     fontSize: 20,
     lineHeight: 20,
     margin: 8,
+    backgroundColor: Colors.dark,
+    color: Colors.white
   },
   button: {
     marginTop: 16,
