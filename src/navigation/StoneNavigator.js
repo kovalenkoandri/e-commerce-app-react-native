@@ -15,122 +15,122 @@ import Colors from '../utils/Colors';
 // import CustomDrawer from './CustomDrawer';
 import CustomText from '../components/UI/CustomText';
 // Auth Screens
-import { AuthScreen } from '../screens/AuthScreen';
-import { IntroScreen } from '../screens/IntroScreen';
-import { SignupScreen } from '../screens/SignupScreen';
-import { LoginScreen } from '../screens/LoginScreen';
-import { TouchIdScreen } from '../screens/TouchIdScreen';
+// import { AuthScreen } from '../screens/AuthScreen';
+// import { IntroScreen } from '../screens/IntroScreen';
+// import { SignupScreen } from '../screens/SignupScreen';
+// import { LoginScreen } from '../screens/LoginScreen';
+// import { TouchIdScreen } from '../screens/TouchIdScreen';
 // Reset Screens
-import { ForgetPwScreen } from '../screens/ForgetPasswordScreen';
-import { ResetPwScreen } from '../screens/ResetPwScreen';
-import { FinishResetPwScreen } from '../screens/FinishResetPwScreen';
+// import { ForgetPwScreen } from '../screens/ForgetPasswordScreen';
+// import { ResetPwScreen } from '../screens/ResetPwScreen';
+// import { FinishResetPwScreen } from '../screens/FinishResetPwScreen';
 // Home Screens
 import { HomeScreen } from '../screens/HomeScreen';
-import { ContactScreen } from '../screens/ContactScreen';
+// import { ContactScreen } from '../screens/ContactScreen';
 //Product Screens
-import { CartScreen } from '../screens/CartScreen';
+// import { CartScreen } from '../screens/CartScreen';
 import { DetailScreen } from '../screens/DetailScreen';
-import { FavoriteScreen } from '../screens/FavoriteScreen';
+// import { FavoriteScreen } from '../screens/FavoriteScreen';
 import { ProductScreen } from '../screens/ProductScreen';
 // Order Screens
-import { OrderScreen } from '../screens/OrderScreen';
-import { PreOrderScreen } from '../screens/PreOrderScreen';
-import { PaymentScreen } from '../screens/PaymentScreen';
-import { AddCreditCardScreen } from '../screens/PaymentScreen';
-import { FinishOrderScreen } from '../screens/FinishOrderScreen';
+// import { OrderScreen } from '../screens/OrderScreen';
+// import { PreOrderScreen } from '../screens/PreOrderScreen';
+// import { PaymentScreen } from '../screens/PaymentScreen';
+// import { AddCreditCardScreen } from '../screens/PaymentScreen';
+// import { FinishOrderScreen } from '../screens/FinishOrderScreen';
 // Profile Screens
-import { ProfileScreen } from '../screens/ProfileScreen';
-import { EditProfileScreen } from '../screens/ProfileScreen';
+// import { ProfileScreen } from '../screens/ProfileScreen';
+// import { EditProfileScreen } from '../screens/ProfileScreen';
 // redux
 import { batch, useSelector } from 'react-redux';
 
 // create Navigator
 
-const IntroStack = createStackNavigator();
-export const IntroStackScreen = () => (
-  <IntroStack.Navigator>
-    <IntroStack.Screen
-      name="IntroScreen"
-      component={IntroScreen}
-      options={{ headerShown: false }}
-    />
-  </IntroStack.Navigator>
-);
+// const IntroStack = createStackNavigator();
+// export const IntroStackScreen = () => (
+//   <IntroStack.Navigator>
+//     <IntroStack.Screen
+//       name="IntroScreen"
+//       component={IntroScreen}
+//       options={{ headerShown: false }}
+//     />
+//   </IntroStack.Navigator>
+// );
 
-const LoginStack = createStackNavigator();
-export const LoginStackScreen = () => (
-  <LoginStack.Navigator
-    screenOptions={{
-      presentation: "modal",
-      headerShown: false,
-      gestureEnabled: true,
-      cardOverlayEnabled: true,
-      ...TransitionPresets.ModalPresentationIOS,
-    }}
-    // mode="modal"
-  >
-    <LoginStack.Screen name="LoginScreenNested" component={LoginScreen} />
-    <LoginStack.Screen name="ForgetPwScreen" component={ForgetPwScreen} />
-  </LoginStack.Navigator>
-);
+// const LoginStack = createStackNavigator();
+// export const LoginStackScreen = () => (
+//   <LoginStack.Navigator
+//     screenOptions={{
+//       presentation: "modal",
+//       headerShown: false,
+//       gestureEnabled: true,
+//       cardOverlayEnabled: true,
+//       ...TransitionPresets.ModalPresentationIOS,
+//     }}
+//     // mode="modal"
+//   >
+//     <LoginStack.Screen name="LoginScreenNested" component={LoginScreen} />
+//     <LoginStack.Screen name="ForgetPwScreen" component={ForgetPwScreen} />
+//   </LoginStack.Navigator>
+// );
 
-const AuthStack = createStackNavigator();
-export const AuthStackScreen = () => (
-  <AuthStack.Navigator screenOptions={{ headerShown: false }}>
-    <AuthStack.Screen name="AuthScreen" component={AuthScreen} />
-    <AuthStack.Screen name="LoginScreen" component={LoginStackScreen} />
-    <AuthStack.Screen name="SignupScreen" component={SignupScreen} />
-    <AuthStack.Screen
-      name="FinishResetScreen"
-      component={FinishResetPwScreen}
-    />
-  </AuthStack.Navigator>
-);
+// const AuthStack = createStackNavigator();
+// export const AuthStackScreen = () => (
+//   <AuthStack.Navigator screenOptions={{ headerShown: false }}>
+//     <AuthStack.Screen name="AuthScreen" component={AuthScreen} />
+//     <AuthStack.Screen name="LoginScreen" component={LoginStackScreen} />
+//     <AuthStack.Screen name="SignupScreen" component={SignupScreen} />
+//     <AuthStack.Screen
+//       name="FinishResetScreen"
+//       component={FinishResetPwScreen}
+//     />
+//   </AuthStack.Navigator>
+// );
 
-const FavoriteStack = createStackNavigator();
-export const FavoriteStackScreen = () => (
-  <FavoriteStack.Navigator
-    screenOptions={{
-      headerShown: false,
-      cardStyleInterpolator: CardStyleInterpolators.forVerticalIOS,
-    }}
-  >
-    <FavoriteStack.Screen name="FavoriteScreen" component={FavoriteScreen} />
-    <FavoriteStack.Screen name="Detail" component={DetailScreen} />
-  </FavoriteStack.Navigator>
-);
+// const FavoriteStack = createStackNavigator();
+// export const FavoriteStackScreen = () => (
+//   <FavoriteStack.Navigator
+//     screenOptions={{
+//       headerShown: false,
+//       cardStyleInterpolator: CardStyleInterpolators.forVerticalIOS,
+//     }}
+//   >
+//     <FavoriteStack.Screen name="FavoriteScreen" component={FavoriteScreen} />
+//     <FavoriteStack.Screen name="Detail" component={DetailScreen} />
+//   </FavoriteStack.Navigator>
+// );
 
-const PaymentStack = createStackNavigator();
-export const PaymentStackScreen = () => (
-  <PaymentStack.Navigator
-    screenOptions={{
-      headerShown: false,
-      gestureEnabled: true,
-      cardOverlayEnabled: true,
-      ...TransitionPresets.ModalPresentationIOS,
-    }}
-  >
-    <PaymentStack.Screen name="PaymentScreen" component={PaymentScreen} />
-    <PaymentStack.Screen
-      name="AddCreditCardScreen"
-      component={AddCreditCardScreen}
-    />
-  </PaymentStack.Navigator>
-);
+// const PaymentStack = createStackNavigator();
+// export const PaymentStackScreen = () => (
+//   <PaymentStack.Navigator
+//     screenOptions={{
+//       headerShown: false,
+//       gestureEnabled: true,
+//       cardOverlayEnabled: true,
+//       ...TransitionPresets.ModalPresentationIOS,
+//     }}
+//   >
+//     <PaymentStack.Screen name="PaymentScreen" component={PaymentScreen} />
+//     <PaymentStack.Screen
+//       name="AddCreditCardScreen"
+//       component={AddCreditCardScreen}
+//     />
+//   </PaymentStack.Navigator>
+// );
 
-const CartStack = createStackNavigator();
-export const CartStackScreen = () => (
-  <CartStack.Navigator screenOptions={{ headerShown: false }}>
-    <CartStack.Screen name="CartScreen" component={CartScreen} />
+// const CartStack = createStackNavigator();
+// export const CartStackScreen = () => (
+//   <CartStack.Navigator screenOptions={{ headerShown: false }}>
+//     <CartStack.Screen name="CartScreen" component={CartScreen} />
 
-    <CartStack.Screen name="PreOrderScreen" component={PreOrderScreen} />
-    <CartStack.Screen name="Payment" component={PaymentStackScreen} />
-    <CartStack.Screen
-      name="AddCreditCardScreen"
-      component={AddCreditCardScreen}
-    />
-  </CartStack.Navigator>
-);
+//     <CartStack.Screen name="PreOrderScreen" component={PreOrderScreen} />
+//     <CartStack.Screen name="Payment" component={PaymentStackScreen} />
+//     <CartStack.Screen
+//       name="AddCreditCardScreen"
+//       component={AddCreditCardScreen}
+//     />
+//   </CartStack.Navigator>
+// );
 
 const ProductStack = createStackNavigator();
 export const ProductStackScreen = () => (
@@ -148,21 +148,21 @@ export const ProductStackScreen = () => (
 
 const ProfileStack = createStackNavigator();
 
-export const ProfileStackScreen = () => (
-  <ProfileStack.Navigator
-    screenOptions={{
-      presentation: 'modal',
-      headerShown: false,
-      gestureEnabled: true,
-      cardOverlayEnabled: true,
-      ...TransitionPresets.ModalPresentationIOS,
-    }}
-    // mode="modal"
-  >
-    <ProfileStack.Screen name="ProfileNested" component={ProfileScreen} />
-    <ProfileStack.Screen name="ProfileEdit" component={EditProfileScreen} />
-  </ProfileStack.Navigator>
-);
+// export const ProfileStackScreen = () => (
+//   <ProfileStack.Navigator
+//     screenOptions={{
+//       presentation: 'modal',
+//       headerShown: false,
+//       gestureEnabled: true,
+//       cardOverlayEnabled: true,
+//       ...TransitionPresets.ModalPresentationIOS,
+//     }}
+//     // mode="modal"
+//   >
+//     <ProfileStack.Screen name="ProfileNested" component={ProfileScreen} />
+//     <ProfileStack.Screen name="ProfileEdit" component={EditProfileScreen} />
+//   </ProfileStack.Navigator>
+// );
 
 const HomeStack = createStackNavigator();
 export const HomeStackScreen = () => (
@@ -178,10 +178,10 @@ export const HomeStackScreen = () => (
       // animationEnabled: false , located in option
     />
     <HomeStack.Screen name="Detail" component={DetailScreen} />
-    <HomeStack.Screen name="Cart" component={CartStackScreen} />
+    {/* <HomeStack.Screen name="Cart" component={CartStackScreen} /> */}
     <HomeStack.Screen name="Product" component={ProductStackScreen} />
-    <HomeStack.Screen name="FinishOrder" component={FinishOrderScreen} />
-    <HomeStack.Screen name="ResetPw" component={ResetPwScreen} />
+    {/* <HomeStack.Screen name="FinishOrder" component={FinishOrderScreen} /> */}
+    {/* <HomeStack.Screen name="ResetPw" component={ResetPwScreen} /> */}
   </HomeStack.Navigator>
 );
 

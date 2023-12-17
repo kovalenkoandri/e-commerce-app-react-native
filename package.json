@@ -24,7 +24,7 @@
     "expo-app-loading": "~2.1.1",
     "expo-blur": "~12.4.1",
     "expo-constants": "~14.4.2",
-    "expo-dev-client": "~2.4.8",
+    "expo-dev-client": "~2.4.12",
     "expo-image-picker": "~14.3.2",
     "expo-linear-gradient": "~12.3.0",
     "expo-linking": "~5.0.2",
@@ -41,7 +41,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-link": "^1.0.3",
-    "react-native": "0.72.4",
+    "react-native": "0.72.6",
     "react-native-animatable": "^1.3.3",
     "react-native-gesture-handler": "~2.12.0",
     "react-native-input-credit-card": "^0.5.5",
@@ -61,7 +61,8 @@
     "redux-devtools-extension": "^2.13.8",
     "redux-form": "^8.3.10",
     "redux-thunk": "^2.4.2",
-    "yarn": "^1.22.19"
+    "yarn": "^1.22.19",
+    "expo-splash-screen": "~0.20.5"
   },
   "devDependencies": {
     "@babel/core": "^7.22.9",
