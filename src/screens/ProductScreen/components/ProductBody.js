@@ -6,7 +6,7 @@ import {
   Keyboard,
   SectionList,
 } from 'react-native';
-import Animated, { Value } from 'react-native-reanimated';
+// import Animated, { Value } from 'react-native-reanimated';
 //Color
 import Colors from '../../../utils/Colors';
 import HorizontalItem from './HorizontalItem';
@@ -17,7 +17,7 @@ import PropTypes from 'prop-types';
 
 ITEM_HEIGHT = 100;
 
-const AnimatedSectionList = Animated.createAnimatedComponent(SectionList);
+// const AnimatedSectionList = Animated.createAnimatedComponent(SectionList);
 
 export const ProductBody = ({
   navigation,
@@ -70,7 +70,7 @@ export const ProductBody = ({
           Product not found
         </CustomText>
       ) : (
-        <AnimatedSectionList
+        <SectionList
           sections={DATA} // REQUIRED: SECTIONLIST DATA
           keyExtractor={(item) => item._id}
           ref={sectionListRef}

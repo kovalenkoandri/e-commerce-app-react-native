@@ -8,7 +8,7 @@ import {
   Platform,
 } from 'react-native';
 // import SearchInput from "./SearchInput";
-import Animated from 'react-native-reanimated';
+// import Animated from 'react-native-reanimated';
 import ShareItem from '../../../components/UI/ShareItem';
 //Color
 import Colors from '../../../utils/Colors';
@@ -19,7 +19,7 @@ import { BlurView } from 'expo-blur';
 //PropTypes check
 import PropTypes from 'prop-types';
 
-const { interpolate, Extrapolate } = Animated;
+// const { interpolate, Extrapolate } = Animated;
 const { width } = Dimensions.get('window');
 const HEADER_HEIGHT = 180;
 const HEADER_MIN = 90;
