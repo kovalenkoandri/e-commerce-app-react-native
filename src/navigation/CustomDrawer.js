@@ -60,7 +60,7 @@
 //           <View style={{ alignItems: 'center', marginVertical: 20 }}>
 //             <Image
 //               style={styles.logo}
-//               source={require('../assets/Images/logo1.png')}
+//               source={require('../assets/Images/logo1.jpg')}
 //             />
 //           </View>
 //         ) : (

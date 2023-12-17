@@ -185,7 +185,7 @@ export class Header extends React.Component {
               </TouchableOpacity>
               <View>
                 <Image
-                  source={require("../../../assets/Images/logoNoText.png")}
+                  source={require("../../../assets/Images/logoNoText.jpg")}
                   style={{
                     width: height < 668 ? 130 : 120,
                     resizeMode: "contain",
@@ -252,7 +252,7 @@ export class Header extends React.Component {
             {this.state.keyword === "" ? (
               <View style={styles.image_placeholder_container}>
                 <Image
-                  source={require("../../../assets/Images/logo1.png")}
+                  source={require("../../../assets/Images/logo1.jpg")}
                   style={styles.image_placeholder}
                 />
                 <Text style={styles.image_placeholder_text}>

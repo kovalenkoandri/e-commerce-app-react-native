@@ -58,9 +58,14 @@ export const Header = ({ navigation }) => {
         <Button
           disabled={keyword.length < 5}
           onPress={() => onSubmit()}
-          style={styles.button}
           mode="elevated"
           loading={loading}
+          style={[
+            styles.button,
+            {
+              backgroundColor: keyword.length < 5 ? Colors.grey : Colors.bg,
+            },
+          ]}
         >
           <Text style={styles.text}>Знайти!</Text>
         </Button>
