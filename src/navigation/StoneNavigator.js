@@ -5,14 +5,14 @@ import {
   CardStyleInterpolators,
   TransitionPresets,
 } from '@react-navigation/stack';
-import { createDrawerNavigator } from '@react-navigation/drawer';
+// import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 // Icon
 import { MaterialCommunityIcons, AntDesign } from '@expo/vector-icons';
 // Color
 import Colors from '../utils/Colors';
 // Custom Drawer
-import CustomDrawer from './CustomDrawer';
+// import CustomDrawer from './CustomDrawer';
 import CustomText from '../components/UI/CustomText';
 // Auth Screens
 import { AuthScreen } from '../screens/AuthScreen';
@@ -241,151 +241,151 @@ export const TabScreen = () => {
 };
 
 //Drawer
-const Drawer = createDrawerNavigator();
-export const DrawerNavigator = () => {
-  const user = useSelector((state) => state.auth.user);
-  const drawers = [
-    {
-      name: 'HomeTab',
-      screen: TabScreen,
-      label: 'HomeTab',
-      icon: 'home-outline',
-    },
-    {
-      name: 'Order',
-      screen: OrderScreen,
-      label: 'Order',
-      icon: 'receipt',
-    },
-    {
-      name: 'Contact',
-      screen: ContactScreen,
-      label: 'Contact',
-      icon: 'contacts',
-    },
-  ];
+// const Drawer = createDrawerNavigator();
+// export const DrawerNavigator = () => {
+//   const user = useSelector((state) => state.auth.user);
+//   const drawers = [
+//     {
+//       name: 'HomeTab',
+//       screen: TabScreen,
+//       label: 'HomeTab',
+//       icon: 'home-outline',
+//     },
+//     {
+//       name: 'Order',
+//       screen: OrderScreen,
+//       label: 'Order',
+//       icon: 'receipt',
+//     },
+//     {
+//       name: 'Contact',
+//       screen: ContactScreen,
+//       label: 'Contact',
+//       icon: 'contacts',
+//     },
+//   ];
 
-  return (
-    <Drawer.Navigator
-      drawerContent={(props) => <CustomDrawer {...props} />}
-      screenOptions={{
-        activeTintColor: Colors.grey,
-        itemStyle: { marginVertical: 3 },
-      }}
-    >
-      {drawers.map(({ name, icon, label, screen }) => (
-        <Drawer.Screen
-          key={name}
-          name={name}
-          component={screen}
-          options={() => ({
-            // A generic title that can be used as a fallback for headerTitle and drawerLabel.
-            // get rid of wqarning functions cant be component
-            // title: ({ focused }) => (
-            //   <CustomText
-            //     style={{
-            //       fontSize: 14,
-            //       fontWeight: '500',
-            //       color: focused ? Colors.lighter_green : Colors.grey,
-            //       fontFamily: 'Roboto-Medium',
-            //     }}
-            //   >
-            //     {label}
-            //   </CustomText>
-            // ),
-            drawerIcon: ({ focused }) => (
-              <MaterialCommunityIcons
-                name={icon}
-                size={23}
-                color={focused ? Colors.lighter_green : Colors.grey}
-              />
-            ),
-          })}
-        />
-      ))}
+//   return (
+//     <Drawer.Navigator
+//       drawerContent={(props) => <CustomDrawer {...props} />}
+//       screenOptions={{
+//         activeTintColor: Colors.grey,
+//         itemStyle: { marginVertical: 3 },
+//       }}
+//     >
+//       {drawers.map(({ name, icon, label, screen }) => (
+//         <Drawer.Screen
+//           key={name}
+//           name={name}
+//           component={screen}
+//           options={() => ({
+//             // A generic title that can be used as a fallback for headerTitle and drawerLabel.
+//             // get rid of wqarning functions cant be component
+//             // title: ({ focused }) => (
+//             //   <CustomText
+//             //     style={{
+//             //       fontSize: 14,
+//             //       fontWeight: '500',
+//             //       color: focused ? Colors.lighter_green : Colors.grey,
+//             //       fontFamily: 'Roboto-Medium',
+//             //     }}
+//             //   >
+//             //     {label}
+//             //   </CustomText>
+//             // ),
+//             drawerIcon: ({ focused }) => (
+//               <MaterialCommunityIcons
+//                 name={icon}
+//                 size={23}
+//                 color={focused ? Colors.lighter_green : Colors.grey}
+//               />
+//             ),
+//           })}
+//         />
+//       ))}
 
-      {Object.keys(user).length === 0 ? (
-        <Drawer.Screen
-          name="SignUp"
-          component={AuthStackScreen}
-          options={() => ({
-            // A generic title that can be used as a fallback for headerTitle and drawerLabel.
-            // get rid of wqarning functions cant be component
-            // title: ({ focused }) => (
-            //   <CustomText
-            //     style={{
-            //       fontSize: 14,
-            //       fontWeight: '500',
-            //       color: focused ? Colors.lighter_green : Colors.grey,
-            //       fontFamily: 'Roboto-Medium',
-            //     }}
-            //   >
-            //     Sign Up
-            //   </CustomText>
-            // ),
-            drawerIcon: ({ focused }) => (
-              <MaterialCommunityIcons
-                name="login"
-                size={23}
-                color={focused ? Colors.lighter_green : Colors.grey}
-              />
-            ),
-          })}
-        />
-      ) : (
-        <>
-          <Drawer.Screen
-            name="TouchId"
-            component={TouchIdScreen}
-            options={() => ({
-              title: ({ focused }) => (
-                <CustomText
-                  style={{
-                    fontSize: 14,
-                    fontWeight: '500',
-                    color: focused ? Colors.lighter_green : Colors.grey,
-                    fontFamily: 'Roboto-Medium',
-                  }}
-                >
-                  Touch/Face ID
-                </CustomText>
-              ),
-              drawerIcon: ({ focused }) => (
-                <MaterialCommunityIcons
-                  name="security"
-                  size={25}
-                  color={focused ? Colors.lighter_green : Colors.grey}
-                />
-              ),
-            })}
-          />
-          <Drawer.Screen
-            name="Profile"
-            component={ProfileStackScreen}
-            options={() => ({
-              title: ({ focused }) => (
-                <CustomText
-                  style={{
-                    fontSize: 14,
-                    fontWeight: '500',
-                    color: focused ? Colors.lighter_green : Colors.grey,
-                    fontFamily: 'Roboto-Medium',
-                  }}
-                >
-                  Personal information
-                </CustomText>
-              ),
-              drawerIcon: ({ focused }) => (
-                <MaterialCommunityIcons
-                  name="face-man"
-                  size={25}
-                  color={focused ? Colors.lighter_green : Colors.grey}
-                />
-              ),
-            })}
-          />
-        </>
-      )}
-    </Drawer.Navigator>
-  );
-};
+//       {Object.keys(user).length === 0 ? (
+//         <Drawer.Screen
+//           name="SignUp"
+//           component={AuthStackScreen}
+//           options={() => ({
+//             // A generic title that can be used as a fallback for headerTitle and drawerLabel.
+//             // get rid of wqarning functions cant be component
+//             // title: ({ focused }) => (
+//             //   <CustomText
+//             //     style={{
+//             //       fontSize: 14,
+//             //       fontWeight: '500',
+//             //       color: focused ? Colors.lighter_green : Colors.grey,
+//             //       fontFamily: 'Roboto-Medium',
+//             //     }}
+//             //   >
+//             //     Sign Up
+//             //   </CustomText>
+//             // ),
+//             drawerIcon: ({ focused }) => (
+//               <MaterialCommunityIcons
+//                 name="login"
+//                 size={23}
+//                 color={focused ? Colors.lighter_green : Colors.grey}
+//               />
+//             ),
+//           })}
+//         />
+//       ) : (
+//         <>
+//           <Drawer.Screen
+//             name="TouchId"
+//             component={TouchIdScreen}
+//             options={() => ({
+//               title: ({ focused }) => (
+//                 <CustomText
+//                   style={{
+//                     fontSize: 14,
+//                     fontWeight: '500',
+//                     color: focused ? Colors.lighter_green : Colors.grey,
+//                     fontFamily: 'Roboto-Medium',
+//                   }}
+//                 >
+//                   Touch/Face ID
+//                 </CustomText>
+//               ),
+//               drawerIcon: ({ focused }) => (
+//                 <MaterialCommunityIcons
+//                   name="security"
+//                   size={25}
+//                   color={focused ? Colors.lighter_green : Colors.grey}
+//                 />
+//               ),
+//             })}
+//           />
+//           <Drawer.Screen
+//             name="Profile"
+//             component={ProfileStackScreen}
+//             options={() => ({
+//               title: ({ focused }) => (
+//                 <CustomText
+//                   style={{
+//                     fontSize: 14,
+//                     fontWeight: '500',
+//                     color: focused ? Colors.lighter_green : Colors.grey,
+//                     fontFamily: 'Roboto-Medium',
+//                   }}
+//                 >
+//                   Personal information
+//                 </CustomText>
+//               ),
+//               drawerIcon: ({ focused }) => (
+//                 <MaterialCommunityIcons
+//                   name="face-man"
+//                   size={25}
+//                   color={focused ? Colors.lighter_green : Colors.grey}
+//                 />
+//               ),
+//             })}
+//           />
+//         </>
+//       )}
+//     </Drawer.Navigator>
+//   );
+// };

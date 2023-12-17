@@ -16,7 +16,7 @@ import {
 //Navigator
 import { AppNavigator } from './src/navigation';
 // import AppLoading from 'expo-app-loading';
-import * as SplashScreen from 'expo-splash-screen';
+// import * as SplashScreen from 'expo-splash-screen';
 import { Asset } from 'expo-asset';
 import * as Font from 'expo-font';
 
@@ -27,7 +27,7 @@ import { StatusBar } from 'expo-status-bar';
 import LocalNotication from './src/components/Notification/LocalNotification';
 // Keep the splash screen visible while we fetch resources
 import { API_URL } from './src/utils/Config';
-SplashScreen.preventAutoHideAsync();
+// SplashScreen.preventAutoHideAsync();
 const rootReducer = combineReducers({
   store: productReducer,
   cart: cartReducer,
@@ -126,7 +126,7 @@ export default function App() {
         // console.log(fetchedJSON);
         // Pre-load fonts, make any API calls you need to do here
         await LoadAssets();
-        await SplashScreen.hideAsync();
+        // await SplashScreen.hideAsync();
       } catch (e) {
         console.warn(e);
       } finally {
