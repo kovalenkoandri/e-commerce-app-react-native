@@ -12,9 +12,14 @@ import { Host } from "react-native-portalize";
 //Deep Link
 import { urlRedirect } from "../utils/Tools";
 import * as Linking from "expo-linking";
-import { PaperProvider, Appbar, Switch } from "react-native-paper";
+import { PaperProvider, Appbar } from "react-native-paper";
 import { PreferencesContext, useThemePreferences } from "./PreferencesContext";
-import { TouchableWithoutFeedback, Keyboard } from "react-native";
+import {
+  TouchableWithoutFeedback,
+  Keyboard,
+  StyleSheet,
+  Switch,
+} from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import Colors from "../utils/Colors";
 // LogBox.ignoreLogs(['Setting a timer']);
@@ -96,23 +101,29 @@ export const AppNavigator = () => {
                 <MaterialCommunityIcons
                   name={isThemeDark ? "weather-night" : "weather-sunny"}
                   size={24}
-                  color={isThemeDark ? Colors.green : Colors.dark}
+                  color={isThemeDark ? Colors.green : Colors.black}
                 />
               )}
             />
             <Switch
-              color={"grey"}
+              color={Colors.purple}
+              trackColor={{ false: Colors.text, true: Colors.green }}
+              thumbColor={isThemeDark ? Colors.bluegreen : Colors.green}
               value={isThemeDark}
               onValueChange={toggleTheme}
+              style={styles.switch}
             />
           </Appbar.Header>
           <TabScreen />
-          {/* <Host> */}
-          {/* {(isFirstOpen || value !== null) && <DrawerNavigator />}
-              {!isFirstOpen && value === null && <IntroStackScreen />} */}
-          {/* </Host> */}
         </NavigationContainer>
       </PaperProvider>
     </PreferencesContext.Provider>
   );
 };
+
+const styles = StyleSheet.create({
+  switch: {
+    transform: [{ scaleX: 2 }, { scaleY: 2 }],
+    marginHorizontal: 20,
+  },
+});
