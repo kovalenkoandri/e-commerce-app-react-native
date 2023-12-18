@@ -50,6 +50,7 @@ export const DetailBody = ({ item, color }) => {
   };
   const [quantity, setQuantity] = useState(1);
   const [phone, setPhone] = useState("");
+  const [isButtonActive, setButtonActive] = useState(true);
 
   const incrementQuantity = (values) => {
     setQuantity((prevQuantity) => {
@@ -169,60 +170,73 @@ export const DetailBody = ({ item, color }) => {
         initialValues={{ phone: "", quantity: "1" }}
         onSubmit={(values) => addOrderAct(values)}
       >
-        {({ handleChange, handleSubmit, values }) => (
-          <View>
-            <View style={styles.contactsContainer}>
-              <CustomText selectable={true} style={styles.contactsLabel}>
-                Залишити телефон в форматі 067-000-00-00
-              </CustomText>
-              <MaskedTextInput
-                mask="999-999-99-99"
-                onChangeText={(text, rawText) => {
-                  values.phone = text;
-                  setPhone(text);
-                }}
-                keyboardType="numeric"
-                style={styles.contactsInput}
-              />
-              <CustomText selectable={true} style={styles.contactsLabel}>
-                Кількість
-              </CustomText>
-              <View style={{ flexDirection: "row", alignItems: "center" }}>
-                <TouchableOpacity onPress={() => decrementQuantity(values)}>
-                  <Text style={styles.decBtn}>—</Text>
-                </TouchableOpacity>
-                <TextInput
-                  style={styles.inputQuant}
-                  value={quantity.toString()}
-                  keyboardType="numeric"
-                  onChangeText={(text) => {
-                    setQuantity(parseInt(text, 10) || "");
-                    values.quantity = text;
+        {({ handleChange, handleSubmit, values }) => {
+          const handleSubmitBtn = () => {
+            // Your submission logic goes here
+            handleSubmit();
+            // Set the button to inactive
+            setButtonActive(false);
+
+            // Reset the button to active after 5 seconds
+            setTimeout(() => {
+              setButtonActive(true);
+            }, 5000);
+          };
+          return (
+            <View>
+              <View style={styles.contactsContainer}>
+                <CustomText selectable={true} style={styles.contactsLabel}>
+                  Залишити телефон в форматі 067-000-00-00
+                </CustomText>
+                <MaskedTextInput
+                  mask="999-999-99-99"
+                  onChangeText={(text, rawText) => {
+                    values.phone = text;
+                    setPhone(text);
                   }}
+                  keyboardType="numeric"
+                  style={styles.contactsInput}
                 />
-                <TouchableOpacity onPress={() => incrementQuantity(values)}>
-                  <Text style={styles.incBtn}>+</Text>
-                </TouchableOpacity>
+                <CustomText selectable={true} style={styles.contactsLabel}>
+                  Кількість
+                </CustomText>
+                <View style={{ flexDirection: "row", alignItems: "center" }}>
+                  <TouchableOpacity onPress={() => decrementQuantity(values)}>
+                    <Text style={styles.decBtn}>—</Text>
+                  </TouchableOpacity>
+                  <TextInput
+                    style={styles.inputQuant}
+                    value={quantity.toString()}
+                    keyboardType="numeric"
+                    onChangeText={(text) => {
+                      setQuantity(parseInt(text, 10) || "");
+                      values.quantity = text;
+                    }}
+                  />
+                  <TouchableOpacity onPress={() => incrementQuantity(values)}>
+                    <Text style={styles.incBtn}>+</Text>
+                  </TouchableOpacity>
+                </View>
               </View>
+              <Button
+                mode="elevated"
+                style={[
+                  styles.button,
+                  {
+                    backgroundColor:
+                      !isButtonActive || phone.length !== 13
+                        ? Colors.grey
+                        : Colors.bg,
+                  },
+                ]}
+                onPress={handleSubmitBtn}
+                disabled={!isButtonActive || phone.length !== 13}
+              >
+                <Text style={styles.btnText}>Надіслати</Text>
+              </Button>
             </View>
-            <Button
-              mode="elevated"
-              style={[
-                styles.button,
-                {
-                  backgroundColor:
-                    phone.length !== 13
-                      ? Colors.grey
-                      : Colors.bg,
-                },
-              ]}
-              onPress={handleSubmit}
-              disabled={phone.length !== 13}
-            >
-              <Text style={styles.btnText}>Надіслати</Text>
-            </Button>
-          </View>
-        )}
+          );
+        }}
       </Formik>
     </View>
   );
