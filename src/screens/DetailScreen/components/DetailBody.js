@@ -51,7 +51,8 @@ export const DetailBody = ({ item, color }) => {
   const [quantity, setQuantity] = useState(1);
   const [phone, setPhone] = useState("");
   const [isButtonActive, setButtonActive] = useState(true);
-
+  const [hasButtonBeenPressed, setButtonPressed] = useState(false);
+  
   const incrementQuantity = (values) => {
     setQuantity((prevQuantity) => {
       const newQuantity = prevQuantity + 1;
@@ -177,9 +178,18 @@ export const DetailBody = ({ item, color }) => {
             // Set the button to inactive
             setButtonActive(false);
 
+            // Set hasButtonBeenPressed to true after the first press
+            if (!hasButtonBeenPressed) {
+              setButtonPressed(true);
+            }
             // Reset the button to active after 5 seconds
             setTimeout(() => {
               setButtonActive(true);
+              setButtonPressed(false);
+              values.phone = "";
+              setPhone("");
+              values.quantity = "1";
+              setQuantity(1);
             }, 5000);
           };
           return (
@@ -232,7 +242,9 @@ export const DetailBody = ({ item, color }) => {
                 onPress={handleSubmitBtn}
                 disabled={!isButtonActive || phone.length !== 13}
               >
-                <Text style={styles.btnText}>Надіслати</Text>
+                <Text style={styles.btnText}>
+                  {hasButtonBeenPressed ? "Відправлено" : "Надіслати"}
+                </Text>
               </Button>
             </View>
           );
