@@ -17,10 +17,7 @@ const HeaderTextExample = ({ children }) => {
       <Text variant="headlineMedium" style={styles.searchResultExampleText}>
         Пошук здійснюється по:{"\n"} 1. Каталожному номеру виробника.
         {"\n"} 2. Оригільному номеру ідентифікатору
-      </Text><Image
-        source={require("../../../assets/Images/logo1.jpg")}
-        style={styles.searchResultImageBrand}
-      />
+      </Text>
     </ScrollView>
   );
 };
@@ -30,11 +27,6 @@ export default HeaderTextExample;
 const styles = StyleSheet.create({
   searchResultContainer: {
     marginTop: 4,
-  },
-  searchResultImageBrand: {
-    height: 280,
-    resizeMode: "contain",
-    alignSelf: "center",
   },
   searchResultExampleText: {
     textAlign: "center",
