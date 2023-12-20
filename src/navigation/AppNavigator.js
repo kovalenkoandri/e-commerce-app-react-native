@@ -28,59 +28,6 @@ export const AppNavigator = () => {
   const { toggleTheme, isThemeDark, theme } = useThemePreferences();
   const preferences = useThemePreferences();
 
-  const [value, setValue] = useState(null);
-  const dispatch = useDispatch();
-  const isFirstOpen = useSelector((state) => state.store.isFirstOpen);
-  useEffect(() => {
-    // listen for new url events coming from Expo
-    Linking.addEventListener(
-      "url",
-      (event) => {
-        urlRedirect(event.url);
-      },
-      [urlRedirect],
-    );
-    Linking.getInitialURL().then(urlRedirect);
-    // Linking.removeEventListener(
-    //   'url',
-    //   (event) => {
-    //     urlRedirect(event.url);
-    //   },
-    //   [urlRedirect],
-    // );
-  }, [urlRedirect]);
-
-  useEffect(() => {
-    const isFirstTime = async () => {
-      const firstOpen = await AsyncStorage.getItem("isFirstTime");
-      setValue(firstOpen);
-    };
-    isFirstTime();
-    const autoLogout = async () => {
-      const getUser = await AsyncStorage.getItem("user");
-      if (getUser) {
-        const user = await JSON.parse(getUser);
-        if (user.data.expireTime - Date.now() < 0) {
-          dispatch(Logout());
-        }
-      }
-      return;
-    };
-    autoLogout();
-  }, []);
-  useEffect(() => {
-    const autoLogout = async () => {
-      const getUser = await AsyncStorage.getItem("user");
-      if (getUser) {
-        const user = await JSON.parse(getUser);
-        if (user.data.expireTime - Date.now() < 0) {
-          dispatch(Logout());
-        }
-      }
-      return;
-    };
-    autoLogout();
-  }, []);
   return (
     <PreferencesContext.Provider
       value={preferences}
@@ -99,6 +46,7 @@ export const AppNavigator = () => {
             <Appbar.Action
               icon={() => (
                 <MaterialCommunityIcons
+                  style={styles.weather}
                   name={isThemeDark ? "weather-night" : "weather-sunny"}
                   size={24}
                   color={isThemeDark ? Colors.green : Colors.black}
@@ -124,6 +72,9 @@ export const AppNavigator = () => {
 const styles = StyleSheet.create({
   switch: {
     transform: [{ scaleX: 2 }, { scaleY: 2 }],
-    marginHorizontal: 20,
+    marginHorizontal: 50,
+  },
+  weather: {
+    transform: [{ scaleX: 2 }, { scaleY: 2 }],
   },
 });
