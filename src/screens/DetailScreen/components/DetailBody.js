@@ -52,7 +52,7 @@ export const DetailBody = ({ item, color }) => {
   const [phone, setPhone] = useState("");
   const [isButtonActive, setButtonActive] = useState(true);
   const [hasButtonBeenPressed, setButtonPressed] = useState(false);
-  
+
   const incrementQuantity = (values) => {
     setQuantity((prevQuantity) => {
       const newQuantity = prevQuantity + 1;
@@ -70,8 +70,21 @@ export const DetailBody = ({ item, color }) => {
       });
     }
   };
+  const [windowHeight, setWindowHeight] = useState(height); // Initial height
+
+  const handleInputFocus = () => {
+    // Update the window height when the input is focused
+    setWindowHeight(height + height * 0.35); // Adjust the height as needed
+    console.log(windowHeight + " focus");
+  };
+  const handleInputQuantityFocus = () => {
+    // Update the window height when the input is focused
+    setWindowHeight(height + height * 0.3); // Adjust the height as needed
+    console.log(windowHeight + " focus");
+  };
+
   return (
-    <View style={[styles.footer]}>
+    <View style={[styles.footer, { height: windowHeight + 50 }]}>
       {/* <Animatable.View 
         animation="lightSpeedIn"
         delay={1000}
@@ -194,40 +207,6 @@ export const DetailBody = ({ item, color }) => {
           };
           return (
             <View>
-              <View style={styles.contactsContainer}>
-                <CustomText selectable={true} style={styles.contactsLabel}>
-                  Залишити телефон в форматі 067-000-00-00
-                </CustomText>
-                <MaskedTextInput
-                  mask="999-999-99-99"
-                  onChangeText={(text, rawText) => {
-                    values.phone = text;
-                    setPhone(text);
-                  }}
-                  keyboardType="numeric"
-                  style={styles.contactsInput}
-                />
-                <CustomText selectable={true} style={styles.contactsLabel}>
-                  Кількість
-                </CustomText>
-                <View style={{ flexDirection: "row", alignItems: "center" }}>
-                  <TouchableOpacity onPress={() => decrementQuantity(values)}>
-                    <Text style={styles.decBtn}>—</Text>
-                  </TouchableOpacity>
-                  <TextInput
-                    style={styles.inputQuant}
-                    value={quantity.toString()}
-                    keyboardType="numeric"
-                    onChangeText={(text) => {
-                      setQuantity(parseInt(text, 10) || "");
-                      values.quantity = text;
-                    }}
-                  />
-                  <TouchableOpacity onPress={() => incrementQuantity(values)}>
-                    <Text style={styles.incBtn}>+</Text>
-                  </TouchableOpacity>
-                </View>
-              </View>
               <Button
                 mode="elevated"
                 style={[
@@ -246,6 +225,42 @@ export const DetailBody = ({ item, color }) => {
                   {hasButtonBeenPressed ? "Відправлено" : "Надіслати"}
                 </Text>
               </Button>
+              <View style={styles.contactsContainer}>
+                <CustomText selectable={true} style={styles.contactsLabel}>
+                  Кількість
+                </CustomText>
+                <View style={{ flexDirection: "row", alignItems: "center" }}>
+                  <TouchableOpacity onPress={() => decrementQuantity(values)}>
+                    <Text style={styles.decBtn}>—</Text>
+                  </TouchableOpacity>
+                  <TextInput
+                    style={styles.inputQuant}
+                    value={quantity.toString()}
+                    keyboardType="numeric"
+                    onChangeText={(text) => {
+                      setQuantity(parseInt(text, 10) || "");
+                      values.quantity = text;
+                    }}
+                    onFocus={handleInputQuantityFocus}
+                  />
+                  <TouchableOpacity onPress={() => incrementQuantity(values)}>
+                    <Text style={styles.incBtn}>+</Text>
+                  </TouchableOpacity>
+                </View>
+                <CustomText selectable={true} style={styles.contactsLabel}>
+                  Залишити телефон в форматі 067-000-00-00
+                </CustomText>
+                <MaskedTextInput
+                  mask="999-999-99-99"
+                  onChangeText={(text, rawText) => {
+                    values.phone = text;
+                    setPhone(text);
+                  }}
+                  onFocus={handleInputFocus}
+                  keyboardType="numeric"
+                  style={styles.contactsInput}
+                />
+              </View>
             </View>
           );
         }}
@@ -262,6 +277,7 @@ DetailBody.propTypes = {
 const styles = StyleSheet.create({
   footer: {
     width,
+    // height,
     backgroundColor: Colors.bluegreen,
     paddingHorizontal: 20,
     paddingVertical: 20,
@@ -337,7 +353,7 @@ const styles = StyleSheet.create({
   decBtn: { fontSize: 44, color: Colors.dark, marginRight: 10 },
   incBtn: { fontSize: 44, color: Colors.dark, marginLeft: 10 },
   button: {
-    marginTop: 16,
+    marginBottom: 16,
     alignItems: "center",
     justifyContent: "center",
     paddingVertical: 6,
