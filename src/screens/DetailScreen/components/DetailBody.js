@@ -75,12 +75,10 @@ export const DetailBody = ({ item, color }) => {
   const handleInputFocus = () => {
     // Update the window height when the input is focused
     setWindowHeight(height + height * 0.35); // Adjust the height as needed
-    console.log(windowHeight + " focus");
   };
   const handleInputQuantityFocus = () => {
     // Update the window height when the input is focused
     setWindowHeight(height + height * 0.3); // Adjust the height as needed
-    console.log(windowHeight + " focus");
   };
 
   return (

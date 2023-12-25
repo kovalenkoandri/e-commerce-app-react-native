@@ -1,19 +1,19 @@
-import React from 'react';
-import { Platform } from 'react-native';
+import React from "react";
+// import { Platform } from "react-native";
 import {
   createStackNavigator,
   CardStyleInterpolators,
   TransitionPresets,
-} from '@react-navigation/stack';
+} from "@react-navigation/stack";
 // import { createDrawerNavigator } from '@react-navigation/drawer';
-import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
+import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 // Icon
-import { MaterialCommunityIcons, AntDesign } from '@expo/vector-icons';
+// import { MaterialCommunityIcons, AntDesign } from "@expo/vector-icons";
 // Color
-import Colors from '../utils/Colors';
+import Colors from "../utils/Colors";
 // Custom Drawer
 // import CustomDrawer from './CustomDrawer';
-import CustomText from '../components/UI/CustomText';
+// import CustomText from "../components/UI/CustomText";
 // Auth Screens
 // import { AuthScreen } from '../screens/AuthScreen';
 // import { IntroScreen } from '../screens/IntroScreen';
@@ -25,13 +25,14 @@ import CustomText from '../components/UI/CustomText';
 // import { ResetPwScreen } from '../screens/ResetPwScreen';
 // import { FinishResetPwScreen } from '../screens/FinishResetPwScreen';
 // Home Screens
-import { HomeScreen } from '../screens/HomeScreen';
+import { HomeScreen } from "../screens/HomeScreen";
+import { CompareScreen } from "../screens/CompareScreen";
 // import { ContactScreen } from '../screens/ContactScreen';
 //Product Screens
 // import { CartScreen } from '../screens/CartScreen';
-import { DetailScreen } from '../screens/DetailScreen';
+import { DetailScreen } from "../screens/DetailScreen";
 // import { FavoriteScreen } from '../screens/FavoriteScreen';
-import { ProductScreen } from '../screens/ProductScreen';
+import { ProductScreen } from "../screens/ProductScreen";
 // Order Screens
 // import { OrderScreen } from '../screens/OrderScreen';
 // import { PreOrderScreen } from '../screens/PreOrderScreen';
@@ -42,8 +43,8 @@ import { ProductScreen } from '../screens/ProductScreen';
 // import { ProfileScreen } from '../screens/ProfileScreen';
 // import { EditProfileScreen } from '../screens/ProfileScreen';
 // redux
-import { batch, useSelector } from 'react-redux';
-
+import { batch, useSelector } from "react-redux";
+import { FontAwesome } from "@expo/vector-icons";
 // create Navigator
 
 // const IntroStack = createStackNavigator();
@@ -132,21 +133,21 @@ import { batch, useSelector } from 'react-redux';
 //   </CartStack.Navigator>
 // );
 
-const ProductStack = createStackNavigator();
-export const ProductStackScreen = () => (
-  <ProductStack.Navigator
-    screenOptions={{
-      headerShown: false,
-      cardStyleInterpolator: CardStyleInterpolators.forVerticalIOS,
-    }}
-  >
-    <ProductStack.Screen name="ProductScreen" component={ProductScreen} />
-    <ProductStack.Screen name="DetailScreen" component={DetailScreen} />
-    <ProductStack.Screen name="CartScreen" component={CartStackScreen} />
-  </ProductStack.Navigator>
-);
+// const ProductStack = createStackNavigator();
+// export const ProductStackScreen = () => (
+//   <ProductStack.Navigator
+//     screenOptions={{
+//       headerShown: false,
+//       cardStyleInterpolator: CardStyleInterpolators.forVerticalIOS,
+//     }}
+//   >
+//     <ProductStack.Screen name="ProductScreen" component={ProductScreen} />
+//     <ProductStack.Screen name="DetailScreen" component={DetailScreen} />
+//     <ProductStack.Screen name="CartScreen" component={CartStackScreen} />
+//   </ProductStack.Navigator>
+// );
 
-const ProfileStack = createStackNavigator();
+// const ProfileStack = createStackNavigator();
 
 // export const ProfileStackScreen = () => (
 //   <ProfileStack.Navigator
@@ -179,7 +180,8 @@ export const HomeStackScreen = () => (
     />
     <HomeStack.Screen name="Detail" component={DetailScreen} />
     {/* <HomeStack.Screen name="Cart" component={CartStackScreen} /> */}
-    <HomeStack.Screen name="Product" component={ProductStackScreen} />
+    {/* <HomeStack.Screen name="Product" component={ProductStackScreen} /> */}
+    <HomeStack.Screen name="Product" component={ProductScreen} />
     {/* <HomeStack.Screen name="FinishOrder" component={FinishOrderScreen} /> */}
     {/* <HomeStack.Screen name="ResetPw" component={ResetPwScreen} /> */}
   </HomeStack.Navigator>
@@ -198,12 +200,18 @@ export const TabScreen = () => {
           const color = focused ? Colors.lighter_green : Colors.grey;
           if (route.name === "HomePage") {
             iconName = "home";
-          } else if (route.name === "Favorite") {
-            iconName = "hearto";
-          } else if (route.name === "Cart") {
+            return <FontAwesome name="search" size={24} color="black" />;
+            // return <AntDesign name={iconName} size={23} color={color} />;
+            // } else if (route.name === "Favorite") {
+            //   iconName = "hearto";
+            // } else if (route.name === "Cart") {
+            //   iconName = "shoppingcart";
+          } else if (route.name === "ComparePage") {
             iconName = "shoppingcart";
+            return <FontAwesome name="search-plus" size={24} color="black" />;
+            // return <AntDesign name={iconName} size={23} color={color} />;
           }
-          return <AntDesign name={iconName} size={23} color={color} />;
+          // return <AntDesign name={iconName} size={23} color={color} />;
         },
       })}
       barStyle={{
@@ -218,7 +226,14 @@ export const TabScreen = () => {
         name="HomePage"
         component={HomeStackScreen}
         options={{
-          tabBarLabel: "Home page",
+          tabBarLabel: "Пошук",
+        }}
+      />
+      <Tab.Screen
+        name="ComparePage"
+        component={CompareScreen}
+        options={{
+          tabBarLabel: "Порівняння цін",
         }}
       />
       {/* <Tab.Screen
