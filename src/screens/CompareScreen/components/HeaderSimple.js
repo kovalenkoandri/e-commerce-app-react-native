@@ -16,7 +16,7 @@ import { Button } from "react-native-paper";
 import Colors from "../../../utils/Colors";
 import SearchItem from "./SearchItemSimple";
 import { Text, TextInput } from "react-native-paper";
-import { fetchProductByFabricOrOriginalId } from "../../../reducers";
+import { fetchProductByGoogle } from "../../../reducers";
 import { useDispatch, useSelector } from "react-redux";
 import HeaderTextExample from "./HeaderTextExample";
 const { height, width } = Dimensions.get("window");
@@ -25,7 +25,7 @@ export const Header = ({ navigation }) => {
   const [keyword, setKeyword] = useState("");
   const [notFound, setNotFound] = useState(false);
   const dispatch = useDispatch();
-  const products = useSelector((state) => state.store.pruductsByFabricId);
+  const products = useSelector((state) => state.store.pruductsByGoogle);
   const notFoundFromReduxStore = useSelector((state) => state.store.notFound);
   const loading = useSelector((state) => state.store.isLoading);
   useEffect(() => {
@@ -34,14 +34,13 @@ export const Header = ({ navigation }) => {
 
   const onSubmit = () => {
     try {
-      dispatch(fetchProductByFabricOrOriginalId(keyword));
+      dispatch(fetchProductByGoogle(keyword));
     } catch (err) {
       alert(err);
     }
   };
   return (
     <>
-      {/* <BackButton navigation={navigation} /> */}
       <View style={styles.input_box}>
         <TextInput
           maxLength={20}

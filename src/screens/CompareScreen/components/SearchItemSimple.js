@@ -1,11 +1,18 @@
 import React from "react";
-import { View, TouchableOpacity, StyleSheet, StatusBar } from "react-native";
+import {
+  View,
+  TouchableOpacity,
+  StyleSheet,
+  StatusBar,
+  Text,
+} from "react-native";
 import Colors from "../../../utils/Colors";
 import { Ionicons } from "@expo/vector-icons";
 import PropTypes from "prop-types";
-import { Text } from "react-native-paper";
+// import { Text } from "react-native-paper";
 
 export default SearchItem = ({ item, navigation }) => {
+  console.log(item);
   return (
     <View style={styles.container}>
       <TouchableOpacity
@@ -14,14 +21,10 @@ export default SearchItem = ({ item, navigation }) => {
       >
         <Ionicons name="ios-search" size={72} color={Colors.dark} />
         <Text variant="titleLarge" style={styles.name}>
-          Каталожний номер виробника: {item["Каталожный номер производителя"]}
+          Ціна: {item.price}
         </Text>
         <Text variant="titleLarge" style={styles.name}>
-          Оригінальный номер ідентифікатор:{" "}
-          {item["Оригинальный номер - Идентификатор"]}
-        </Text>
-        <Text variant="titleLarge" style={styles.name}>
-          Назва: {item["Наименование"]}
+          Посилання на веб-ресурс: {item.siteAddress}
         </Text>
       </TouchableOpacity>
     </View>

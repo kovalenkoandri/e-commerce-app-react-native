@@ -1,5 +1,5 @@
 import { StyleSheet, View, Image, ScrollView } from "react-native";
-import { Text } from "react-native-paper";
+import { Text } from "react-native";
 import Colors from "../../../utils/Colors";
 import React from "react";
 
@@ -8,13 +8,12 @@ const HeaderTextExample = ({ children }) => {
     <ScrollView style={styles.searchResultContainer}>
       {children}
       <Text
-        variant="headlineMedium"
         selectable={true}
         style={styles.searchResultExampleText}
       >
-        Приклади:{"\n"} 712550710{"\n"} 713501400{"\n"} 713566600
+        Приклади:{"\n"} karcher wd 3{"\n"} 713501400{"\n"} 713566600
       </Text>
-      <Text variant="headlineMedium" style={styles.searchResultExampleText}>
+      <Text style={styles.searchResultExampleText}>
         Пошук здійснюється по:{"\n"} 1. Каталожному номеру виробника.
         {"\n"} 2. Оригільному номеру ідентифікатору
       </Text>
@@ -32,5 +31,6 @@ const styles = StyleSheet.create({
     textAlign: "center",
     color: Colors.dark,
     padding: 12,
+    fontSize: 32
   },
 });

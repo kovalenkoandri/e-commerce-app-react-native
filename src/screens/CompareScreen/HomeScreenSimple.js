@@ -9,7 +9,6 @@ import Skeleton from "../../components/Loaders/SkeletonLoading";
 import { Provider } from "react-native-paper";
 
 export const CompareScreen = ({ navigation }) => {
-  const products = useSelector((state) => state.store.products);
   const isLoading = useSelector((state) => state.store.isLoading);
 
   return (
@@ -18,7 +17,7 @@ export const CompareScreen = ({ navigation }) => {
         <Skeleton />
       ) : (
         <View style={styles.container}>
-          <Header navigation={navigation} products={products}></Header>
+          <Header navigation={navigation}></Header>
         </View>
       )}
     </Provider>
