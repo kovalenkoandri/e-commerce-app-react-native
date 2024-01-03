@@ -62,7 +62,8 @@
     "redux-devtools-extension": "^2.13.8",
     "redux-form": "^8.3.10",
     "redux-thunk": "^2.4.2",
-    "yarn": "^1.22.19"
+    "yarn": "^1.22.19",
+    "expo-updates": "~0.18.19"
   },
   "devDependencies": {
     "@babel/core": "^7.22.9",
