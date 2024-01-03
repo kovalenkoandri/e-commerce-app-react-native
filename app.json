@@ -4,9 +4,8 @@
     "scheme": "ecommerce",
     "name": "Ecommerce Front",
     "slug": "e-commerce-front",
-    "platforms": [
-      "android"
-    ],
+    "privacy": "public",
+    "platforms": ["android"],
     "orientation": "portrait",
     "icon": "./src/assets/icon.png",
     "splash": {
@@ -17,9 +16,7 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "android": {
       "package": "com.kovalenkoandrii.ecommerce",
       "versionCode": 2,

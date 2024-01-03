@@ -229,13 +229,13 @@ export const TabScreen = () => {
           tabBarLabel: "Пошук",
         }}
       />
-      <Tab.Screen
+      {/* <Tab.Screen
         name="ComparePage"
         component={CompareScreen}
         options={{
           tabBarLabel: "Порівняння цін",
         }}
-      />
+      /> */}
       {/* <Tab.Screen
         name="Favorite"
         component={FavoriteStackScreen}
